@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxt/image', '@nuxt/ui'],
   css: ['~/assets/css/main.css'],
+  ui: {
+    colorMode: false
+  },
   vite: {
     server: {
       allowedHosts: ['nuc.test']

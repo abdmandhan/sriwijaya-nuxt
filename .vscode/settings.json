@@ -3,8 +3,10 @@
     "*.css": "tailwindcss"
   },
   "editor.quickSuggestions": {
-    "strings": "on"
+    "strings": true
   },
+  "css.validate": false,
+  "editor.inlineSuggest.enabled": true,
   "tailwindCSS.classAttributes": ["class", "ui"],
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
