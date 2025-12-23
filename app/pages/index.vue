@@ -1,5 +1,5 @@
 <template>
-    <section class="relative h-screen">
+    <section class="relative h-screen z-0">
         <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
             class="w-full h-screen object-cover absolute left-0 top-0 z-0" />
         <NuxtImg src="/img/statue.png" class="absolute bottom-0 right-0 z-10 w-[536px]" />
