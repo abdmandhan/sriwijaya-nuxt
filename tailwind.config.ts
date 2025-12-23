@@ -6,5 +6,13 @@ export default {
     './components/**/*.{js,ts,vue}',
     './lib/**/*.{js,ts,vue}',
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        rajdhani: ['Rajdhani', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+    },
+  },
 } satisfies Config
 

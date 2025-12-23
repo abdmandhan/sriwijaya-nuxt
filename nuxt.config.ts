@@ -4,6 +4,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxt/image', '@nuxt/ui'],
   css: ['~/assets/css/main.css'],
+  fonts: {
+    families: [
+      { name: 'Rajdhani', provider: 'google' },
+      { name: 'Inter', provider: 'google' }
+    ]
+  },
   ui: {
     colorMode: false
   },
