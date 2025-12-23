@@ -12,6 +12,9 @@ export default {
         rajdhani: ['Rajdhani', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
+      colors: {
+        primary: '#75624C',
+      }
     },
   },
 } satisfies Config

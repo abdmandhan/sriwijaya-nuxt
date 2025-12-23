@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-around items-center p-4 w-full z-10 bg-white shadow-lg ">
+    <div class="flex justify-around items-center p-4 w-full z-10 bg-white">
         footer
     </div>
 </template>
