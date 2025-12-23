@@ -6,11 +6,13 @@
                 <NuxtLink :to="item.to">{{ item.label }}</NuxtLink>
             </li>
         </ul>
+        {{ user?.name }}
         <!-- <UButton variant="ghost">ENG</UButton> -->
     </nav>
 </template>
 
 <script lang="ts" setup>
+const { user } = useUserSession()
 const menu = [
     { label: 'Home', to: '/', },
     { label: 'About', to: '/about', },
