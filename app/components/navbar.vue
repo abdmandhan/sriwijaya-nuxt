@@ -1,16 +1,41 @@
 <template>
-    <nav class="flex justify-around items-center p-4 fixed top-0 left-0 w-full z-10 bg-white shadow-lg ">
-        <NuxtImg src="/logo.png" alt="logo" width="200" />
+    <nav class="flex md:justify-around gap-5 px-5 py-4 items-center fixed top-0 left-0 w-full z-10 bg-white shadow-lg ">
+        <button @click="toggleSidebar" class="md:hidden" aria-label="Toggle menu">
+            <UIcon name="i-lucide-menu" class="size-6 block" mode="svg" />
+        </button>
+        <NuxtImg src="/logo.png" alt="logo" class="w-[140px] md:w-[200px]" />
         <ul class="gap-4 hidden md:flex">
             <li v-for="item in menu" :key="item.to">
                 <NuxtLink :to="item.to">{{ item.label }}</NuxtLink>
             </li>
         </ul>
-        <div v-if="user">
-            {{ user?.name }}
-            <UButton variant="ghost" @click="logout">Logout</UButton>
-        </div>
     </nav>
+
+    <!-- Mobile Sidebar Overlay -->
+    <Transition name="fade">
+        <div v-if="isSidebarOpen" class="fixed inset-0 bg-black/50 z-40 md:hidden" @click="closeSidebar"></div>
+    </Transition>
+
+    <!-- Mobile Sidebar -->
+    <Transition name="slide">
+        <aside v-if="isSidebarOpen"
+            class="fixed top-0 left-0 h-full w-full bg-white shadow-xl z-50 md:hidden overflow-y-auto">
+            <div class="flex items-center justify-between p-5 border-b">
+                <NuxtImg src="/logo.png" alt="logo" class="w-[140px]" />
+                <button @click="closeSidebar" class="p-2" aria-label="Close menu">
+                    <UIcon name="i-lucide-x" class="size-6" mode="svg" />
+                </button>
+            </div>
+            <ul class="flex flex-col p-5 gap-4">
+                <li v-for="item in menu" :key="item.to">
+                    <NuxtLink :to="item.to" class="block py-2 text-lg hover:text-primary transition-colors"
+                        @click="closeSidebar">
+                        {{ item.label }}
+                    </NuxtLink>
+                </li>
+            </ul>
+        </aside>
+    </Transition>
 </template>
 
 <script lang="ts" setup>
@@ -24,9 +49,43 @@ const menu = [
     { label: 'Newsletter', to: '/newsletter', },
 ]
 
+const isSidebarOpen = ref(false)
+
+const toggleSidebar = () => {
+    isSidebarOpen.value = !isSidebarOpen.value
+}
+
+const closeSidebar = () => {
+    isSidebarOpen.value = false
+}
+
 const logout = async () => {
     await clear()
     await navigateTo('/login')
 }
 
 </script>
+
+<style scoped>
+/* Fade transition for overlay */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+/* Slide transition for sidebar */
+.slide-enter-active,
+.slide-leave-active {
+    transition: transform 0.3s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+    transform: translateX(-100%);
+}
+</style>

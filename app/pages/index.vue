@@ -11,20 +11,29 @@
                     for Every Industry
                 </h1>
             </div>
-            <div class="absolute bottom-0 ">
+            <!-- <div class="absolute bottom-0 w-full">
                 <div
-                    class="bg-white/80 text-black max-w-[520px] flex flex-col gap-4 items-center px-10 py-4 rounded-[24px] translate-x-1/2 translate-y-1/4">
-                    <p class="text-3xl max-w-[378px]">
-                        law firm offering strategic, client-focused legal services in Indonesia
-                    </p>
+                    class="bg-white text-black max-w-[520px] flex flex-col gap-4 items-center px-6 py-6 rounded-[24px] absolute aspect-520/656 justify-between -bottom-20 z-20">
+                    <div class="flex flex-col items-center justify-center text-center gap-4">
+                        <p class="text-3xl max-w-[378px]">
+                            law firm offering strategic, client-focused legal services in Indonesia
+                        </p>
 
-                    <button class="cursor-pointer border border-primary">
-                        download our company profile
-                    </button>
-                    <NuxtImg src="/img/card-1.png" class="w-full" />
+                        <button class="cursor-pointer border border-primary">
+                            download our company profile
+                        </button>
+                    </div>
+                    <NuxtImg src="/img/card-1.png" class="w-full border border-[#A08565] rounded-[16px]" />
                 </div>
-
-            </div>
+                <div class="w-full absolute bottom-0 left-[420px] max-w-[896px] z-10">
+                    <NuxtImg src="/bg/main-bottom.png" />
+                    <p class="absolute bottom-13 left-12 text-2xl text-white">
+                        Helping clients navigate Indonesia’s legal landscape with
+                        <br>
+                        precision, insight, and integrity.
+                    </p>
+                </div>
+            </div> -->
         </section>
         <section id="about" class="h-[1245px] bg-red-400">
             <div>
