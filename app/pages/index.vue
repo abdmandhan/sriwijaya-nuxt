@@ -1,9 +1,9 @@
 <template>
     <main>
-        <section class="relative h-[800px] md:h-screen z-0 overflow-x-hidden" id="/">
+        <section class="relative h-[700px] md:h-screen z-0" id="/">
             <!-- Background image -->
             <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
-                class="w-full h-screen object-cover absolute left-0 top-0 z-0" />
+                class="w-full h-full object-cover absolute left-0 top-0 z-0" />
 
             <!-- Hero text content -->
             <div class="pt-[100px] md:pt-[200px] pl-6 md:pl-[156px] text-black w-full relative z-20">
@@ -17,13 +17,13 @@
             </div>
 
             <!-- Statue image - positioned absolutely on the right, clipped -->
-            <div class="absolute bottom-0 -right-[120px] md:right-0 z-10 h-full max-w-[336px] overflow-hidden">
-                <NuxtImg src="/img/statue.png" class="h-full object-contain max-w-[336px]" />
+            <div class="absolute bottom-0 left-0 z-10 h-full overflow-hidden w-full">
+                <NuxtImg src="/img/statue.png" class="absolute bottom-0 -right-30 w-[336px]" />
             </div>
 
             <!-- Overlaying white card -->
             <div
-                class="absolute bottom-0 left-0 right-0 z-20 flex justify-center md:justify-start md:pl-[156px] pb-4 md:pb-8">
+                class="absolute -bottom-40 left-0 right-0 z-20 flex justify-center md:justify-start md:pl-[156px] pb-4 md:pb-8">
                 <div
                     class="bg-white text-black max-w-[520px] w-full flex flex-col gap-6 md:gap-4 items-center px-6 py-6 rounded-[24px] mx-4 md:mx-0">
                     <div class="flex flex-col items-center justify-center text-center gap-4">
@@ -54,29 +54,6 @@
                     <NuxtImg src="/img/card-1.png" class="w-full border-2 border-[#A08565] rounded-[16px] mt-2" />
                 </div>
             </div>
-            <!-- <div class="absolute bottom-0 w-full">
-                <div
-                    class="bg-white text-black max-w-[520px] flex flex-col gap-4 items-center px-6 py-6 rounded-[24px] absolute aspect-520/656 justify-between -bottom-20 z-20">
-                    <div class="flex flex-col items-center justify-center text-center gap-4">
-                        <p class="text-3xl max-w-[378px]">
-                            law firm offering strategic, client-focused legal services in Indonesia
-                        </p>
-
-                        <button class="cursor-pointer border border-primary">
-                            download our company profile
-                        </button>
-                    </div>
-                    <NuxtImg src="/img/card-1.png" class="w-full border border-[#A08565] rounded-[16px]" />
-                </div>
-                <div class="w-full absolute bottom-0 left-[420px] max-w-[896px] z-10">
-                    <NuxtImg src="/bg/main-bottom.png" />
-                    <p class="absolute bottom-13 left-12 text-2xl text-white">
-                        Helping clients navigate Indonesia’s legal landscape with
-                        <br>
-                        precision, insight, and integrity.
-                    </p>
-                </div>
-            </div> -->
         </section>
         <section id="about" class="h-[1245px] bg-red-400">
             <div>
