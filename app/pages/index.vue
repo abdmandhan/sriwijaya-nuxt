@@ -239,7 +239,7 @@
             </div>
         </section>
 
-        <section id="contact-us" class="bg-primary-50 px-6 pt-20">
+        <section id="contact-us" class="bg-primary-50 px-6 pt-20 h-[600px]">
             <div class="relative">
                 <NuxtImg src="/img/contact-us.png" class="relative z-0" />
 
