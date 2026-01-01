@@ -163,20 +163,20 @@
             </p>
             <br>
 
-            <div class="flex flex-col gap-42">
+            <div class="flex flex-col">
                 <div v-for="team in teams" :key="team.title" class="flex flex-col gap-10">
                     <h3 class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani">
                         {{ team.title }}
                     </h3>
                     <div class="grid grid-cols-2 gap-4">
-                        <div v-for="member in team.members" :key="member.name" class="relative">
-                            <NuxtImg :src="member.image" class="w-full z-10 relative" />
+                        <div v-for="member in team.members" :key="member.name" class="relative h-[300px]">
+                            <NuxtImg :src="member.image" class="z-10 relative w-[170px]" />
                             <div
-                                class="bg-white absolute left-2 top-16 z-0 h-50 rounded-xl p-2 min-w-[170px] flex items-end w-full">
+                                class="bg-white absolute left-1 top-16 z-0 h-50 rounded-xl p-2 w-[170px] flex items-end">
                                 <div class="flex flex-col justify-between w-full gap-10">
                                     <div class="flex flex-col">
-                                        <span class="font-bold text-xs text-black text-[11px]">{{ member.name }}</span>
-                                        <span class="text-xs text-secondary-100 text-[11px]">{{ team.title }}</span>
+                                        <span class="font-bold text-black text-[10px]">{{ member.name }}</span>
+                                        <span class="text-secondary-100 text-[10px]">{{ team.title }}</span>
                                     </div>
                                     <div class="flex justify-end">
                                         <NuxtLink to="#"
@@ -195,11 +195,83 @@
             </div>
         </section>
 
-        <section>
-            news letter
+        <section id="newsletter" class="bg-primary-50 px-6 pt-20">
+            <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase">
+                news letter
+            </h1>
+            <br>
+
+            <div class="flex justify-between items-center">
+                <h2 class="font-bold text-xl">
+                    Our Latest Newsletter
+                </h2>
+                <NuxtLink class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full ">
+                    Read More
+                    <div class="bg-white rounded-full p-px">
+                        <UIcon name="i-lucide-arrow-right" class="size-4  text-primary-90" mode="svg" />
+                    </div>
+                </NuxtLink>
+            </div>
+
+            <br>
+
+            <!-- card container -->
+            <div class="grid grid-cols-2 gap-2">
+
+                <!-- newsletter card -->
+                <div class="bg-white rounded-xl" v-for="newsletter in newsletters" :key="newsletter.title">
+                    <NuxtImg src="/img/newsletter-card-1.png" class="w-full rounded-t-xl" />
+                    <div class="p-2 flex flex-col gap-2">
+                        <span class="font-bold text-[10px]">Asset performance Management Software</span>
+                        <p class="text-gray-500 text-[8px]">
+                            Distribution management systems for the morden grid.
+                        </p>
+                        <NuxtLink class="text-[8px] flex gap-2 items-center">
+                            Learn More
+                            <UIcon name="i-lucide-arrow-right"
+                                class="size-3 border border-secondary-100 rounded-full p-px" mode="svg" />
+
+                        </NuxtLink>
+
+                    </div>
+
+                </div>
+            </div>
         </section>
 
-        <section>contact us</section>
+        <section id="contact-us" class="bg-primary-50 px-6 pt-20">
+            <div class="relative">
+                <NuxtImg src="/img/contact-us.png" class="relative z-0" />
+
+                <!-- contact us card form -->
+                <div
+                    class="p-4 bg-primary-50 w-[90%] absolute z-10 -bottom-44 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2">
+                    <h2 class="font-bold text-md">Contact Us</h2>
+                    <p class="text-[10px] text-gray-400">
+                        We offer legal help for everyone, providing clear and reliable solutions for businesses and
+                        individuals
+                    </p>
+
+                    <form action="" class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Your Company" class="bg-white rounded-md p-2 text-[10px]">
+                        <input type="email" placeholder="Your Email Address"
+                            class="bg-white rounded-md p-2 text-[10px]">
+                        <textarea placeholder="Question" class="col-span-2 bg-white rounded-md p-2 text-[10px]"
+                            rows="4" />
+                        <button
+                            class="bg-primary-90 text-white rounded-full p-2 text-[10px] flex gap-2 items-center w-fit font-bold">
+                            Send Question
+                            <div class="bg-white rounded-full p-px">
+                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary" mode="svg" />
+                            </div>
+                        </button>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </section>
     </main>
 </template>
 
@@ -256,6 +328,11 @@ const teams = [
             }
         ]
     },
+]
+
+const newsletters = [
+    { title: 'Asset performance Management Software' },
+    { title: 'Advanced Distribution Management Solutions ' },
 ]
 
 const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
