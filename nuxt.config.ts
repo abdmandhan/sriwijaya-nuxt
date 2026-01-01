@@ -13,8 +13,16 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   fonts: {
     families: [
-      { name: 'Rajdhani', provider: 'google' },
-      { name: 'Inter', provider: 'google' }
+      { 
+        name: 'Rajdhani', 
+        provider: 'google',
+        weights: ['400', '500', '600', '700']
+      },
+      { 
+        name: 'Inter', 
+        provider: 'google',
+        weights: ['400', '500', '600', '700']
+      }
     ]
   },
   ui: {

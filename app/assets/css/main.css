@@ -1,6 +1,37 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@theme {
+  --color-primary: #75624c;
+  --color-primary-50: #f5f4f2;
+  --color-primary-100: #eae8e4;
+  --color-primary-200: #d5d1c9;
+  --color-primary-300: #c0baae;
+  --color-primary-400: #aba393;
+  --color-primary-500: #75624c;
+  --color-primary-600: #5e4f3d;
+  --color-primary-700: #473c2e;
+  --color-primary-800: #30291f;
+  --color-primary-900: #191610;
+
+  --color-secondary: #fcfcfe;
+  --color-secondary-10: #f8f9fd;
+  --color-secondary-20: #eef0f6;
+  --color-secondary-30: #e5e6eb;
+  --color-secondary-40: #e5e8f0;
+  --color-secondary-50: #dde1eb;
+  --color-secondary-60: #d5d9e5;
+  --color-secondary-70: #c9cfdd;
+  --color-secondary-80: #b4bcce;
+  --color-secondary-90: #878ea0;
+  --color-secondary-100: #7d8394;
+  --color-secondary-110: #5f6472;
+  --color-secondary-120: #1d202a;
+
+  --font-rajdhani: "Rajdhani", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }

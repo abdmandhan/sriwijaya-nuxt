@@ -7,7 +7,7 @@
 
             <!-- Hero text content -->
             <div class="pt-[100px] md:pt-[200px] pl-6 md:pl-[156px] text-black w-full relative z-20">
-                <h2 class="text-lg md:text-2xl font-bold font-rajdhani mb-2">SHINTA SRIWIJAYA & CO</h2>
+                <h2 class="text-lg md:text-2xl font-rajdhani font-medium mb-2 text-primary">SHINTA SRIWIJAYA & CO</h2>
                 <h1 class="text-3xl md:text-5xl font-bold font-inter leading-tight">
                     Trusted Legal<br>
                     Solutions<br>
@@ -55,17 +55,31 @@
                 </div>
             </div>
         </section>
-        <section id="about" class="h-[1245px] bg-red-400">
+        <section id="about" class="bg-primary-50 pt-60 px-6">
             <div>
-                <h1>
+                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
                     ABOUT US
                 </h1>
+                <br>
 
-                <p>
+                <h2 class="font-bold text-xl">
                     Built on Principles. Driven by Results.
-                </p>
+                </h2>
+                <br>
+                <NuxtImg src="/img/about-1.png" class="w-full" />
 
-                <p>
+                <br>
+
+                <p class="text-justify">
+                    We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
+                    matters
+                    based on the client’s goals. Because every case is unique, we carefully analyze and investigate each
+                    situation to deliver effective legal solutions that fit the client’s industry, culture, and business
+                    objectives.
+                </p>
+                <br>
+
+                <p class="text-justify">
                     SS&Co. is a boutique Indonesian law firm with a young, dynamic, and creative team dedicated to
                     understanding each client’s needs and protecting their best interests. We help clients start and
                     operate
@@ -74,31 +88,111 @@
                     context, and legal culture enables us to provide practical and strategic guidance tailored to each
                     client.
                 </p>
+            </div>
+        </section>
 
-                <p>
-                    We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
-                    matters
-                    based on the client’s goals. Because every case is unique, we carefully analyze and investigate each
-                    situation to deliver effective legal solutions that fit the client’s industry, culture, and business
-                    objectives.
+        <section id="why-choose-us" class="bg-primary-50 px-6 pt-20">
+            <div>
+                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                    WHY CHOOSE US
+                </h1>
+                <br>
+
+                <h2 class="font-bold text-xl">
+                    Strategic legal solutions
+                </h2>
+                <br>
+                <NuxtImg src="/img/why-choose-us.png" class="w-full" />
+                <p class="text-justify text-secondary-100">
+                    We take a value-driven approach by actively communicating and strategizing with our clients to meet
+                    their needs and goals. With our growing experience and adaptability in a competitive legal market,
+                    we consistently work to deliver strong and desirable results.
+                </p>
+                <br>
+                <p class="text-justify text-secondary-100">
+                    We stay focused on each client’s objectives, providing clear and strategic legal solutions while
+                    anticipating future risks and challenges. By aligning our work with our internal culture, structure,
+                    and processes, we are committed to one goal: ensuring client satisfaction.
                 </p>
             </div>
         </section>
 
-        <section id="why-choose-us" class="h-[960px] bg-blue-400">
+        <section id="our-services" class="bg-primary-50 px-6 pt-20">
             <div>
-                <h1>
-                    WHY CHOOSE US
+                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                    OUR SERVICE
                 </h1>
+                <br>
+
+                <h2 class="font-bold text-xl">
+                    Practice Areas
+                </h2>
+                <br>
+                <NuxtImg src="/img/our-service.png" class="w-full" />
+                <p class="text-justify text-secondary-100">
+                    We stay focused on each client’s objectives, providing clear and strategic legal solutions while
+                    anticipating future risks and challenges. By aligning our work with our internal culture, structure,
+                    and processes, we are committed to one goal: ensuring client satisfaction.
+                </p>
+                <br>
+                <div class="grid grid-rows-4 text-secondary-100 text-sm grid-flow-col gap-x-1">
+                    <div v-for="(item, index) in practiceAreas" :key="index" @click="selectedIndex = index" :class="[
+                        'flex items-start gap-2 cursor-pointer transition-colors text-xs',
+                    ]">
+                        <span class="font-medium">{{ String.fromCharCode(97 + index) }}.</span>
+                        <span>{{ item }}</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section id="our-services" class="h-[1000px] bg-green-400">
-            our service
-        </section>
+        <section id="our-team" class="bg-primary-50 px-6 pt-20">
+            <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                OUR TEAM
+            </h1>
+            <br>
 
-        <section id="our-team" class="h-[1000px] bg-yellow-400">
-            our team
+            <h2 class="font-bold text-xl">
+                Our Team of Legal Experts
+            </h2>
+            <br>
+            <p class="text-justify text-secondary-100">
+                Led by Shinta Sriwijaya, our legal team brings a wealth of experience,
+                cross-industry insights, and dedication to every client we serve.
+            </p>
+            <br>
+
+            <div class="flex flex-col gap-42">
+                <div v-for="team in teams" :key="team.title" class="flex flex-col gap-10">
+                    <h3 class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani">
+                        {{ team.title }}
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div v-for="member in team.members" :key="member.name" class="relative">
+                            <NuxtImg :src="member.image" class="w-full z-10 relative" />
+                            <div
+                                class="bg-white absolute left-2 top-16 z-0 h-50 rounded-xl p-2 min-w-[170px] flex items-end w-full">
+                                <div class="flex flex-col justify-between w-full gap-10">
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-xs text-black text-[11px]">{{ member.name }}</span>
+                                        <span class="text-xs text-secondary-100 text-[11px]">{{ team.title }}</span>
+                                    </div>
+                                    <div class="flex justify-end">
+                                        <NuxtLink to="#"
+                                            class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2">
+                                            see more
+                                            <UIcon name="i-lucide-arrow-right"
+                                                class="size-4 border border-secondary-100 rounded-full p-px"
+                                                mode="svg" />
+                                        </NuxtLink>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section>
@@ -108,3 +202,61 @@
         <section>contact us</section>
     </main>
 </template>
+
+<script setup>
+const practiceAreas = [
+    'Dispute Resolution and Litigation',
+    'Employment',
+    'Commercial Contracts',
+    'General Corporate and M&A',
+    'Intellectual Property',
+    'Compliance and Investigation',
+    'Family Law',
+    'Media and Entertainment'
+]
+
+const teams = [
+    {
+        title: 'Managing Partner',
+        members: [
+            {
+                name: 'Shinta Sriwijaya, S.H., LL.M.',
+                image: '/img/team-1.png',
+            }
+        ]
+    },
+    {
+        title: "Senior Associates",
+        members: [
+            {
+                name: 'Siti Habibah, S.H., M.H.',
+                image: '/img/team-2.png',
+            },
+            {
+                name: 'Yohana Tri Meiliyanti',
+                image: '/img/team-3.png'
+            }
+        ]
+    },
+    {
+        title: 'OF-Counsel',
+        members: [
+            {
+                name: 'Bagus Rahman, S.H., M.H.',
+                image: '/img/team-4.png'
+            }
+        ]
+    },
+    {
+        title: 'Supporting Team',
+        members: [
+            {
+                name: 'Shaqina Dhiara P, S.IKom.',
+                image: 'img/team-5.png'
+            }
+        ]
+    },
+]
+
+const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
+</script>

@@ -1,5 +1,6 @@
 <template>
-    <nav class="flex md:justify-around gap-5 px-5 py-4 items-center fixed top-0 left-0 w-full z-10 bg-white shadow-lg ">
+    <nav
+        class="flex md:justify-around gap-5 px-5 py-4 items-center fixed top-0 left-0 w-full z-10 bg-white shadow-lg z-20">
         <button @click="toggleSidebar" class="md:hidden" aria-label="Toggle menu">
             <UIcon name="i-lucide-menu" class="size-6 block" mode="svg" />
         </button>
