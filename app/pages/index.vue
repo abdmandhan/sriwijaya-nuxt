@@ -1,17 +1,18 @@
 <template>
     <main>
-        <section class="relative h-[700px] md:h-screen z-0" id="/">
+        <section class="relative h-[700px] md:h-screen z-10" id="/">
             <!-- Background image -->
             <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
                 class="w-full h-full object-cover absolute left-0 top-0 z-0" />
 
             <!-- Hero text content -->
-            <div class="pt-[100px] md:pt-[200px] pl-6 md:pl-[156px] text-black w-full relative z-20">
+            <div
+                class="pt-[100px] md:pt-[150px] lg:pt-[200px] pl-6 md:pl-[60px] lg:pl-[156px] text-black w-full relative z-20">
                 <h2 class="text-lg md:text-2xl font-rajdhani font-medium mb-2 text-primary">SHINTA SRIWIJAYA & CO</h2>
                 <h1 class="text-3xl md:text-5xl font-bold font-inter leading-tight">
-                    Trusted Legal<br>
-                    Solutions<br>
-                    for Every<br>
+                    Trusted Legal
+                    Solutions
+                    for Every
                     Industry
                 </h1>
             </div>
@@ -23,16 +24,16 @@
 
             <!-- Overlaying white card -->
             <div
-                class="absolute -bottom-40 left-0 right-0 z-20 flex justify-center md:justify-start md:pl-[156px] pb-4 md:pb-8">
+                class="absolute -bottom-40 left-0 right-0 z-20 flex justify-center md:justify-start md:pl-[60px] lg:pl-[156px] pb-4 md:pb-8">
                 <div
-                    class="bg-white text-black max-w-[520px] w-full flex flex-col gap-6 md:gap-4 items-center px-6 py-6 rounded-[24px] mx-4 md:mx-0">
+                    class="bg-white text-black md:max-w-[260px] lg:max-w-[520px] w-full flex flex-col gap-6 md:gap-4 items-center px-6 py-6 rounded-[24px] mx-4 md:mx-0 relative z-30">
                     <div class="flex flex-col items-center justify-center text-center gap-4">
-                        <p class="text-base md:text-2xl max-w-[378px] font-semibold leading-relaxed">
+                        <p class="text-base md:text-md lg:text-2xl max-w-[378px] font-semibold leading-relaxed">
                             law firm offering strategic, client-focused legal services in Indonesia
                         </p>
 
                         <button
-                            class="cursor-pointer border-2 border-[#91795C] rounded-full flex items-center gap-2 py-2.5 px-6 capitalize font-semibold text-sm md:text-base hover:bg-[#91795C] hover:text-white transition-colors">
+                            class="cursor-pointer border-2 border-[#91795C] rounded-full flex items-center gap-1 lg:gap-2 py-1 lg:py-2.5 px-2 lg:px-6 capitalize font-semibold text-[10px] lg:text-base hover:bg-[#91795C] hover:text-white transition-colors">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -52,24 +53,49 @@
                         </button>
                     </div>
                     <NuxtImg src="/img/card-1.png" class="w-full border-2 border-[#A08565] rounded-[16px] mt-2" />
+                    <div class="absolute w-[450px] h-[80px] bottom-32 -right-112 hidden md:block">
+                        <svg width="455" height="84" viewBox="0 0 455 84" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <foreignObject x="-22" y="-22" width="498.775" height="127.5">
+                                <div xmlns="http://www.w3.org/1999/xhtml"
+                                    style="backdrop-filter:blur(11px);clip-path:url(#bgblur_0_15628_16584_clip_path);height:100%;width:100%">
+                                </div>
+                            </foreignObject>
+                            <path data-figma-bg-blur-radius="22"
+                                d="M1 1V82.5H452.388L450.713 80.7988L395.382 24.583C380.532 9.49592 360.248 1 339.079 1H1Z"
+                                fill="#A08565" fill-opacity="0.8" stroke="#F4EFE9" stroke-width="2" />
+                            <defs>
+                                <clipPath id="bgblur_0_15628_16584_clip_path" transform="translate(22 22)">
+                                    <path
+                                        d="M1 1V82.5H452.388L450.713 80.7988L395.382 24.583C380.532 9.49592 360.248 1 339.079 1H1Z" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <p
+                            class="min-w-[328px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-white">
+                            Helping clients navigate Indonesia’s legal landscape with precision, insight, and integrity.
+                        </p>
+
+
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="about" class="bg-primary-50 pt-60 px-6">
-            <div>
-                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
-                    ABOUT US
-                </h1>
-                <br>
+        <section id="about" class="bg-primary-50 pt-60 px-6 relative z-0 md:gap-10 md:flex">
+            <div class="relative w-full md:w-2/3 ">
+                <div class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2">
+                    <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                        ABOUT US
+                    </h1>
 
-                <h2 class="font-bold text-xl">
-                    Built on Principles. Driven by Results.
-                </h2>
-                <br>
+                    <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px]">
+                        Built on Principles. Driven by Results.
+                    </h2>
+                </div>
                 <NuxtImg src="/img/about-1.png" class="w-full" />
+            </div>
 
-                <br>
-
+            <div class="mt-10 md:mt-40 w-full md:w-1/3 text-xs">
                 <p class="text-justify">
                     We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
                     matters

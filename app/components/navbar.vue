@@ -1,11 +1,10 @@
 <template>
-    <nav
-        class="flex md:justify-around gap-5 px-5 py-4 items-center fixed top-0 left-0 w-full z-10 bg-white shadow-lg z-20">
+    <nav class="flex md:justify-around gap-5 px-5 py-4 items-center fixed top-0 left-0 w-full bg-white shadow-lg z-20">
         <button @click="toggleSidebar" class="md:hidden" aria-label="Toggle menu">
             <UIcon name="i-lucide-menu" class="size-6 block" mode="svg" />
         </button>
-        <NuxtImg src="/logo.png" alt="logo" class="w-[140px] md:w-[200px]" />
-        <ul class="gap-4 hidden md:flex">
+        <NuxtImg src="/logo.png" alt="logo" class="w-[140px] md:w-[160px] lg:w-[200px]" />
+        <ul class="gap-4 hidden md:flex text-sm">
             <li v-for="item in menu" :key="item.to">
                 <NuxtLink :to="item.to">{{ item.label }}</NuxtLink>
             </li>
