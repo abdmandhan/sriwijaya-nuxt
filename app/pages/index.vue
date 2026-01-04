@@ -117,60 +117,68 @@
             </div>
         </section>
 
-        <section id="why-choose-us" class="bg-primary-50 px-6 pt-20">
-            <div>
-                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
-                    WHY CHOOSE US
-                </h1>
-                <br>
+        <section id="why-choose-us" class="bg-primary-50 px-6 pt-20 flex flex-col gap-6 md:flex-row">
+            <div class="flex flex-col gap-2 w-full md:w-1/2">
+                <div class="flex flex-col gap-2 mb-6 md:mb-0">
+                    <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                        WHY CHOOSE US
+                    </h1>
 
-                <h2 class="font-bold text-xl">
-                    Strategic legal solutions
-                </h2>
-                <br>
-                <NuxtImg src="/img/why-choose-us.png" class="w-full" />
-                <p class="text-justify text-secondary-100">
-                    We take a value-driven approach by actively communicating and strategizing with our clients to meet
-                    their needs and goals. With our growing experience and adaptability in a competitive legal market,
-                    we consistently work to deliver strong and desirable results.
-                </p>
-                <br>
-                <p class="text-justify text-secondary-100">
-                    We stay focused on each client’s objectives, providing clear and strategic legal solutions while
-                    anticipating future risks and challenges. By aligning our work with our internal culture, structure,
-                    and processes, we are committed to one goal: ensuring client satisfaction.
-                </p>
+                    <h2 class="font-bold text-xl md:text-3xl">
+                        Strategic legal solutions
+                    </h2>
+                </div>
+                <NuxtImg src="/img/why-choose-us.png" class="w-full block md:hidden" />
+                <div class="text-xs">
+                    <p class="text-justify text-secondary-100">
+                        We take a value-driven approach by actively communicating and strategizing with our clients to
+                        meet
+                        their needs and goals. With our growing experience and adaptability in a competitive legal
+                        market,
+                        we consistently work to deliver strong and desirable results.
+                    </p>
+                    <br>
+                    <p class="text-justify text-secondary-100">
+                        We stay focused on each client’s objectives, providing clear and strategic legal solutions while
+                        anticipating future risks and challenges. By aligning our work with our internal culture,
+                        structure,
+                        and processes, we are committed to one goal: ensuring client satisfaction.
+                    </p>
+                </div>
             </div>
+            <NuxtImg src="/img/why-choose-us.png" class="w-1/2 hidden md:block" />
         </section>
 
-        <section id="our-services" class="bg-primary-50 px-6 pt-20">
-            <div>
-                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
-                    OUR SERVICE
-                </h1>
-                <br>
-
-                <h2 class="font-bold text-xl">
-                    Practice Areas
-                </h2>
-                <br>
-                <NuxtImg src="/img/our-service.png" class="w-full" />
-                <p class="text-justify text-secondary-100">
-                    We stay focused on each client’s objectives, providing clear and strategic legal solutions while
-                    anticipating future risks and challenges. By aligning our work with our internal culture, structure,
-                    and processes, we are committed to one goal: ensuring client satisfaction.
-                </p>
-                <br>
-                <div class="grid grid-rows-4 text-secondary-100 text-sm grid-flow-col gap-x-1">
-                    <div v-for="(item, index) in practiceAreas" :key="index" @click="selectedIndex = index" :class="[
-                        'flex items-start gap-2 cursor-pointer transition-colors text-xs',
-                    ]">
-                        <span class="font-medium">{{ String.fromCharCode(97 + index) }}.</span>
-                        <span>{{ item }}</span>
+        <section id="our-services" class="bg-primary-50 px-6 pt-20 flex flex-col gap-6 md:flex-row">
+            <NuxtImg src="/img/our-service.png" class="w-1/2 hidden md:block" />
+            <div class="w-full md:w-1/2">
+                <div class="flex flex-col gap-2">
+                    <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                        OUR SERVICE
+                    </h1>
+                    <h2 class="font-bold text-xl">
+                        Practice Areas
+                    </h2>
+                </div>
+                <NuxtImg src="/img/our-service.png" class="w-full block md:hidden" />
+                <div class="flex flex-col gap-2 text-xs">
+                    <p class="text-justify text-secondary-100">
+                        We stay focused on each client’s objectives, providing clear and strategic legal solutions while
+                        anticipating future risks and challenges. By aligning our work with our internal culture,
+                        structure,
+                        and processes, we are committed to one goal: ensuring client satisfaction.
+                    </p>
+                    <div class="grid grid-rows-4 text-secondary-100 text-sm grid-flow-col gap-x-1">
+                        <div v-for="(item, index) in practiceAreas" :key="index" @click="selectedIndex = index" :class="[
+                            'flex items-start gap-2 cursor-pointer transition-colors text-xs',
+                        ]">
+                            <span class="font-medium">{{ String.fromCharCode(97 + index) }}.</span>
+                            <span>{{ item }}</span>
+                        </div>
                     </div>
                 </div>
-
             </div>
+
         </section>
 
         <section id="our-team" class="bg-primary-50 px-6 pt-20">
@@ -222,19 +230,18 @@
         </section>
 
         <section id="newsletter" class="bg-primary-50 px-6 pt-20">
-            <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase">
+            <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase mb-4">
                 news letter
             </h1>
-            <br>
 
             <div class="flex justify-between items-center">
                 <h2 class="font-bold text-xl">
                     Our Latest Newsletter
                 </h2>
-                <NuxtLink class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full ">
+                <NuxtLink class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs">
                     Read More
                     <div class="bg-white rounded-full p-px">
-                        <UIcon name="i-lucide-arrow-right" class="size-4  text-primary-90" mode="svg" />
+                        <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90" mode="svg" />
                     </div>
                 </NuxtLink>
             </div>
@@ -242,8 +249,7 @@
             <br>
 
             <!-- card container -->
-            <div class="grid grid-cols-2 gap-2">
-
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
                 <!-- newsletter card -->
                 <div class="bg-white rounded-xl" v-for="newsletter in newsletters" :key="newsletter.title">
                     <NuxtImg src="/img/newsletter-card-1.png" class="w-full rounded-t-xl" />
@@ -265,13 +271,13 @@
             </div>
         </section>
 
-        <section id="contact-us" class="bg-primary-50 px-6 pt-20 h-[600px]">
-            <div class="relative">
-                <NuxtImg src="/img/contact-us.png" class="relative z-0" />
+        <section id="contact-us" class="bg-primary-50 px-6 pt-20 h-[600px] md:h-[550px]">
+            <div class="relative max-w-[834px] mx-auto">
+                <NuxtImg src="/img/contact-us.png" class="relative z-0 w-full md:w-[500px]" />
 
                 <!-- contact us card form -->
                 <div
-                    class="p-4 bg-primary-50 w-[90%] absolute z-10 -bottom-44 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2">
+                    class="p-4 bg-primary-50 w-[90%] md:w-[450px] absolute z-10 -bottom-44 md:top-30 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2 md:h-fit">
                     <h2 class="font-bold text-md">Contact Us</h2>
                     <p class="text-[10px] text-gray-400">
                         We offer legal help for everyone, providing clear and reliable solutions for businesses and
@@ -292,11 +298,37 @@
                             </div>
                         </button>
                     </form>
+                </div>
 
+                <!-- card contact information -->
+                <div
+                    class="bg-[#1D202A99] backdrop-blur-md text-white absolute -bottom-10 hidden md:flex rounded-b-xl rounded-tr-xl justify-center flex-col p-4 gap-4">
+                    <div class="flex gap-2 items-center">
 
+                        <div class="bg-white rounded-full p-2">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.665 11.2788V13.2788C14.6657 13.4644 14.6277 13.6482 14.5533 13.8183C14.479 13.9884 14.3699 14.1412 14.233 14.2667C14.0962 14.3922 13.9347 14.4878 13.7588 14.5472C13.5829 14.6067 13.3966 14.6288 13.2117 14.6121C11.1602 14.3892 9.18966 13.6882 7.45833 12.5654C5.84755 11.5419 4.48189 10.1762 3.45833 8.56543C2.33165 6.82623 1.63049 4.84609 1.41166 2.78543C1.395 2.60107 1.41691 2.41527 1.47599 2.23985C1.53508 2.06442 1.63004 1.90322 1.75484 1.76651C1.87964 1.6298 2.03153 1.52057 2.20086 1.44578C2.37018 1.37099 2.55322 1.33227 2.73833 1.3321H4.73833C5.06187 1.32891 5.37552 1.44348 5.62084 1.65445C5.86615 1.86542 6.02638 2.15839 6.07166 2.47876C6.15608 3.11881 6.31263 3.74725 6.53833 4.3521C6.62802 4.59071 6.64744 4.85004 6.59427 5.09935C6.5411 5.34866 6.41757 5.5775 6.23833 5.75876L5.39166 6.60543C6.3407 8.27446 7.72263 9.65639 9.39166 10.6054L10.2383 9.75876C10.4196 9.57952 10.6484 9.456 10.8977 9.40283C11.1471 9.34966 11.4064 9.36907 11.645 9.45876C12.2498 9.68446 12.8783 9.84101 13.5183 9.92543C13.8422 9.97112 14.1379 10.1342 14.3493 10.3838C14.5608 10.6333 14.6731 10.9518 14.665 11.2788Z"
+                                    fill="#A08565" />
+                            </svg>
+                        </div>
+
+                        021 5748 508
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <div class="bg-white rounded-full p-2">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8 15.3346C8 15.3346 14 11.3346 14 6.66797C14 5.07667 13.3679 3.55055 12.2426 2.42533C11.1174 1.30011 9.5913 0.667969 8 0.667969C6.4087 0.667969 4.88258 1.30011 3.75736 2.42533C2.63214 3.55055 2 5.07667 2 6.66797C2 11.3346 8 15.3346 8 15.3346ZM10 6.66797C10 7.77254 9.10457 8.66797 8 8.66797C6.89543 8.66797 6 7.77254 6 6.66797C6 5.5634 6.89543 4.66797 8 4.66797C9.10457 4.66797 10 5.5634 10 6.66797Z"
+                                    fill="#A08565" />
+                            </svg>
+                        </div>
+                        Contact@sscolaw.com
+                    </div>
                 </div>
             </div>
-
         </section>
     </main>
 </template>
@@ -358,6 +390,7 @@ const teams = [
 
 const newsletters = [
     { title: 'Asset performance Management Software' },
+    { title: 'Advanced Distribution Management Solutions ' },
     { title: 'Advanced Distribution Management Solutions ' },
 ]
 
