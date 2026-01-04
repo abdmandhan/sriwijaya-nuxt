@@ -19,7 +19,8 @@
 
             <!-- Statue image - positioned absolutely on the right, clipped -->
             <div class="absolute bottom-0 left-0 z-10 h-full overflow-hidden w-full">
-                <NuxtImg src="/img/statue.png" class="absolute bottom-0 -right-30 w-[336px]" />
+                <NuxtImg src="/img/statue.png"
+                    class="absolute bottom-0 -right-30 w-[336px] md:w-[400px] xl:w-[500px]" />
             </div>
 
             <!-- Overlaying white card -->
@@ -53,7 +54,7 @@
                         </button>
                     </div>
                     <NuxtImg src="/img/card-1.png" class="w-full border-2 border-[#A08565] rounded-[16px] mt-2" />
-                    <div class="absolute w-[450px] h-[80px] bottom-32 -right-112 hidden md:block">
+                    <div class="absolute w-[450px] h-[80px] bottom-32 -right-112 hidden md:block xl:hidden">
                         <svg width="455" height="84" viewBox="0 0 455 84" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <foreignObject x="-22" y="-22" width="498.775" height="127.5">
@@ -75,105 +76,143 @@
                             class="min-w-[328px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-white">
                             Helping clients navigate Indonesia’s legal landscape with precision, insight, and integrity.
                         </p>
+                    </div>
+                    <div class="absolute w-[806px] h-[160px] bottom-32 -right-202 hidden xl:block z-10">
+                        <svg width="910" height="167" viewBox="0 0 910 167" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <foreignObject x="-44" y="-44" width="997.55" height="255">
+                                <div xmlns="http://www.w3.org/1999/xhtml"
+                                    style="backdrop-filter:blur(22px);clip-path:url(#bgblur_0_15628_14179_clip_path);height:100%;width:100%">
+                                </div>
+                            </foreignObject>
+                            <path data-figma-bg-blur-radius="44"
+                                d="M2 2V165H904.774L901.426 161.597L790.764 49.166C761.064 18.9918 720.497 2 678.158 2H2Z"
+                                fill="#A08565" fill-opacity="0.8" stroke="#F4EFE9" stroke-width="4" />
+                            <defs>
+                                <clipPath id="bgblur_0_15628_14179_clip_path" transform="translate(44 44)">
+                                    <path
+                                        d="M2 2V165H904.774L901.426 161.597L790.764 49.166C761.064 18.9918 720.497 2 678.158 2H2Z" />
+                                </clipPath>
+                            </defs>
+                        </svg>
 
+                        <p
+                            class="min-w-[656px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-white font-medium">
+                            Helping clients navigate Indonesia’s legal landscape with precision, insight, and integrity.
+                        </p>
 
                     </div>
                 </div>
             </div>
         </section>
-        <section id="about" class="bg-primary-50 pt-60 px-6 relative z-0 md:gap-10 md:flex">
-            <div class="relative w-full md:w-2/3 ">
-                <div class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2">
-                    <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
-                        ABOUT US
-                    </h1>
+        <section id="about" class="bg-primary-50 pt-60 px-6 relative z-0 ">
+            <div class="md:gap-10 md:flex max-w-[834px] mx-auto">
+                <div class="relative w-full md:w-2/3 ">
+                    <div class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2">
+                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                            ABOUT US
+                        </h1>
 
-                    <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px]">
-                        Built on Principles. Driven by Results.
-                    </h2>
+                        <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px]">
+                            Built on Principles. Driven by Results.
+                        </h2>
+                    </div>
+                    <NuxtImg src="/img/about-1.png" class="w-full" />
                 </div>
-                <NuxtImg src="/img/about-1.png" class="w-full" />
-            </div>
 
-            <div class="mt-10 md:mt-40 w-full md:w-1/3 text-xs">
-                <p class="text-justify">
-                    We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
-                    matters
-                    based on the client’s goals. Because every case is unique, we carefully analyze and investigate each
-                    situation to deliver effective legal solutions that fit the client’s industry, culture, and business
-                    objectives.
-                </p>
-                <br>
-
-                <p class="text-justify">
-                    SS&Co. is a boutique Indonesian law firm with a young, dynamic, and creative team dedicated to
-                    understanding each client’s needs and protecting their best interests. We help clients start and
-                    operate
-                    their businesses in Indonesia by choosing the right legal entity, managing licensing, and building a
-                    strong legal foundation. Our deep understanding of Indonesia’s business environment, socio-political
-                    context, and legal culture enables us to provide practical and strategic guidance tailored to each
-                    client.
-                </p>
-            </div>
-        </section>
-
-        <section id="why-choose-us" class="bg-primary-50 px-6 pt-20 flex flex-col gap-6 md:flex-row">
-            <div class="flex flex-col gap-2 w-full md:w-1/2">
-                <div class="flex flex-col gap-2 mb-6 md:mb-0">
-                    <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
-                        WHY CHOOSE US
-                    </h1>
-
-                    <h2 class="font-bold text-xl md:text-3xl">
-                        Strategic legal solutions
-                    </h2>
-                </div>
-                <NuxtImg src="/img/why-choose-us.png" class="w-full block md:hidden" />
-                <div class="text-xs">
-                    <p class="text-justify text-secondary-100">
-                        We take a value-driven approach by actively communicating and strategizing with our clients to
-                        meet
-                        their needs and goals. With our growing experience and adaptability in a competitive legal
-                        market,
-                        we consistently work to deliver strong and desirable results.
+                <div class="mt-10 md:mt-40 w-full md:w-1/3 text-xs">
+                    <p class="text-justify">
+                        We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
+                        matters
+                        based on the client’s goals. Because every case is unique, we carefully analyze and investigate
+                        each
+                        situation to deliver effective legal solutions that fit the client’s industry, culture, and
+                        business
+                        objectives.
                     </p>
                     <br>
-                    <p class="text-justify text-secondary-100">
-                        We stay focused on each client’s objectives, providing clear and strategic legal solutions while
-                        anticipating future risks and challenges. By aligning our work with our internal culture,
-                        structure,
-                        and processes, we are committed to one goal: ensuring client satisfaction.
+
+                    <p class="text-justify">
+                        SS&Co. is a boutique Indonesian law firm with a young, dynamic, and creative team dedicated to
+                        understanding each client’s needs and protecting their best interests. We help clients start and
+                        operate
+                        their businesses in Indonesia by choosing the right legal entity, managing licensing, and
+                        building a
+                        strong legal foundation. Our deep understanding of Indonesia’s business environment,
+                        socio-political
+                        context, and legal culture enables us to provide practical and strategic guidance tailored to
+                        each
+                        client.
                     </p>
                 </div>
             </div>
-            <NuxtImg src="/img/why-choose-us.png" class="w-1/2 hidden md:block" />
         </section>
 
-        <section id="our-services" class="bg-primary-50 px-6 pt-20 flex flex-col gap-6 md:flex-row">
-            <NuxtImg src="/img/our-service.png" class="w-1/2 hidden md:block" />
-            <div class="w-full md:w-1/2">
-                <div class="flex flex-col gap-2">
-                    <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
-                        OUR SERVICE
-                    </h1>
-                    <h2 class="font-bold text-xl">
-                        Practice Areas
-                    </h2>
+        <section id="why-choose-us" class="bg-primary-50 px-6 pt-20  ">
+            <div class="flex flex-col gap-6 md:flex-row max-w-[834px] mx-auto">
+                <div class="flex flex-col gap-2 w-full md:w-1/2">
+                    <div class="flex flex-col gap-2 mb-6 md:mb-0">
+                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                            WHY CHOOSE US
+                        </h1>
+
+                        <h2 class="font-bold text-xl md:text-3xl">
+                            Strategic legal solutions
+                        </h2>
+                    </div>
+                    <NuxtImg src="/img/why-choose-us.png" class="w-full block md:hidden" />
+                    <div class="text-xs">
+                        <p class="text-justify text-secondary-100">
+                            We take a value-driven approach by actively communicating and strategizing with our clients
+                            to
+                            meet
+                            their needs and goals. With our growing experience and adaptability in a competitive legal
+                            market,
+                            we consistently work to deliver strong and desirable results.
+                        </p>
+                        <br>
+                        <p class="text-justify text-secondary-100">
+                            We stay focused on each client’s objectives, providing clear and strategic legal solutions
+                            while
+                            anticipating future risks and challenges. By aligning our work with our internal culture,
+                            structure,
+                            and processes, we are committed to one goal: ensuring client satisfaction.
+                        </p>
+                    </div>
                 </div>
-                <NuxtImg src="/img/our-service.png" class="w-full block md:hidden" />
-                <div class="flex flex-col gap-2 text-xs">
-                    <p class="text-justify text-secondary-100">
-                        We stay focused on each client’s objectives, providing clear and strategic legal solutions while
-                        anticipating future risks and challenges. By aligning our work with our internal culture,
-                        structure,
-                        and processes, we are committed to one goal: ensuring client satisfaction.
-                    </p>
-                    <div class="grid grid-rows-4 text-secondary-100 text-sm grid-flow-col gap-x-1">
-                        <div v-for="(item, index) in practiceAreas" :key="index" @click="selectedIndex = index" :class="[
-                            'flex items-start gap-2 cursor-pointer transition-colors text-xs',
-                        ]">
-                            <span class="font-medium">{{ String.fromCharCode(97 + index) }}.</span>
-                            <span>{{ item }}</span>
+                <NuxtImg src="/img/why-choose-us.png" class="w-1/2 hidden md:block" />
+            </div>
+        </section>
+
+        <section id="our-services" class="bg-primary-50 px-6 pt-20 ">
+            <div class="flex flex-col gap-6 md:flex-row max-w-[834px] mx-auto">
+                <NuxtImg src="/img/our-service.png" class="w-1/2 hidden md:block" />
+                <div class="w-full md:w-1/2">
+                    <div class="flex flex-col gap-2">
+                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                            OUR SERVICE
+                        </h1>
+                        <h2 class="font-bold text-xl">
+                            Practice Areas
+                        </h2>
+                    </div>
+                    <NuxtImg src="/img/our-service.png" class="w-full block md:hidden" />
+                    <div class="flex flex-col gap-2 text-xs">
+                        <p class="text-justify text-secondary-100">
+                            We stay focused on each client’s objectives, providing clear and strategic legal solutions
+                            while
+                            anticipating future risks and challenges. By aligning our work with our internal culture,
+                            structure,
+                            and processes, we are committed to one goal: ensuring client satisfaction.
+                        </p>
+                        <div class="grid grid-rows-4 text-secondary-100 text-sm grid-flow-col gap-x-1">
+                            <div v-for="(item, index) in practiceAreas" :key="index" @click="selectedIndex = index"
+                                :class="[
+                                    'flex items-start gap-2 cursor-pointer transition-colors text-xs',
+                                ]">
+                                <span class="font-medium">{{ String.fromCharCode(97 + index) }}.</span>
+                                <span>{{ item }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,44 +221,46 @@
         </section>
 
         <section id="our-team" class="bg-primary-50 px-6 pt-20">
-            <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
-                OUR TEAM
-            </h1>
-            <br>
+            <div class="max-w-[834px] mx-auto">
+                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                    OUR TEAM
+                </h1>
+                <br>
 
-            <h2 class="font-bold text-xl">
-                Our Team of Legal Experts
-            </h2>
-            <br>
-            <p class="text-justify text-secondary-100">
-                Led by Shinta Sriwijaya, our legal team brings a wealth of experience,
-                cross-industry insights, and dedication to every client we serve.
-            </p>
-            <br>
+                <h2 class="font-bold text-xl">
+                    Our Team of Legal Experts
+                </h2>
+                <br>
+                <p class="text-justify text-secondary-100">
+                    Led by Shinta Sriwijaya, our legal team brings a wealth of experience,
+                    cross-industry insights, and dedication to every client we serve.
+                </p>
+                <br>
 
-            <div class="flex flex-col">
-                <div v-for="team in teams" :key="team.title" class="flex flex-col gap-10">
-                    <h3 class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani">
-                        {{ team.title }}
-                    </h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div v-for="member in team.members" :key="member.name" class="relative h-[300px]">
-                            <NuxtImg :src="member.image" class="z-10 relative w-[170px]" />
-                            <div
-                                class="bg-white absolute left-1 top-16 z-0 h-50 rounded-xl p-2 w-[170px] flex items-end">
-                                <div class="flex flex-col justify-between w-full gap-10">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold text-black text-[10px]">{{ member.name }}</span>
-                                        <span class="text-secondary-100 text-[10px]">{{ team.title }}</span>
-                                    </div>
-                                    <div class="flex justify-end">
-                                        <NuxtLink to="#"
-                                            class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2">
-                                            see more
-                                            <UIcon name="i-lucide-arrow-right"
-                                                class="size-4 border border-secondary-100 rounded-full p-px"
-                                                mode="svg" />
-                                        </NuxtLink>
+                <div class="flex flex-col">
+                    <div v-for="team in teams" :key="team.title" class="flex flex-col gap-10">
+                        <h3 class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani">
+                            {{ team.title }}
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div v-for="member in team.members" :key="member.name" class="relative h-[300px]">
+                                <NuxtImg :src="member.image" class="z-10 relative w-[170px]" />
+                                <div
+                                    class="bg-white absolute left-1 top-16 z-0 h-50 rounded-xl p-2 w-[170px] flex items-end">
+                                    <div class="flex flex-col justify-between w-full gap-10">
+                                        <div class="flex flex-col">
+                                            <span class="font-bold text-black text-[10px]">{{ member.name }}</span>
+                                            <span class="text-secondary-100 text-[10px]">{{ team.title }}</span>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <NuxtLink to="#"
+                                                class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2">
+                                                see more
+                                                <UIcon name="i-lucide-arrow-right"
+                                                    class="size-4 border border-secondary-100 rounded-full p-px"
+                                                    mode="svg" />
+                                            </NuxtLink>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -230,43 +271,45 @@
         </section>
 
         <section id="newsletter" class="bg-primary-50 px-6 pt-20">
-            <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase mb-4">
-                news letter
-            </h1>
+            <div class="max-w-[834px] mx-auto">
+                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase mb-4">
+                    news letter
+                </h1>
 
-            <div class="flex justify-between items-center">
-                <h2 class="font-bold text-xl">
-                    Our Latest Newsletter
-                </h2>
-                <NuxtLink class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs">
-                    Read More
-                    <div class="bg-white rounded-full p-px">
-                        <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90" mode="svg" />
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-xl">
+                        Our Latest Newsletter
+                    </h2>
+                    <NuxtLink class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs">
+                        Read More
+                        <div class="bg-white rounded-full p-px">
+                            <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90" mode="svg" />
+                        </div>
+                    </NuxtLink>
+                </div>
+
+                <br>
+
+                <!-- card container -->
+                <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+                    <!-- newsletter card -->
+                    <div class="bg-white rounded-xl" v-for="newsletter in newsletters" :key="newsletter.title">
+                        <NuxtImg src="/img/newsletter-card-1.png" class="w-full rounded-t-xl" />
+                        <div class="p-2 flex flex-col gap-2">
+                            <span class="font-bold text-[10px]">Asset performance Management Software</span>
+                            <p class="text-gray-500 text-[8px]">
+                                Distribution management systems for the morden grid.
+                            </p>
+                            <NuxtLink class="text-[8px] flex gap-2 items-center">
+                                Learn More
+                                <UIcon name="i-lucide-arrow-right"
+                                    class="size-3 border border-secondary-100 rounded-full p-px" mode="svg" />
+
+                            </NuxtLink>
+
+                        </div>
+
                     </div>
-                </NuxtLink>
-            </div>
-
-            <br>
-
-            <!-- card container -->
-            <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
-                <!-- newsletter card -->
-                <div class="bg-white rounded-xl" v-for="newsletter in newsletters" :key="newsletter.title">
-                    <NuxtImg src="/img/newsletter-card-1.png" class="w-full rounded-t-xl" />
-                    <div class="p-2 flex flex-col gap-2">
-                        <span class="font-bold text-[10px]">Asset performance Management Software</span>
-                        <p class="text-gray-500 text-[8px]">
-                            Distribution management systems for the morden grid.
-                        </p>
-                        <NuxtLink class="text-[8px] flex gap-2 items-center">
-                            Learn More
-                            <UIcon name="i-lucide-arrow-right"
-                                class="size-3 border border-secondary-100 rounded-full p-px" mode="svg" />
-
-                        </NuxtLink>
-
-                    </div>
-
                 </div>
             </div>
         </section>

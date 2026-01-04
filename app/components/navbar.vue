@@ -3,8 +3,8 @@
         <button @click="toggleSidebar" class="md:hidden" aria-label="Toggle menu">
             <UIcon name="i-lucide-menu" class="size-6 block" mode="svg" />
         </button>
-        <NuxtImg src="/logo.png" alt="logo" class="w-[140px] md:w-[160px] lg:w-[200px]" />
-        <ul class="gap-4 hidden md:flex text-sm">
+        <NuxtImg src="/logo.png" alt="logo" class="w-[140px] md:w-[160px] lg:w-[300px]" />
+        <ul class="gap-4 hidden md:flex text-sm xl:text-lg">
             <li v-for="item in menu" :key="item.to">
                 <NuxtLink :to="item.to">{{ item.label }}</NuxtLink>
             </li>
