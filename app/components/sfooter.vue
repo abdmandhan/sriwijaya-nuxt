@@ -1,11 +1,13 @@
 <template>
-    <div class="flex p-4 w-full z-10 bg-[#1D202A] text-white flex-col items-start gap-10">
-        <NuxtImg src="logo-small.png" class="size-10" />
+    <div class="flex p-4 w-full z-10 bg-[#1D202A] text-white flex-col items-start gap-10 md:grid grid-cols-2 pt-10">
+        <div class="flex flex-col gap-2">
+            <NuxtImg src="logo-small.png" class="size-10" />
 
-        <span class="font-bold">Shinta Sriwijaya & Co</span>
-        <address class="normal-case">
-            Wisma 46 - Kota BNI, 48th Floor Jl. Jend. Sudirman Kav. 1, Jakarta 10220
-        </address>
+            <span class="font-bold">Shinta Sriwijaya & Co</span>
+            <address class="normal-case">
+                Wisma 46 - Kota BNI, 48th Floor Jl. Jend. Sudirman Kav. 1, Jakarta 10220
+            </address>
+        </div>
 
         <div class="grid grid-cols-2 w-full">
             <div class="w-full flex flex-col gap-2">
@@ -38,12 +40,12 @@
             </div>
         </div>
 
-        <div class="border-2 border-primary p-2 rounded-lg flex items-center gap-2">
+        <div class="border-2 border-primary p-2 rounded-lg flex items-center gap-2 md:w-fit md:justify-self-end">
             Back to Top
             <UIcon name="i-lucide-arrow-up" class="size-4" mode="svg" />
         </div>
 
-        <div class="flex flex-col gap-2 border-t border-white pt-4 w-full">
+        <div class="flex flex-col gap-2 border-t border-white pt-4 w-full md:col-span-2">
             © Shinta Sriwijaya & Co {{ new Date().getFullYear() }}
         </div>
     </div>
