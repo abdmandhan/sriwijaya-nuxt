@@ -286,36 +286,39 @@
         </section>
 
         <section id="newsletter" class="bg-primary-50 px-6 pt-20">
-            <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
-                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase mb-4">
-                    news letter
-                </h1>
+            <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto flex flex-col gap-6 xl:gap-10">
+                <div>
+                    <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase mb-4 xl:text-3xl">
+                        news letter
+                    </h1>
 
-                <div class="flex justify-between items-center">
-                    <h2 class="font-bold text-xl">
-                        Our Latest Newsletter
-                    </h2>
-                    <NuxtLink class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs">
-                        Read More
-                        <div class="bg-white rounded-full p-px">
-                            <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90" mode="svg" />
-                        </div>
-                    </NuxtLink>
+                    <div class="flex justify-between items-center">
+                        <h2 class="font-bold text-xl xl:text-6xl">
+                            Our Latest Newsletter
+                        </h2>
+                        <NuxtLink
+                            class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs xl:text-xl xl:py-3 xl:px-6 xl:gap-3">
+                            Read More
+                            <div class="bg-white rounded-full p-px xl:p-1">
+                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4"
+                                    mode="svg" />
+                            </div>
+                        </NuxtLink>
+                    </div>
                 </div>
 
-                <br>
-
                 <!-- card container -->
-                <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+                <div class="grid grid-cols-2 gap-2 md:grid-cols-3 justify-around">
                     <!-- newsletter card -->
-                    <div class="bg-white rounded-xl" v-for="newsletter in newsletters" :key="newsletter.title">
+                    <div class="bg-white rounded-xl xl:w-[480px] md:w-[225px] w-full" v-for="newsletter in newsletters"
+                        :key="newsletter.title">
                         <NuxtImg src="/img/newsletter-card-1.png" class="w-full rounded-t-xl" />
-                        <div class="p-2 flex flex-col gap-2">
-                            <span class="font-bold text-[10px]">Asset performance Management Software</span>
-                            <p class="text-gray-500 text-[8px]">
+                        <div class="p-2 flex flex-col gap-2 xl:gap-4 xl:p-12">
+                            <span class="font-bold text-[10px] xl:text-3xl">Asset performance Management Software</span>
+                            <p class="text-gray-500 text-[8px] xl:text-2xl">
                                 Distribution management systems for the morden grid.
                             </p>
-                            <NuxtLink class="text-[8px] flex gap-2 items-center">
+                            <NuxtLink class="text-[8px] flex gap-2 items-center xl:text-2xl">
                                 Learn More
                                 <UIcon name="i-lucide-arrow-right"
                                     class="size-3 border border-secondary-100 rounded-full p-px" mode="svg" />
