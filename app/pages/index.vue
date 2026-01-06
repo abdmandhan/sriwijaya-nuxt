@@ -245,25 +245,31 @@
                 <br>
 
                 <div class="flex flex-col">
-                    <div v-for="team in teams" :key="team.title" class="flex flex-col gap-10">
+                    <div v-for="team in teams" :key="team.title"
+                        class="flex flex-col xl:gap-10 gap-3 md:gap-6 mb-3 md:mb-6 xl:mb-10">
                         <h3
                             class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani xl:text-3xl">
                             {{ team.title }}
                         </h3>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="flex gap-4">
                             <div v-for="member in team.members" :key="member.name"
-                                class="relative h-[300px] xl:h-[522px]">
-                                <NuxtImg :src="member.image" class="z-10 relative w-[170px] xl:w-[384px]" />
+                                class="relative h-[222px] xl:h-[522px] w-[164px] md:w-[169px] md:h-[230px] xl:w-[384px]">
+                                <NuxtImg :src="member.image"
+                                    class="z-30 w-[153px] md:w-[160px] xl:w-[360px] absolute" />
                                 <div
-                                    class="bg-white absolute left-1 top-16 z-0 h-50 rounded-xl p-2 w-[170px] flex items-end xl:w-[384px]">
-                                    <div class="flex flex-col justify-between w-full gap-10">
+                                    class="absolute right-0 bottom-0 z-20 bg-white w-[152px] h-[166px] md:w-[160px] md:h-[173.5px] xl:w-[360px] xl:h-[392px] rounded-xl p-2 xl:p-4 flex items-end">
+                                    <div class="flex flex-col justify-between w-full xl:gap-20 gap-2">
                                         <div class="flex flex-col">
-                                            <span class="font-bold text-black text-[10px]">{{ member.name }}</span>
-                                            <span class="text-secondary-100 text-[10px]">{{ team.title }}</span>
+                                            <span class="font-bold text-black text-[10px] xl:text-[22px]">
+                                                {{ member.name }}
+                                            </span>
+                                            <span class="text-secondary-100 text-[10px] xl:text-[18px]">
+                                                {{ team.title }}
+                                            </span>
                                         </div>
                                         <div class="flex justify-end">
                                             <NuxtLink to="#"
-                                                class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2">
+                                                class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2 xl:text-md items-center">
                                                 see more
                                                 <UIcon name="i-lucide-arrow-right"
                                                     class="size-4 border border-secondary-100 rounded-full p-px"
