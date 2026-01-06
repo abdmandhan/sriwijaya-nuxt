@@ -5,13 +5,13 @@
             <div class="flex flex-col gap-2 xl:col-span-2">
                 <NuxtImg src="logo-small.png" class="size-10" />
 
-                <span class="font-bold">Shinta Sriwijaya & Co</span>
-                <address class="normal-case">
+                <span class="font-bold text-xl xl:text-2xl">Shinta Sriwijaya & Co</span>
+                <address class="normal-case text-xs xl:text-md">
                     Wisma 46 - Kota BNI, 48th Floor Jl. Jend. Sudirman Kav. 1, Jakarta 10220
                 </address>
             </div>
 
-            <div class="grid grid-cols-2 w-full ">
+            <div class="grid grid-cols-2 w-full text-sm xl:text-md">
                 <div class="w-full flex flex-col gap-2">
                     <span class="font-bold">Sitemap</span>
                     <ul class="flex flex-col gap-2">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 w-full xl:col-span-2">
+            <div class="grid grid-cols-2 w-full xl:col-span-2 text-sm xl:text-md">
                 <div class="flex flex-col gap-2">
                     <span>Phone</span>
                     <a class="font-bold" href="tel:021574508">021 574 508</a>

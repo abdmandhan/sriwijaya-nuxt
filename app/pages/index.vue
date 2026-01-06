@@ -339,24 +339,28 @@
 
                 <!-- contact us card form -->
                 <div
-                    class="p-4 bg-primary-50 w-[90%] md:w-[450px] absolute z-10 -bottom-44 md:top-30 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2 md:h-fit">
-                    <h2 class="font-bold text-md">Contact Us</h2>
-                    <p class="text-[10px] text-gray-400">
+                    class="p-4 bg-primary-50 w-[90%] md:w-[450px] absolute z-10 -bottom-44 md:top-30 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2 md:h-fit xl:w-[921px] xl:h-[680px] xl:p-14 xl:gap-8">
+                    <h2 class="font-bold text-md xl:text-6xl">Contact Us</h2>
+                    <p class="text-[10px] text-gray-400 xl:text-2xl">
                         We offer legal help for everyone, providing clear and reliable solutions for businesses and
                         individuals
                     </p>
 
                     <form action="" class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="Your Company" class="bg-white rounded-md p-2 text-[10px]">
+                        <input type="text" placeholder="Your Company"
+                            class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4">
                         <input type="email" placeholder="Your Email Address"
-                            class="bg-white rounded-md p-2 text-[10px]">
-                        <textarea placeholder="Question" class="col-span-2 bg-white rounded-md p-2 text-[10px]"
+                            class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4">
+                        <textarea placeholder="Question"
+                            class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4"
                             rows="4" />
                         <button
-                            class="bg-primary-90 text-white rounded-full p-2 text-[10px] flex gap-2 items-center w-fit font-bold">
-                            Send Question
-                            <div class="bg-white rounded-full p-px">
-                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary" mode="svg" />
+                            class="bg-primary-90 text-white rounded-full p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 flex gap-2 items-center w-fit font-bold xl:mt-10 xl:gap-4">
+                            <span>
+                                Send Question
+                            </span>
+                            <div class="bg-white rounded-full p-px xl:p-2">
+                                <UIcon name="i-lucide-arrow-right" class="size-3 xl:size-5 text-primary" mode="svg" />
                             </div>
                         </button>
                     </form>
