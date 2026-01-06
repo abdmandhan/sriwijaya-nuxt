@@ -156,19 +156,19 @@
         </section>
 
         <section id="why-choose-us" class="bg-primary-50 px-6 pt-20  ">
-            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
-                <div class="flex flex-col gap-2 w-full md:w-1/2">
-                    <div class="flex flex-col gap-2 mb-6 md:mb-0">
-                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10">
+                <div class="flex flex-col gap-2 w-full md:w-1/2 xl:gap-10">
+                    <div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8">
+                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                             WHY CHOOSE US
                         </h1>
 
-                        <h2 class="font-bold text-xl md:text-3xl">
+                        <h2 class="font-bold text-xl md:text-3xl xl:text-6xl">
                             Strategic legal solutions
                         </h2>
                     </div>
                     <NuxtImg src="/img/why-choose-us.png" class="w-full block md:hidden" />
-                    <div class="text-xs">
+                    <div class="text-xs xl:text-2xl">
                         <p class="text-justify text-secondary-100">
                             We take a value-driven approach by actively communicating and strategizing with our clients
                             to
@@ -192,19 +192,19 @@
         </section>
 
         <section id="our-services" class="bg-primary-50 px-6 pt-20 ">
-            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
-                <NuxtImg src="/img/our-service.png" class="w-1/2 hidden md:block" />
-                <div class="w-full md:w-1/2">
-                    <div class="flex flex-col gap-2">
-                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-20">
+                <NuxtImg src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]" />
+                <div class="w-full md:w-1/2 xl:w-[40%]">
+                    <div class="flex flex-col gap-2 xl:gap-8 xl:mb-10">
+                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                             OUR SERVICE
                         </h1>
-                        <h2 class="font-bold text-xl">
+                        <h2 class="font-bold text-xl xl:text-6xl">
                             Practice Areas
                         </h2>
                     </div>
                     <NuxtImg src="/img/our-service.png" class="w-full block md:hidden" />
-                    <div class="flex flex-col gap-2 text-xs">
+                    <div class="flex flex-col gap-2 text-xs xl:text-2xl xl:gap-10">
                         <p class="text-justify text-secondary-100">
                             We stay focused on each client’s objectives, providing clear and strategic legal solutions
                             while
@@ -215,7 +215,7 @@
                         <div class="grid grid-rows-4 text-secondary-100 text-sm grid-flow-col gap-x-1">
                             <div v-for="(item, index) in practiceAreas" :key="index" @click="selectedIndex = index"
                                 :class="[
-                                    'flex items-start gap-2 cursor-pointer transition-colors text-xs',
+                                    'flex items-start gap-2 cursor-pointer transition-colors text-xs xl:text-2xl',
                                 ]">
                                 <span class="font-medium">{{ String.fromCharCode(97 + index) }}.</span>
                                 <span>{{ item }}</span>
@@ -229,16 +229,16 @@
 
         <section id="our-team" class="bg-primary-50 px-6 pt-20">
             <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
-                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                     OUR TEAM
                 </h1>
                 <br>
 
-                <h2 class="font-bold text-xl">
+                <h2 class="font-bold text-xl xl:text-6xl">
                     Our Team of Legal Experts
                 </h2>
                 <br>
-                <p class="text-justify text-secondary-100">
+                <p class="text-justify text-secondary-100 text-xs xl:text-2xl">
                     Led by Shinta Sriwijaya, our legal team brings a wealth of experience,
                     cross-industry insights, and dedication to every client we serve.
                 </p>
@@ -246,14 +246,16 @@
 
                 <div class="flex flex-col">
                     <div v-for="team in teams" :key="team.title" class="flex flex-col gap-10">
-                        <h3 class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani">
+                        <h3
+                            class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani xl:text-3xl">
                             {{ team.title }}
                         </h3>
                         <div class="grid grid-cols-2 gap-4">
-                            <div v-for="member in team.members" :key="member.name" class="relative h-[300px]">
-                                <NuxtImg :src="member.image" class="z-10 relative w-[170px]" />
+                            <div v-for="member in team.members" :key="member.name"
+                                class="relative h-[300px] xl:h-[522px]">
+                                <NuxtImg :src="member.image" class="z-10 relative w-[170px] xl:w-[384px]" />
                                 <div
-                                    class="bg-white absolute left-1 top-16 z-0 h-50 rounded-xl p-2 w-[170px] flex items-end">
+                                    class="bg-white absolute left-1 top-16 z-0 h-50 rounded-xl p-2 w-[170px] flex items-end xl:w-[384px]">
                                     <div class="flex flex-col justify-between w-full gap-10">
                                         <div class="flex flex-col">
                                             <span class="font-bold text-black text-[10px]">{{ member.name }}</span>
