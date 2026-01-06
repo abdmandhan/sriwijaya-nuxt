@@ -1,7 +1,8 @@
 <template>
-    <div class="flex p-4 w-full z-10 bg-[#1D202A] text-white pt-10">
-        <div class="max-w-[834px] mx-auto flex-col items-start gap-10 md:grid grid-cols-2">
-            <div class="flex flex-col gap-2">
+    <footer class="flex p-4 w-full z-10 bg-[#1D202A] text-white pt-10">
+        <div
+            class="lg:max-w-[834px] xl:max-w-[1608px] xl:w-[1608px] mx-auto flex-col items-start gap-10 md:grid md:grid-cols-2 xl:grid-cols-3 flex">
+            <div class="flex flex-col gap-2 xl:col-span-2">
                 <NuxtImg src="logo-small.png" class="size-10" />
 
                 <span class="font-bold">Shinta Sriwijaya & Co</span>
@@ -10,7 +11,7 @@
                 </address>
             </div>
 
-            <div class="grid grid-cols-2 w-full">
+            <div class="grid grid-cols-2 w-full ">
                 <div class="w-full flex flex-col gap-2">
                     <span class="font-bold">Sitemap</span>
                     <ul class="flex flex-col gap-2">
@@ -30,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 w-full">
+            <div class="grid grid-cols-2 w-full xl:col-span-2">
                 <div class="flex flex-col gap-2">
                     <span>Phone</span>
                     <a class="font-bold" href="tel:021574508">021 574 508</a>
@@ -46,11 +47,11 @@
                 <UIcon name="i-lucide-arrow-up" class="size-4" mode="svg" />
             </div>
 
-            <div class="flex flex-col gap-2 border-t border-white pt-4 w-full md:col-span-2">
+            <div class="flex flex-col gap-2 border-t border-white pt-4 w-full md:col-span-2 xl:col-span-3">
                 © Shinta Sriwijaya & Co {{ new Date().getFullYear() }}
             </div>
         </div>
-    </div>
+    </footer>
 </template>
 
 <script lang="ts" setup>

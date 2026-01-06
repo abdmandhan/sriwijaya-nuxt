@@ -1,6 +1,9 @@
 <template>
     <main>
         <section class="relative h-[700px] md:h-screen z-10" id="/">
+            <div>
+
+            </div>
             <!-- Background image -->
             <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
                 class="w-full h-full object-cover absolute left-0 top-0 z-0" />
@@ -8,8 +11,9 @@
             <!-- Hero text content -->
             <div
                 class="pt-[100px] md:pt-[150px] lg:pt-[200px] pl-6 md:pl-[60px] lg:pl-[156px] text-black w-full relative z-20">
-                <h2 class="text-lg md:text-2xl font-rajdhani font-medium mb-2 text-primary">SHINTA SRIWIJAYA & CO</h2>
-                <h1 class="text-3xl md:text-5xl font-bold font-inter leading-tight">
+                <h2 class="text-lg md:text-2xl xl:text-3xl font-rajdhani font-medium mb-2 text-primary">SHINTA SRIWIJAYA
+                    & CO</h2>
+                <h1 class="text-3xl md:text-5xl xl:text-8xl font-bold font-inter leading-tight xl:max-w-[1115px]">
                     Trusted Legal
                     Solutions
                     for Every
@@ -20,7 +24,7 @@
             <!-- Statue image - positioned absolutely on the right, clipped -->
             <div class="absolute bottom-0 left-0 z-10 h-full overflow-hidden w-full">
                 <NuxtImg src="/img/statue.png"
-                    class="absolute bottom-0 -right-30 w-[336px] md:w-[400px] xl:w-[500px]" />
+                    class="absolute bottom-0 -right-30 w-[336px] md:w-[400px] xl:w-[600px]" />
             </div>
 
             <!-- Overlaying white card -->
@@ -54,7 +58,8 @@
                         </button>
                     </div>
                     <NuxtImg src="/img/card-1.png" class="w-full border-2 border-[#A08565] rounded-[16px] mt-2" />
-                    <div class="absolute w-[450px] h-[80px] bottom-32 -right-112 hidden md:block xl:hidden">
+                    <!-- ipad -->
+                    <div class="absolute w-[450px] h-[80px] bottom-32 -right-112 hidden md:block lg:hidden">
                         <svg width="455" height="84" viewBox="0 0 455 84" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <foreignObject x="-22" y="-22" width="498.775" height="127.5">
@@ -77,7 +82,8 @@
                             Helping clients navigate Indonesia’s legal landscape with precision, insight, and integrity.
                         </p>
                     </div>
-                    <div class="absolute w-[806px] h-[160px] bottom-32 -right-202 hidden xl:block z-10">
+                    <!-- desktop -->
+                    <div class="absolute w-[806px] h-[160px] bottom-33 -right-202 hidden xl:block z-10">
                         <svg width="910" height="167" viewBox="0 0 910 167" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <foreignObject x="-44" y="-44" width="997.55" height="255">
@@ -106,22 +112,24 @@
             </div>
         </section>
         <section id="about" class="bg-primary-50 pt-60 px-6 relative z-0 ">
-            <div class="md:gap-10 md:flex max-w-[834px] mx-auto">
-                <div class="relative w-full md:w-2/3 ">
-                    <div class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2">
-                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
+            <div class="md:gap-10 md:flex lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
+                <div class="relative w-full md:w-2/3 xl:w-1/2">
+                    <div
+                        class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2 xl:-right-90">
+                        <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                             ABOUT US
                         </h1>
 
-                        <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px]">
+                        <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px] xl:text-6xl xl:max-w-[624px]">
                             Built on Principles. Driven by Results.
                         </h2>
                     </div>
                     <NuxtImg src="/img/about-1.png" class="w-full" />
                 </div>
 
-                <div class="mt-10 md:mt-40 w-full md:w-1/3 text-xs">
-                    <p class="text-justify">
+                <div
+                    class="mt-10 md:mt-40 w-full md:w-1/3 xl:w-1/2 text-xs xl:text-2xl xl:mt-60 flex flex-col gap-4 text-secondary-100">
+                    <p class="text-justify order-1 xl-order-2">
                         We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
                         matters
                         based on the client’s goals. Because every case is unique, we carefully analyze and investigate
@@ -130,9 +138,8 @@
                         business
                         objectives.
                     </p>
-                    <br>
 
-                    <p class="text-justify">
+                    <p class="text-justify order-2 xl:order-1">
                         SS&Co. is a boutique Indonesian law firm with a young, dynamic, and creative team dedicated to
                         understanding each client’s needs and protecting their best interests. We help clients start and
                         operate
@@ -149,7 +156,7 @@
         </section>
 
         <section id="why-choose-us" class="bg-primary-50 px-6 pt-20  ">
-            <div class="flex flex-col gap-6 md:flex-row max-w-[834px] mx-auto">
+            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <div class="flex flex-col gap-2 w-full md:w-1/2">
                     <div class="flex flex-col gap-2 mb-6 md:mb-0">
                         <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
@@ -185,7 +192,7 @@
         </section>
 
         <section id="our-services" class="bg-primary-50 px-6 pt-20 ">
-            <div class="flex flex-col gap-6 md:flex-row max-w-[834px] mx-auto">
+            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <NuxtImg src="/img/our-service.png" class="w-1/2 hidden md:block" />
                 <div class="w-full md:w-1/2">
                     <div class="flex flex-col gap-2">
@@ -221,7 +228,7 @@
         </section>
 
         <section id="our-team" class="bg-primary-50 px-6 pt-20">
-            <div class="max-w-[834px] mx-auto">
+            <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit">
                     OUR TEAM
                 </h1>
@@ -271,7 +278,7 @@
         </section>
 
         <section id="newsletter" class="bg-primary-50 px-6 pt-20">
-            <div class="max-w-[834px] mx-auto">
+            <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase mb-4">
                     news letter
                 </h1>
@@ -315,7 +322,7 @@
         </section>
 
         <section id="contact-us" class="bg-primary-50 px-6 pt-20 h-[600px] md:h-[550px]">
-            <div class="relative max-w-[834px] mx-auto">
+            <div class="relative lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <NuxtImg src="/img/contact-us.png" class="relative z-0 w-full md:w-[500px]" />
 
                 <!-- contact us card form -->
