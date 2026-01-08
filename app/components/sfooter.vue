@@ -42,10 +42,11 @@
                 </div>
             </div>
 
-            <div class="border-2 border-primary p-2 rounded-lg flex items-center gap-2 md:w-fit md:justify-self-end">
+            <button @click="scrollToTop"
+                class="border-2 border-primary p-2 rounded-lg flex items-center gap-2 md:w-fit md:justify-self-end cursor-pointer hover:opacity-80 transition-opacity hover:bg-primary">
                 Back to Top
                 <UIcon name="i-lucide-arrow-up" class="size-4" mode="svg" />
-            </div>
+            </button>
 
             <div class="flex flex-col gap-2 border-t border-white pt-4 w-full md:col-span-2 xl:col-span-3">
                 © Shinta Sriwijaya & Co {{ new Date().getFullYear() }}
@@ -68,6 +69,13 @@ const menu = [
 const logout = async () => {
     await clear()
     await navigateTo('/login')
+}
+
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    })
 }
 
 </script>
