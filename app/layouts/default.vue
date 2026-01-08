@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <navbar />
+    <navbar />
+    <main class="mt-16 xl:mt-24">
         <slot />
-        <sfooter />
-    </div>
+    </main>
+    <sfooter />
 </template>
