@@ -1,7 +1,8 @@
 <template>
     <div class="bg-[#F8F9FD]">
         <!-- breadcrumb -->
-        <div class="bg-secondary h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base">
+        <div
+            class="bg-secondary h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base max-w-[1608px] mx-auto">
             Homepage / Newsletter List
         </div>
         <div
@@ -76,15 +77,19 @@
         </div>
 
         <!-- pagination -->
-        <div class="flex items-center justify-center pb-20 cursor-pointer text-sm">
-            <button class="bg-transparent border-[#E5E7EB] border px-3 py-2 rounded-l-xl">Prev</button>
+        <div class="flex items-center justify-center pb-20 text-sm">
+            <button
+                class="bg-transparent border-[#E5E7EB] border px-3 py-2 rounded-l-xl cursor-pointer hover:bg-[#91795C] hover:text-white">Prev</button>
             <ol class="flex items-center">
                 <li v-for="i in 4" :key="i"
                     class="active:bg-[#91795C] bg-white px-3 py-2 border border-[#E5E7EB] hover:bg-[#91795C] hover:text-white">
-                    {{ i }}
+                    <button class="cursor-pointer">
+                        {{ i }}
+                    </button>
                 </li>
             </ol>
-            <button class="bg-transparent border-[#E5E7EB] border px-3 py-2 rounded-r-xl">Next</button>
+            <button
+                class="bg-transparent border-[#E5E7EB] border px-3 py-2 rounded-r-xl cursor-pointer hover:bg-[#91795C] hover:text-white">Next</button>
         </div>
     </div>
 </template>
