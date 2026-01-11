@@ -1,8 +1,23 @@
 <script setup lang="ts">
+
 import type { NavigationMenuItem } from '@nuxt/ui'
+import type { DropdownMenuItem } from '@nuxt/ui'
+import { useDashboard } from '~/composeable/useDashboard'
 
 const route = useRoute()
 const toast = useToast()
+const { isNotificationsSlideoverOpen } = useDashboard()
+
+
+const items = [[{
+    label: 'New mail',
+    icon: 'i-lucide-send',
+    to: '/inbox'
+}, {
+    label: 'New customer',
+    icon: 'i-lucide-user-plus',
+    to: '/customers'
+}]] satisfies DropdownMenuItem[][]
 
 
 const open = ref(false)
@@ -78,12 +93,7 @@ onMounted(async () => {
             </template>
 
             <template #default="{ collapsed }">
-                <!-- <UDashboardSearchButton :collapsed="collapsed" class="bg-transparent ring-default" /> -->
-
                 <UNavigationMenu :collapsed="collapsed" :items="links[0]" orientation="vertical" tooltip popover />
-
-                <!-- <UNavigationMenu :collapsed="collapsed" :items="links[1]" orientation="vertical" tooltip
-                    class="mt-auto" /> -->
             </template>
 
             <template #footer="{ collapsed }">
@@ -91,8 +101,33 @@ onMounted(async () => {
             </template>
         </UDashboardSidebar>
 
-        <slot />
+        <UDashboardPanel id="dashboard">
+            <template #header>
+                <UDashboardNavbar title="Dashboard" :ui="{ right: 'gap-3' }">
+                    <template #leading>
+                        <UDashboardSidebarCollapse />
+                    </template>
 
-        <!-- <NotificationsSlideover /> -->
+                    <template #right>
+                        <UTooltip text="Notifications" :shortcuts="['N']">
+                            <UButton color="neutral" variant="ghost" square
+                                @click="isNotificationsSlideoverOpen = true">
+                                <UChip color="error" inset>
+                                    <UIcon name="i-lucide-bell" class="size-5 shrink-0" />
+                                </UChip>
+                            </UButton>
+                        </UTooltip>
+
+                        <UDropdownMenu :items="items">
+                            <UButton icon="i-lucide-plus" size="md" class="rounded-full" />
+                        </UDropdownMenu>
+                    </template>
+                </UDashboardNavbar>
+            </template>
+
+            <template #body>
+                <slot />
+            </template>
+        </UDashboardPanel>
     </UDashboardGroup>
 </template>
