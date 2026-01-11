@@ -40,6 +40,24 @@ const links = [[
     },
 ]] satisfies NavigationMenuItem[][]
 
+// Compute panel id and title from route
+const panelId = computed(() => {
+    const pathSegments = route.path.split('/').filter(Boolean)
+    const lastSegment = pathSegments[pathSegments.length - 1]
+    return lastSegment || 'dashboard'
+})
+
+const panelTitle = computed(() => {
+    const id = panelId.value
+    // Find matching link to get the proper label, or capitalize the id
+    const link = links.flat().find(link => {
+        const linkPath = link.to.split('/').filter(Boolean)
+        const linkLastSegment = linkPath[linkPath.length - 1] || 'dashboard'
+        return linkLastSegment === id
+    })
+    return link?.label || id.charAt(0).toUpperCase() + id.slice(1)
+})
+
 const groups = computed(() => [{
     id: 'links',
     label: 'Go to',
@@ -101,9 +119,9 @@ onMounted(async () => {
             </template>
         </UDashboardSidebar>
 
-        <UDashboardPanel id="dashboard">
+        <UDashboardPanel :id="panelId">
             <template #header>
-                <UDashboardNavbar title="Dashboard" :ui="{ right: 'gap-3' }">
+                <UDashboardNavbar :title="panelTitle" :ui="{ right: 'gap-3' }">
                     <template #leading>
                         <UDashboardSidebarCollapse />
                     </template>
