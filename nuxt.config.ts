@@ -9,17 +9,18 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-auth-utils',
     'motion-v/nuxt',
+    '@vueuse/nuxt'
   ],
   css: ['~/assets/css/main.css'],
   fonts: {
     families: [
-      { 
-        name: 'Rajdhani', 
+      {
+        name: 'Rajdhani',
         provider: 'google',
         weights: ['400', '500', '600', '700']
       },
-      { 
-        name: 'Inter', 
+      {
+        name: 'Inter',
         provider: 'google',
         weights: ['400', '500', '600', '700']
       }

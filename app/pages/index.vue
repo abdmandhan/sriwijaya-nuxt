@@ -257,7 +257,7 @@
                                         </span>
                                     </div>
                                     <div class="flex justify-end">
-                                        <NuxtLink to="#"
+                                        <NuxtLink to="/homepage/s"
                                             class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2 xl:text-md items-center">
                                             see more
                                             <UIcon name="i-lucide-arrow-right"
