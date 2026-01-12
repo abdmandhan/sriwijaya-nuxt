@@ -44,7 +44,7 @@ const selectedTeam = ref<Team | null>(null)
 const isRoleModalOpen = ref(false)
 const isTeamModalOpen = ref(false)
 const isCreateRoleModalOpen = ref(false)
-const isCreateTeamModalOpen = ref(false)
+const isCreateTeamModalOpen = ref(true)
 const isDeleteRoleConfirmOpen = ref(false)
 const isDeleteTeamConfirmOpen = ref(false)
 const expandedRoles = ref<Set<number>>(new Set())
@@ -68,6 +68,17 @@ const teamForm = ref({
 
 const imageFile = ref<File | null>(null)
 const imagePreview = ref<string | null>(null)
+const isSlugManuallyEdited = ref(false)
+
+// Generate slug from name
+function generateSlug(name: string): string {
+    return name
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '') // Remove special characters
+        .replace(/[\s_-]+/g, '-') // Replace spaces, underscores, and multiple hyphens with single hyphen
+        .replace(/^-+|-+$/g, '') // Remove leading/trailing hyphens
+}
 
 // Fetch roles with teams
 async function fetchRoles() {
@@ -290,6 +301,7 @@ async function openTeamEdit(team: Team) {
             }
             imagePreview.value = teamDetails.image
             imageFile.value = null
+            isSlugManuallyEdited.value = true // Keep existing slug in edit mode
             isTeamModalOpen.value = true
         }
     } catch (error: any) {
@@ -429,6 +441,18 @@ function addBarAdmission() {
 // Remove bar admission field
 function removeBarAdmission(index: number) {
     teamForm.value.bar_admissions.splice(index, 1)
+}
+
+// Watch name field to auto-generate slug
+watch(() => teamForm.value.name, (newName) => {
+    if (!isSlugManuallyEdited.value && newName) {
+        teamForm.value.slug = generateSlug(newName)
+    }
+})
+
+// Handle slug manual edit
+function onSlugInput() {
+    isSlugManuallyEdited.value = true
 }
 
 // Delete team
@@ -575,9 +599,9 @@ onMounted(() => {
         <UModal v-model:open="isCreateRoleModalOpen" title="Create Role">
             <template #body>
                 <div class="space-y-4">
-                    <UFormGroup label="Role Name" required>
+                    <UFormField label="Role Name" required>
                         <UInput v-model="roleForm.name" placeholder="Enter role name" />
-                    </UFormGroup>
+                    </UFormField>
                 </div>
             </template>
             <template #footer>
@@ -600,9 +624,9 @@ onMounted(() => {
             <template #body>
 
                 <div class="space-y-4">
-                    <UFormGroup label="Role Name" required>
+                    <UFormField label="Role Name" required>
                         <UInput v-model="roleForm.name" placeholder="Enter role name" />
-                    </UFormGroup>
+                    </UFormField>
                 </div>
             </template>
 
@@ -647,24 +671,22 @@ onMounted(() => {
             <template #body>
                 <div class="space-y-4 max-h-[70vh] overflow-y-auto">
                     <!-- Basic Info -->
-                    <div class="space-y-4">
-                        <UFormGroup label="Role" required>
-                            <select v-model="teamForm.role_id"
-                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
-                                <option :value="0">Select role</option>
-                                <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
-                            </select>
-                        </UFormGroup>
+                    <div class="space-y-4 grid grid-cols-2 gap-4">
+                        <UFormField label="Role" required class="col-span-2">
+                            <USelect v-model="teamForm.role_id" :items="roles" labelKey="name" valueKey="id"
+                                class="w-full" />
+                        </UFormField>
 
-                        <UFormGroup label="Name" required>
+                        <UFormField label="Name" required>
                             <UInput v-model="teamForm.name" placeholder="Enter team member name" />
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="Slug" required>
-                            <UInput v-model="teamForm.slug" placeholder="Enter slug" />
-                        </UFormGroup>
+                        <UFormField label="Slug" required>
+                            <UInput v-model="teamForm.slug" placeholder="Auto-generated from name" disabled
+                                @input="onSlugInput" />
+                        </UFormField>
 
-                        <UFormGroup label="Image">
+                        <UFormField label="Image">
                             <div class="space-y-2">
                                 <div v-if="imagePreview" class="relative">
                                     <NuxtImg :src="imagePreview" alt="Preview"
@@ -672,23 +694,23 @@ onMounted(() => {
                                 </div>
                                 <UInput type="file" accept="image/*" @change="handleImageSelect" />
                             </div>
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="Email">
+                        <UFormField label="Email">
                             <UInput v-model="teamForm.email" type="email" placeholder="Enter email" />
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="LinkedIn">
+                        <UFormField label="LinkedIn">
                             <UInput v-model="teamForm.linkedin" type="url" placeholder="Enter LinkedIn URL" />
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="Description">
+                        <UFormField label="Description">
                             <UTextarea v-model="teamForm.description" placeholder="Enter description" :rows="4" />
-                        </UFormGroup>
+                        </UFormField>
                     </div>
 
                     <!-- Educations -->
-                    <UFormGroup label="Educations">
+                    <UFormField label="Educations">
                         <div class="space-y-2">
                             <div v-for="(education, index) in teamForm.educations" :key="index" class="flex gap-2">
                                 <UInput v-model="teamForm.educations[index]" placeholder="Enter education" />
@@ -699,10 +721,10 @@ onMounted(() => {
                                 Add Education
                             </UButton>
                         </div>
-                    </UFormGroup>
+                    </UFormField>
 
                     <!-- Bar Admissions -->
-                    <UFormGroup label="Bar Admissions">
+                    <UFormField label="Bar Admissions">
                         <div class="space-y-2">
                             <div v-for="(admission, index) in teamForm.bar_admissions" :key="index" class="flex gap-2">
                                 <UInput v-model="teamForm.bar_admissions[index]" placeholder="Enter bar admission" />
@@ -713,7 +735,7 @@ onMounted(() => {
                                 Add Bar Admission
                             </UButton>
                         </div>
-                    </UFormGroup>
+                    </UFormField>
                 </div>
             </template>
             <template #footer>
@@ -734,23 +756,24 @@ onMounted(() => {
                 <div class="space-y-4 max-h-[70vh] overflow-y-auto">
                     <!-- Basic Info -->
                     <div class="space-y-4">
-                        <UFormGroup label="Role" required>
+                        <UFormField label="Role" required>
                             <select v-model="teamForm.role_id"
                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
                                 <option :value="0">Select role</option>
                                 <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
                             </select>
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="Name" required>
+                        <UFormField label="Name" required>
                             <UInput v-model="teamForm.name" placeholder="Enter team member name" />
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="Slug" required>
-                            <UInput v-model="teamForm.slug" placeholder="Enter slug" />
-                        </UFormGroup>
+                        <UFormField label="Slug" required>
+                            <UInput v-model="teamForm.slug" placeholder="Auto-generated from name"
+                                @input="onSlugInput" />
+                        </UFormField>
 
-                        <UFormGroup label="Image">
+                        <UFormField label="Image">
                             <div class="space-y-2">
                                 <div v-if="imagePreview" class="relative">
                                     <NuxtImg :src="imagePreview" alt="Preview"
@@ -758,23 +781,23 @@ onMounted(() => {
                                 </div>
                                 <UInput type="file" accept="image/*" @change="handleImageSelect" />
                             </div>
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="Email">
+                        <UFormField label="Email">
                             <UInput v-model="teamForm.email" type="email" placeholder="Enter email" />
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="LinkedIn">
+                        <UFormField label="LinkedIn">
                             <UInput v-model="teamForm.linkedin" type="url" placeholder="Enter LinkedIn URL" />
-                        </UFormGroup>
+                        </UFormField>
 
-                        <UFormGroup label="Description">
+                        <UFormField label="Description">
                             <UTextarea v-model="teamForm.description" placeholder="Enter description" :rows="4" />
-                        </UFormGroup>
+                        </UFormField>
                     </div>
 
                     <!-- Educations -->
-                    <UFormGroup label="Educations">
+                    <UFormField label="Educations">
                         <div class="space-y-2">
                             <div v-for="(education, index) in teamForm.educations" :key="index" class="flex gap-2">
                                 <UInput v-model="teamForm.educations[index]" placeholder="Enter education" />
@@ -785,10 +808,10 @@ onMounted(() => {
                                 Add Education
                             </UButton>
                         </div>
-                    </UFormGroup>
+                    </UFormField>
 
                     <!-- Bar Admissions -->
-                    <UFormGroup label="Bar Admissions">
+                    <UFormField label="Bar Admissions">
                         <div class="space-y-2">
                             <div v-for="(admission, index) in teamForm.bar_admissions" :key="index" class="flex gap-2">
                                 <UInput v-model="teamForm.bar_admissions[index]" placeholder="Enter bar admission" />
@@ -799,7 +822,7 @@ onMounted(() => {
                                 Add Bar Admission
                             </UButton>
                         </div>
-                    </UFormGroup>
+                    </UFormField>
                 </div>
 
             </template>
