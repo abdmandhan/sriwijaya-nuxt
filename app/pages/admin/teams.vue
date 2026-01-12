@@ -484,6 +484,9 @@ onMounted(() => {
                 <div class="flex items-center justify-between">
                     <h3 class="text-base font-semibold leading-6">Roles & Teams</h3>
                     <UButton v-if="loading" icon="i-lucide-loader-2" loading />
+                    <UButton icon="i-lucide-plus" size="sm" @click="openCreateRole">
+                        Create Role
+                    </UButton>
                 </div>
             </template>
 
@@ -494,7 +497,7 @@ onMounted(() => {
             <div v-else class="space-y-4">
                 <div v-for="role in roles" :key="role.id" class="border rounded-lg">
                     <!-- Role Header -->
-                    <div class="flex items-center justify-between p-4 hover:bg-gray-50 cursor-pointer"
+                    <div class="flex items-center justify-between p-4 hover:bg-gray-50 cursor-pointer rounded-lg"
                         @click="toggleRole(role.id)">
                         <div class="flex items-center gap-4">
                             <UIcon
@@ -517,7 +520,7 @@ onMounted(() => {
                     </div>
 
                     <!-- Teams List -->
-                    <div v-if="expandedRoles.has(role.id)" class="border-t bg-gray-50">
+                    <div v-if="expandedRoles.has(role.id)" class="border-t bg-gray-50 rounded-b-lg">
                         <div class="p-4 border-b flex justify-end">
                             <UButton icon="i-lucide-plus" size="sm"
                                 @click="() => { teamForm.role_id = role.id; openCreateTeam(); }">
@@ -569,64 +572,55 @@ onMounted(() => {
         </UCard>
 
         <!-- Create Role Modal -->
-        <UModal v-model="isCreateRoleModalOpen">
-            <UCard>
-                <template #header>
-                    <h3 class="text-base font-semibold">Create Role</h3>
-                </template>
-
+        <UModal v-model:open="isCreateRoleModalOpen" title="Create Role">
+            <template #body>
                 <div class="space-y-4">
                     <UFormGroup label="Role Name" required>
                         <UInput v-model="roleForm.name" placeholder="Enter role name" />
                     </UFormGroup>
                 </div>
-
-                <template #footer>
-                    <div class="flex justify-end gap-2">
-                        <UButton color="neutral" variant="ghost" @click="isCreateRoleModalOpen = false">
-                            Cancel
-                        </UButton>
-                        <UButton @click="createRole">
-                            Create
-                        </UButton>
-                    </div>
-                </template>
-            </UCard>
+            </template>
+            <template #footer>
+                <div class="flex justify-end gap-2">
+                    <UButton color="neutral" variant="ghost" @click="isCreateRoleModalOpen = false">
+                        Cancel
+                    </UButton>
+                    <UButton @click="createRole">
+                        Create
+                    </UButton>
+                </div>
+            </template>
         </UModal>
 
         <!-- Role Edit Modal -->
-        <UModal v-model="isRoleModalOpen">
-            <UCard>
-                <template #header>
-                    <h3 class="text-base font-semibold">Edit Role</h3>
-                </template>
+        <UModal v-model:open="isRoleModalOpen" title="Edit Role">
+            <template #header>
+                <h3 class="text-base font-semibold">Edit Role</h3>
+            </template>
+            <template #body>
 
                 <div class="space-y-4">
                     <UFormGroup label="Role Name" required>
                         <UInput v-model="roleForm.name" placeholder="Enter role name" />
                     </UFormGroup>
                 </div>
+            </template>
 
-                <template #footer>
-                    <div class="flex justify-end gap-2">
-                        <UButton color="neutral" variant="ghost" @click="isRoleModalOpen = false">
-                            Cancel
-                        </UButton>
-                        <UButton @click="saveRole">
-                            Save
-                        </UButton>
-                    </div>
-                </template>
-            </UCard>
+            <template #footer>
+                <div class="flex justify-end gap-2">
+                    <UButton color="neutral" variant="ghost" @click="isRoleModalOpen = false">
+                        Cancel
+                    </UButton>
+                    <UButton @click="saveRole">
+                        Save
+                    </UButton>
+                </div>
+            </template>
         </UModal>
 
         <!-- Delete Role Confirmation Modal -->
-        <UModal v-model="isDeleteRoleConfirmOpen">
-            <UCard>
-                <template #header>
-                    <h3 class="text-base font-semibold">Delete Role</h3>
-                </template>
-
+        <UModal v-model:open="isDeleteRoleConfirmOpen" title="Delete Role">
+            <template #body>
                 <div class="space-y-4">
                     <p>Are you sure you want to delete the role "{{ selectedRole?.name }}"?</p>
                     <p v-if="selectedRole && selectedRole.teams && selectedRole.teams.length > 0"
@@ -634,28 +628,23 @@ onMounted(() => {
                         This role has {{ selectedRole.teams.length }} team(s). Please remove or reassign teams first.
                     </p>
                 </div>
-
-                <template #footer>
-                    <div class="flex justify-end gap-2">
-                        <UButton color="neutral" variant="ghost" @click="isDeleteRoleConfirmOpen = false">
-                            Cancel
-                        </UButton>
-                        <UButton color="error" @click="deleteRole"
-                            :disabled="selectedRole?.teams && selectedRole.teams.length > 0">
-                            Delete
-                        </UButton>
-                    </div>
-                </template>
-            </UCard>
+            </template>
+            <template #footer>
+                <div class="flex justify-end gap-2">
+                    <UButton color="neutral" variant="ghost" @click="isDeleteRoleConfirmOpen = false">
+                        Cancel
+                    </UButton>
+                    <UButton color="error" @click="deleteRole"
+                        :disabled="selectedRole?.teams && selectedRole.teams.length > 0">
+                        Delete
+                    </UButton>
+                </div>
+            </template>
         </UModal>
 
         <!-- Create Team Modal -->
-        <UModal v-model="isCreateTeamModalOpen">
-            <UCard>
-                <template #header>
-                    <h3 class="text-base font-semibold">Create Team</h3>
-                </template>
-
+        <UModal v-model:open="isCreateTeamModalOpen" title="Create Team">
+            <template #body>
                 <div class="space-y-4 max-h-[70vh] overflow-y-auto">
                     <!-- Basic Info -->
                     <div class="space-y-4">
@@ -726,27 +715,22 @@ onMounted(() => {
                         </div>
                     </UFormGroup>
                 </div>
-
-                <template #footer>
-                    <div class="flex justify-end gap-2">
-                        <UButton color="neutral" variant="ghost" @click="isCreateTeamModalOpen = false">
-                            Cancel
-                        </UButton>
-                        <UButton @click="createTeam">
-                            Create
-                        </UButton>
-                    </div>
-                </template>
-            </UCard>
+            </template>
+            <template #footer>
+                <div class="flex justify-end gap-2">
+                    <UButton color="neutral" variant="ghost" @click="isCreateTeamModalOpen = false">
+                        Cancel
+                    </UButton>
+                    <UButton @click="createTeam">
+                        Create
+                    </UButton>
+                </div>
+            </template>
         </UModal>
 
         <!-- Team Edit Modal -->
-        <UModal v-model="isTeamModalOpen">
-            <UCard>
-                <template #header>
-                    <h3 class="text-base font-semibold">Edit Team</h3>
-                </template>
-
+        <UModal v-model:open="isTeamModalOpen" title="Edit Team">
+            <template #body>
                 <div class="space-y-4 max-h-[70vh] overflow-y-auto">
                     <!-- Basic Info -->
                     <div class="space-y-4">
@@ -818,42 +802,37 @@ onMounted(() => {
                     </UFormGroup>
                 </div>
 
-                <template #footer>
-                    <div class="flex justify-end gap-2">
-                        <UButton color="neutral" variant="ghost" @click="isTeamModalOpen = false">
-                            Cancel
-                        </UButton>
-                        <UButton @click="saveTeam">
-                            Save
-                        </UButton>
-                    </div>
-                </template>
-            </UCard>
+            </template>
+            <template #footer>
+                <div class="flex justify-end gap-2">
+                    <UButton color="neutral" variant="ghost" @click="isTeamModalOpen = false">
+                        Cancel
+                    </UButton>
+                    <UButton @click="saveTeam">
+                        Save
+                    </UButton>
+                </div>
+            </template>
         </UModal>
 
         <!-- Delete Team Confirmation Modal -->
-        <UModal v-model="isDeleteTeamConfirmOpen">
-            <UCard>
-                <template #header>
-                    <h3 class="text-base font-semibold">Delete Team</h3>
-                </template>
-
+        <UModal v-model:open="isDeleteTeamConfirmOpen" title="Delete Team">
+            <template #body>
                 <div class="space-y-4">
                     <p>Are you sure you want to delete the team "{{ selectedTeam?.name }}"?</p>
                     <p class="text-sm text-gray-500">This action cannot be undone.</p>
                 </div>
-
-                <template #footer>
-                    <div class="flex justify-end gap-2">
-                        <UButton color="neutral" variant="ghost" @click="isDeleteTeamConfirmOpen = false">
-                            Cancel
-                        </UButton>
-                        <UButton color="error" @click="deleteTeam">
-                            Delete
-                        </UButton>
-                    </div>
-                </template>
-            </UCard>
+            </template>
+            <template #footer>
+                <div class="flex justify-end gap-2">
+                    <UButton color="neutral" variant="ghost" @click="isDeleteTeamConfirmOpen = false">
+                        Cancel
+                    </UButton>
+                    <UButton color="error" @click="deleteTeam">
+                        Delete
+                    </UButton>
+                </div>
+            </template>
         </UModal>
     </div>
 </template>
