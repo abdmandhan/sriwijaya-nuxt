@@ -10,14 +10,24 @@ const { user, clear: clearSession } = useUserSession()
 const items = computed<DropdownMenuItem[][]>(() => ([[{
     type: 'label',
     label: user?.value?.name,
-}], [{
-    label: 'Log out',
-    icon: 'i-lucide-log-out',
-    onClick: async () => {
-        await clearSession()
-        await navigateTo('/login')
-    }
-}]]))
+}], [
+    {
+        label: "Back to Website",
+        icon: 'i-lucide-arrow-left',
+        class: 'items-center',
+        onClick: () => {
+            navigateTo('/')
+        }
+    },
+    {
+        label: 'Log out',
+        icon: 'i-lucide-log-out',
+        class: 'items-center',
+        onClick: async () => {
+            await clearSession()
+            await navigateTo('/login')
+        }
+    }]]))
 </script>
 
 <template>

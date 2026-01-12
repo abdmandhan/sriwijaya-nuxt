@@ -20,3 +20,39 @@ model users {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model roles {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model teams {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  name        String
+  image       String
+  email       String?
+  linkedin    String?
+  description String?  @db.Text
+  role_id     Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model team_educations {
+  id        Int      @id @default(autoincrement())
+  team_id   Int
+  education String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model team_bar_admissions {
+  id            Int      @id @default(autoincrement())
+  team_id       Int
+  bar_admission String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
