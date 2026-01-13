@@ -60,6 +60,7 @@ model team_bar_admissions {
 model newsletter {
   id        Int      @id @default(autoincrement())
   title     String   @db.Text
+  slug      String   @unique
   content   String   @db.Text
   image     String
   document  String?

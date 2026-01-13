@@ -16,6 +16,7 @@ export default defineEventHandler(async (event) => {
     const newsletter = await prisma.newsletter.create({
         data: {
             title: body.title,
+            slug: slugify(body.title),
             content: body.content,
             image: body.image || '',
             document: body.document?.trim() ? body.document : null,

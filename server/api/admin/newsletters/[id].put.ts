@@ -26,6 +26,7 @@ export default defineEventHandler(async (event) => {
         where: { id },
         data: {
             title: body.title,
+            slug: slugify(body.title),
             content: body.content,
             image: body.image || '',
             document: body.document?.trim() ? body.document : null,
