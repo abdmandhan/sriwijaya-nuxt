@@ -1,9 +1,10 @@
 import { z } from 'zod'
+import { slugify } from '~~/server/utils/string'
 
 const bodySchema = z.object({
-    slug: z.string().min(1),
     name: z.string().min(1),
     image: z.string().optional(),
+    image_card: z.string().optional().nullable(),
     email: z.string().email().optional().nullable(),
     linkedin: z.string().url().optional().nullable(),
     description: z.string().optional().nullable(),
@@ -33,7 +34,7 @@ export default defineEventHandler(async (event) => {
 
         // Check if slug already exists
         const existingTeam = await prisma.teams.findUnique({
-            where: { slug: body.slug },
+            where: { slug: slugify(body.name) },
         })
 
         if (existingTeam) {
@@ -46,9 +47,10 @@ export default defineEventHandler(async (event) => {
         // Create team
         const team = await prisma.teams.create({
             data: {
-                slug: body.slug,
+                slug: slugify(body.name),
                 name: body.name,
                 image: body.image || '',
+                image_card: body.image_card?.trim() ? body.image_card : null,
                 email: body.email,
                 linkedin: body.linkedin,
                 description: body.description,

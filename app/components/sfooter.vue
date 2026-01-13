@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 w-full xl:col-span-2 text-sm xl:text-md">
+            <div class="grid grid-cols-2 w-full xl:col-span-1 text-sm xl:text-md">
                 <div class="flex flex-col gap-2">
                     <span>Phone</span>
                     <a class="font-bold" href="tel:021574508">021 574 508</a>
@@ -43,7 +43,7 @@
             </div>
 
             <button @click="scrollToTop"
-                class="border-2 border-primary p-2 rounded-lg flex items-center gap-2 md:w-fit md:justify-self-end cursor-pointer hover:opacity-80 transition-opacity hover:bg-primary">
+                class="border-2 border-primary p-2 rounded-lg flex items-center gap-2 md:w-fit md:justify-self-end cursor-pointer hover:opacity-80 transition-opacity hover:bg-primary xl:col-span-2">
                 Back to Top
                 <UIcon name="i-lucide-arrow-up" class="size-4" mode="svg" />
             </button>

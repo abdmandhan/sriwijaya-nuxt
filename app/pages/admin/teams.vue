@@ -313,6 +313,7 @@ interface Team {
     slug: string
     name: string
     image: string
+    image_card: string | null
     email: string | null
     linkedin: string | null
     description: string | null
@@ -375,6 +376,7 @@ const teamForm = ref({
     slug: '',
     name: '',
     image: '',
+    image_card: '',
     email: '',
     linkedin: '',
     description: '',
@@ -385,6 +387,8 @@ const teamForm = ref({
 
 const imageFile = ref<File | null>(null)
 const imagePreview = ref<string | null>(null)
+const imageCardFile = ref<File | null>(null)
+const imageCardPreview = ref<string | null>(null)
 const isSlugManuallyEdited = ref(false)
 
 // Generate slug from name
@@ -543,6 +547,7 @@ function openCreateTeam() {
         slug: '',
         name: '',
         image: '',
+        image_card: '',
         email: '',
         linkedin: '',
         description: '',
@@ -552,6 +557,8 @@ function openCreateTeam() {
     }
     imageFile.value = null
     imagePreview.value = null
+    imageCardFile.value = null
+    imageCardPreview.value = null
     isCreateTeamModalOpen.value = true
 }
 
@@ -560,9 +567,16 @@ async function createTeam() {
         // Upload image if file selected
         if (imageFile.value) {
             try {
-                teamForm.value.image = await uploadImage()
+                teamForm.value.image = await uploadImageFile(imageFile.value, teamForm.value.image)
             } catch (uploadError) {
                 console.error('Image upload failed:', uploadError)
+            }
+        }
+        if (imageCardFile.value) {
+            try {
+                teamForm.value.image_card = await uploadImageFile(imageCardFile.value, teamForm.value.image_card)
+            } catch (uploadError) {
+                console.error('Image card upload failed:', uploadError)
             }
         }
 
@@ -587,6 +601,8 @@ async function createTeam() {
         isCreateTeamModalOpen.value = false
         imageFile.value = null
         imagePreview.value = null
+        imageCardFile.value = null
+        imageCardPreview.value = null
     } catch (error: any) {
         toast.add({
             title: 'Error',
@@ -609,6 +625,7 @@ async function openTeamEdit(team: Team) {
                 slug: teamDetails.slug,
                 name: teamDetails.name,
                 image: teamDetails.image,
+                image_card: teamDetails.image_card || '',
                 email: teamDetails.email || '',
                 linkedin: teamDetails.linkedin || '',
                 description: teamDetails.description || '',
@@ -617,7 +634,9 @@ async function openTeamEdit(team: Team) {
                 bar_admissions: teamDetails.bar_admissions?.map((b: TeamBarAdmission) => b.bar_admission) || [],
             }
             imagePreview.value = teamDetails.image
+            imageCardPreview.value = teamDetails.image_card || ''
             imageFile.value = null
+            imageCardFile.value = null
             isSlugManuallyEdited.value = true // Keep existing slug in edit mode
             isTeamModalOpen.value = true
         }
@@ -643,10 +662,22 @@ function handleImageSelect(event: Event) {
     }
 }
 
+function handleImageCardSelect(event: Event) {
+    const target = event.target as HTMLInputElement
+    if (target.files && target.files[0]) {
+        imageCardFile.value = target.files[0]
+        const reader = new FileReader()
+        reader.onload = (e) => {
+            imageCardPreview.value = e.target?.result as string
+        }
+        reader.readAsDataURL(imageCardFile.value)
+    }
+}
+
 // Upload image
-async function uploadImage(): Promise<string> {
-    if (!imageFile.value) {
-        return teamForm.value.image // Return existing image if no new file
+async function uploadImageFile(file: File | null, existingUrl: string): Promise<string> {
+    if (!file) {
+        return existingUrl // Return existing image if no new file
     }
 
     try {
@@ -658,15 +689,15 @@ async function uploadImage(): Promise<string> {
                 resolve(result)
             }
             reader.onerror = reject
-            reader.readAsDataURL(imageFile.value!)
+            reader.readAsDataURL(file)
         })
 
         const result = await $fetch('/api/admin/upload', {
             method: 'POST',
             body: {
                 file: base64,
-                filename: imageFile.value.name,
-                contentType: imageFile.value.type,
+                filename: file.name,
+                contentType: file.type,
             },
         })
 
@@ -689,10 +720,17 @@ async function saveTeam() {
         // Upload image if new file selected
         if (imageFile.value) {
             try {
-                teamForm.value.image = await uploadImage()
+                teamForm.value.image = await uploadImageFile(imageFile.value, teamForm.value.image)
             } catch (uploadError) {
                 // If upload fails, use existing image
                 console.error('Image upload failed, using existing image:', uploadError)
+            }
+        }
+        if (imageCardFile.value) {
+            try {
+                teamForm.value.image_card = await uploadImageFile(imageCardFile.value, teamForm.value.image_card)
+            } catch (uploadError) {
+                console.error('Image card upload failed, using existing image:', uploadError)
             }
         }
 
@@ -731,6 +769,8 @@ async function saveTeam() {
         isTeamModalOpen.value = false
         imageFile.value = null
         imagePreview.value = null
+        imageCardFile.value = null
+        imageCardPreview.value = null
     } catch (error: any) {
         toast.add({
             title: 'Error',
@@ -1012,13 +1052,23 @@ onMounted(() => {
                             <UInput v-model="teamForm.linkedin" type="url" placeholder="Enter LinkedIn URL" />
                         </UFormField>
 
-                        <UFormField label="Image" class="col-span-2">
+                        <UFormField label="Image">
                             <div class="space-y-2">
                                 <div v-if="imagePreview" class="relative">
                                     <NuxtImg :src="imagePreview" alt="Preview"
                                         class="size-32 object-cover rounded-lg" />
                                 </div>
                                 <UInput type="file" accept="image/*" @change="handleImageSelect" />
+                            </div>
+                        </UFormField>
+
+                        <UFormField label="Image Card">
+                            <div class="space-y-2">
+                                <div v-if="imageCardPreview" class="relative">
+                                    <NuxtImg :src="imageCardPreview" alt="Card preview"
+                                        class="size-32 object-cover rounded-lg" />
+                                </div>
+                                <UInput type="file" accept="image/*" @change="handleImageCardSelect" />
                             </div>
                         </UFormField>
 

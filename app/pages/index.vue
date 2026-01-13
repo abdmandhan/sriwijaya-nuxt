@@ -244,7 +244,8 @@
                     <div class="flex gap-4">
                         <div v-for="member in team.members" :key="member.name"
                             class="relative h-[222px] xl:h-[522px] w-[164px] md:w-[169px] md:h-[230px] xl:w-[384px]">
-                            <NuxtImg :src="member.image" class="z-30 w-[153px] md:w-[160px] xl:w-[360px] absolute" />
+                            <NuxtImg :src="member.image_card"
+                                class="z-30 w-[153px] md:w-[160px] xl:w-[360px] absolute" />
                             <div
                                 class="absolute right-0 bottom-0 z-20 bg-white w-[152px] h-[166px] md:w-[160px] md:h-[173.5px] xl:w-[360px] xl:h-[392px] rounded-xl p-2 xl:p-4 flex items-end">
                                 <div class="flex flex-col justify-between w-full xl:gap-20 gap-2">
@@ -257,7 +258,7 @@
                                         </span>
                                     </div>
                                     <div class="flex justify-end">
-                                        <NuxtLink to="/homepage/s"
+                                        <NuxtLink :to="`/homepage/${member.slug}`"
                                             class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2 xl:text-md items-center">
                                             see more
                                             <UIcon name="i-lucide-arrow-right"
@@ -399,48 +400,7 @@ const practiceAreas = [
     'Media and Entertainment'
 ]
 
-const teams = [
-    {
-        title: 'Managing Partner',
-        members: [
-            {
-                name: 'Shinta Sriwijaya, S.H., LL.M.',
-                image: '/img/team-1.png',
-            }
-        ]
-    },
-    {
-        title: "Senior Associates",
-        members: [
-            {
-                name: 'Siti Habibah, S.H., M.H.',
-                image: '/img/team-2.png',
-            },
-            {
-                name: 'Yohana Tri Meiliyanti',
-                image: '/img/team-3.png'
-            }
-        ]
-    },
-    {
-        title: 'OF-Counsel',
-        members: [
-            {
-                name: 'Bagus Rahman, S.H., M.H.',
-                image: '/img/team-4.png'
-            }
-        ]
-    },
-    {
-        title: 'Supporting Team',
-        members: [
-            {
-                name: 'Shaqina Dhiara P, S.IKom.',
-                image: 'img/team-5.png'
-            }
-        ]
-    },
-]
+const teams = await $fetch('/api/teams')
 
 const newsletters = [
     { title: 'Asset performance Management Software' },

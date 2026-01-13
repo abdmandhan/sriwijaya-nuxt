@@ -1,22 +1,25 @@
 <template>
-    <div class="h-full mb-10">
+    <div class="h-full mb-10" v-if="team">
         <!-- breadcrumb -->
         <div
             class="bg-secondary h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base max-w-[1608px] mx-auto">
-            Homepage / Shinta Sriwijaya
+
+            <NuxtLink href="/" class="hover:text-blue-400 hover:border-b hover:border-blue-400 transition-all"> Homepage
+            </NuxtLink>/
+            {{ team.name }}
         </div>
         <div class="h-[639px] md:h-[280px] xl:h-[400px] bg-cover overflow-hidden relative
             bg-center bg-no-repeat bg-[url(/bg/homepage-mobile.png)] md:bg-[url(/bg/homepage.png)]
             ">
             <div class="flex max-w-[1608px] mx-auto h-full">
-                <NuxtImg src="/img/shinta.png"
+                <NuxtImg :src="team.image"
                     class="absolute md:static bottom-0 left-0 md:translate-0 w-[382px] md:w-auto scale-150 md:scale-100" />
                 <div class="text-white w-full h-full flex md:items-center px-6 md:px-0 py-10 md:py-0">
                     <div class="flex flex-col gap-4">
-                        <h2 class="text-md md:text-sm xl:text-2xl">Managing Partner</h2>
-                        <h1 class="text-2xl md:text-4xl xl:text-5xl font-bold">Shinta Sriwijaya, S.H., LL.M.</h1>
+                        <h2 class="text-md md:text-sm xl:text-2xl">{{ team.role }}</h2>
+                        <h1 class="text-2xl md:text-4xl xl:text-5xl font-bold">{{ team.name }}</h1>
                         <div class="flex flex-col text-md md:text-sm xl:text-xl gap-0 xl:gap-2">
-                            <span class="flex gap-2 items-center">
+                            <span v-if="team.email" class="flex gap-2 items-center">
                                 <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -24,16 +27,18 @@
                                         fill="white" />
                                 </svg>
 
-                                Email : <span class="border-b border-white">shinta.sriwijaya@ssco-law.com</span>
+                                Email : <a :href="`mailto:${team.email}`" class="border-b border-white">{{ team.email
+                                }}</a>
                             </span>
-                            <span class="flex gap-2 items-center">
+                            <span v-if="team.linkedin" class="flex gap-2 items-center">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M17.76 0H2.4C1.0752 0 0 1.0752 0 2.4V17.76C0 19.0848 1.0752 20.16 2.4 20.16H17.76C19.0848 20.16 20.16 19.0848 20.16 17.76V2.4C20.16 1.0752 19.0848 0 17.76 0ZM6.24 7.68V16.8H3.36V7.68H6.24ZM3.36 5.0256C3.36 4.3536 3.936 3.84 4.8 3.84C5.664 3.84 6.2064 4.3536 6.24 5.0256C6.24 5.6976 5.7024 6.24 4.8 6.24C3.936 6.24 3.36 5.6976 3.36 5.0256ZM16.8 16.8H13.92C13.92 16.8 13.92 12.3552 13.92 12C13.92 11.04 13.44 10.08 12.24 10.0608H12.2016C11.04 10.0608 10.56 11.0496 10.56 12C10.56 12.4368 10.56 16.8 10.56 16.8H7.68V7.68H10.56V8.9088C10.56 8.9088 11.4864 7.68 13.3488 7.68C15.2544 7.68 16.8 8.9904 16.8 11.6448V16.8Z"
                                         fill="white" />
                                 </svg>
-                                Linkedin : <span class="border-b border-white">Shinta Sriwijaya</span>
+                                Linkedin : <a :href="team.linkedin" target="_blank" class="border-b border-white">{{
+                                    team.name }}</a>
                             </span>
                         </div>
                     </div>
@@ -42,96 +47,36 @@
         </div>
         <div class="grid grid-cols-12 max-w-[1608px] mx-auto">
             <div class="flex flex-col gap-6 px-4 py-6 col-span-12 md:col-span-2 xl:col-span-3 md:py-10">
-                <div class="flex flex-col gap-2">
+                <div v-if="team.educations && team.educations.length > 0" class="flex flex-col gap-2">
                     <span class="text-md font-bold xl:text-2xl">Education:</span>
                     <div class="text-sm flex flex-col gap-2 xl:text-xl">
-                        <span>University of Leeds, Master of Law (LL.M.)</span>
-                        <span>Universitas Brawijaya, Bachelor of Law (S.H.)</span>
+                        <span v-for="(education, index) in team.educations" :key="index">{{ education }}</span>
                     </div>
                 </div>
-                <div class="flex flex-col gap-2">
+                <div v-if="team.bar_admissions && team.bar_admissions.length > 0" class="flex flex-col gap-2">
                     <span class="text-md font-bold xl:text-2xl">Bar Admission:</span>
-                    <div class="text-sm xl:text-xl">
-                        <span>Dewan Pengacara Nasional Indonesia (DPNI)</span>
+                    <div class="text-sm flex flex-col gap-2 xl:text-xl">
+                        <span v-for="(admission, index) in team.bar_admissions" :key="index">{{ admission }}</span>
                     </div>
                 </div>
             </div>
 
             <div class="px-4 gap-2 col-span-12 md:col-span-10 xl:col-span-9 md:py-10">
                 <span class="font-bold text-2xl">Overview</span>
-                <p>
-                    Shinta is committed to providing solutions for the Clients’ best interest with high ethical work and
-                    professionalism. She takes the time needed to systematically solves client’s issues thoroughly and
-                    anticipate further challenges. Effective communication, listening skill, clear and concise in
-                    delivering
-                    solution are Shinta’s strength in foster greater trust with clients.
-
-                    Shinta’s area of expertise includes commercial dispute settlement, land dispute, tort and breaching
-                    contract, general corporate & commercial transactions, labor, family law (marriage, divorce,
-                    domestic
-                    violence, and other matters regarding family relationships), trade, criminal law and litigation.
-
-                    In addition, Shinta is an ambitious young woman who desires for further development through
-                    systematic
-                    study and professional experience. She is also the member of non-profit organization; Indonesia
-                    Youth
-                    Diplomacy for her socio-politics awareness and social contribution to the nation.
-
-                    Notable Representative Experience:
-                    Project leader representing PT Telekomunikasi Selular for Recollection of B2B Customers Receivable
-                    Billing via Private Lawyer and has successfully collected 67% of the total receivables outstanding.
-
-                    Assisted PT Telekomunikasi Selular collaborate with the Junior Attorney General for Civil and State
-                    Administration (Jaksa Agung Muda Perdata dan Tata Usaha Negara) in issuing legal opinion for
-                    following
-                    projects:
-                </p>
-                <ol>
-                    <li>Highspeed Railway Jakarta Bandung in choosing the agreement scheme.</li>
-                    <li>Cooperation to resell telecommunication services (Telkomsel Orbit service)</li>
-                    <li>Netflix regarding the applicable law.</li>
-                </ol>
-                <p>
-                    Represented PT Telekomunikasi Selular in land dispute in two district courts as stated below:
-                </p>
-                <ol>
-                    <li>
-                        Metro District Court, Lampung.
-                    </li>
-                    <li>Gedong Tataan District Court, Lampung.</li>
-                </ol>
-
-                <p>Assisted a client for fraud investment vs Malaysian asset management company with a total
-                    compensation of
-                    USD 3,400,000; further providing legal opinion for cross border dispute settlement and assisting
-                    client
-                    to report the investment advisor to the Greater Jakarta Metropolitan Regional Police (POLDA Metro
-                    Jaya)
-                    for fraud and embezzlement.</p>
-
-                <p>
-                    Represented Lembaga Pengelola Dana Bergulir Koperasi Usaha Mikro Kecil dan Menengah (LPDB-KUMKM)
-                    under
-                    the Ministry of Co-operatives in negotiating against co-operatives and Micro and Small Enterprises
-                    (MSE)
-                    who failed to repay its debts in order to repay the APBN funds and support state refund and improve
-                    the
-                    non-performing loan, in six court proceedings in Indonesia as below:
-                </p>
-
-                <ol>
-                    <li>Siak Sri Indrapura District Court, Riau.</li>
-                    <li>Palalawan District Court, Riau.</li>
-                    <li>Pekanbaru District Court, Pekanbaru.</li>
-                    <li>Bengkulu District Court, Bengkulu.</li>
-                    <li>Kupang District Court, East Nusa Tenggara.</li>
-                    <li>South Jakarta District Court, DKI Jakarta.</li>
-                </ol>
-
-                <p>
-                    Represented PT Dwikarya Anugerah Sejati with regard of TORT dispute against PT Bank OCBC NISP Tbk.
-                </p>
+                <div v-if="team.description" v-html="team.description"></div>
             </div>
         </div>
     </div>
 </template>
+
+<script setup>
+const route = useRoute()
+const slug = route.params.id
+
+const team = await $fetch(`/api/teams/${slug}`).catch(() => {
+    throw createError({
+        statusCode: 404,
+        message: 'Team not found'
+    })
+})
+</script>

@@ -33,6 +33,7 @@ model teams {
   slug        String   @unique
   name        String
   image       String
+  image_card  String?
   email       String?
   linkedin    String?
   description String?  @db.Text
