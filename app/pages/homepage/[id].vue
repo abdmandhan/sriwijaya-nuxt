@@ -28,7 +28,7 @@
                                 </svg>
 
                                 Email : <a :href="`mailto:${team.email}`" class="border-b border-white">{{ team.email
-                                }}</a>
+                                    }}</a>
                             </span>
                             <span v-if="team.linkedin" class="flex gap-2 items-center">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
@@ -63,7 +63,7 @@
 
             <div class="px-4 gap-2 col-span-12 md:col-span-10 xl:col-span-9 md:py-10 editor">
                 <span class="font-bold text-2xl">Overview</span>
-                <div v-if="team.description" v-html="team.description"></div>
+                <div v-if="team.description" v-html="team.description" class="mt-6"></div>
             </div>
         </div>
     </div>

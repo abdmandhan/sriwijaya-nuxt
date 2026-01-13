@@ -114,7 +114,8 @@ function generateSlug(name: string): string {
 async function fetchRoles() {
     loading.value = true
     try {
-        roles.value = await $fetch('/api/admin/roles', { method: 'GET' })
+        const req = await $fetch('/api/admin/roles', { method: 'GET' })
+        roles.value = req
     } catch (error: any) {
         toast.add({
             title: 'Error',
