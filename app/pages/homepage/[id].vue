@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <div class="px-4 gap-2 col-span-12 md:col-span-10 xl:col-span-9 md:py-10">
+            <div class="px-4 gap-2 col-span-12 md:col-span-10 xl:col-span-9 md:py-10 editor">
                 <span class="font-bold text-2xl">Overview</span>
                 <div v-if="team.description" v-html="team.description"></div>
             </div>

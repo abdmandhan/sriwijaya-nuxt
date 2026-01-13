@@ -150,3 +150,12 @@
 html {
   scroll-behavior: smooth;
 }
+
+.editor ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+.editor ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}

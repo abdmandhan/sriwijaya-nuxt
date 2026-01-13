@@ -1,5 +1,7 @@
 <template>
-    newsletter
+    <UCard>
+
+    </UCard>
 </template>
 
 <script setup lang="ts">
