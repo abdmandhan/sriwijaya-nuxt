@@ -340,6 +340,32 @@ const isDeleteRoleConfirmOpen = useState('isDeleteRoleConfirmOpen', () => false)
 const isDeleteTeamConfirmOpen = useState('isDeleteTeamConfirmOpen', () => false)
 const expandedRoles = useState<Set<number>>('expandedRoles', () => new Set())
 
+// Computed properties for team modal
+const isTeamFormModalOpen = computed({
+    get: () => isCreateTeamModalOpen.value || isTeamModalOpen.value,
+    set: (value: boolean) => {
+        isCreateTeamModalOpen.value = false
+        isTeamModalOpen.value = false
+    }
+})
+
+const isEditMode = computed(() => isTeamModalOpen.value && !isCreateTeamModalOpen.value)
+const teamModalTitle = computed(() => isEditMode.value ? 'Edit Team' : 'Create Team')
+const teamModalSubmitLabel = computed(() => isEditMode.value ? 'Save' : 'Create')
+
+function closeTeamModal() {
+    isCreateTeamModalOpen.value = false
+    isTeamModalOpen.value = false
+}
+
+function submitTeamForm() {
+    if (isEditMode.value) {
+        saveTeam()
+    } else {
+        createTeam()
+    }
+}
+
 // Form data
 const roleForm = ref({
     name: '',
@@ -846,7 +872,8 @@ onMounted(() => {
                             No teams in this role
                         </div>
                         <div v-else class="divide-y">
-                            <div v-for="team in role.teams" :key="team.id" class="p-4 hover:bg-white transition-colors">
+                            <div v-for="team in role.teams" :key="team.id"
+                                class="p-4 hover:bg-white transition-colors rounded-lg">
                                 <div class="flex items-start justify-between gap-4">
                                     <div class="flex items-start gap-4 flex-1">
                                         <NuxtImg v-if="team.image" :src="team.image" :alt="team.name"
@@ -854,9 +881,8 @@ onMounted(() => {
                                         <div class="flex-1 min-w-0">
                                             <h5 class="font-medium">{{ team.name }}</h5>
                                             <p class="text-sm text-gray-500 truncate">{{ team.slug }}</p>
-                                            <p v-if="team.description" class="text-sm text-gray-600 mt-1 line-clamp-2">
-                                                {{ team.description }}
-                                            </p>
+                                            <p v-if="team.description" class="text-sm text-gray-600 mt-1 line-clamp-2"
+                                                v-html="team.description"></p>
                                             <div class="flex gap-4 mt-2 text-sm text-gray-500">
                                                 <span v-if="team.email">{{ team.email }}</span>
                                                 <span v-if="team.linkedin">
@@ -957,8 +983,9 @@ onMounted(() => {
             </template>
         </UModal>
 
-        <!-- Create Team Modal -->
-        <UModal v-model:open="isCreateTeamModalOpen" title="Create Team" :dismissible="false" class="lg:min-w-[800px]">
+        <!-- Team Form Modal (Create/Edit) -->
+        <UModal v-model:open="isTeamFormModalOpen" :title="teamModalTitle" :dismissible="false"
+            class="lg:min-w-[800px]">
             <template #body>
                 <div class="space-y-4 max-h-[70vh] overflow-y-auto">
                     <!-- Basic Info -->
@@ -968,102 +995,24 @@ onMounted(() => {
                                 class="w-full" />
                         </UFormField>
 
-                        <UFormField label="Name" required>
+                        <UFormField label="Name" required class="col-span-2">
                             <UInput v-model="teamForm.name" placeholder="Enter team member name" />
                         </UFormField>
 
-                        <UFormField label="Slug" required>
+                        <!-- <UFormField v-if="!isEditMode" label="Slug" required>
                             <UInput v-model="teamForm.slug" placeholder="Auto-generated from name" disabled
-                                @input="onSlugInput" />
-                        </UFormField>
-
-                        <UFormField label="Image">
-                            <div class="space-y-2">
-                                <div v-if="imagePreview" class="relative">
-                                    <NuxtImg :src="imagePreview" alt="Preview"
-                                        class="size-32 object-cover rounded-lg" />
-                                </div>
-                                <UInput type="file" accept="image/*" @change="handleImageSelect" />
-                            </div>
-                        </UFormField>
-
-                        <UFormField label="Email">
-                            <UInput v-model="teamForm.email" type="email" placeholder="Enter email" />
-                        </UFormField>
-
-                        <UFormField label="LinkedIn">
-                            <UInput v-model="teamForm.linkedin" type="url" placeholder="Enter LinkedIn URL" />
-                        </UFormField>
-
-                        <UFormField label="Description" class="col-span-2">
-                            <!-- <UTextarea v-model="teamForm.description" placeholder="Enter description" :rows="4" /> -->
-                            <ckeditor v-if="editor && config" v-model="teamForm.description" :editor="editor"
-                                :config="config" />
-                        </UFormField>
-                    </div>
-
-                    <!-- Educations -->
-                    <UFormField label="Educations">
-                        <div class="space-y-2">
-                            <div v-for="(education, index) in teamForm.educations" :key="index" class="flex gap-2">
-                                <UInput v-model="teamForm.educations[index]" placeholder="Enter education" />
-                                <UButton icon="i-lucide-x" color="error" variant="ghost" size="sm"
-                                    @click="removeEducation(index)" />
-                            </div>
-                            <UButton icon="i-lucide-plus" variant="outline" size="sm" @click="addEducation">
-                                Add Education
-                            </UButton>
-                        </div>
-                    </UFormField>
-
-                    <!-- Bar Admissions -->
-                    <UFormField label="Bar Admissions">
-                        <div class="space-y-2">
-                            <div v-for="(admission, index) in teamForm.bar_admissions" :key="index" class="flex gap-2">
-                                <UInput v-model="teamForm.bar_admissions[index]" placeholder="Enter bar admission" />
-                                <UButton icon="i-lucide-x" color="error" variant="ghost" size="sm"
-                                    @click="removeBarAdmission(index)" />
-                            </div>
-                            <UButton icon="i-lucide-plus" variant="outline" size="sm" @click="addBarAdmission">
-                                Add Bar Admission
-                            </UButton>
-                        </div>
-                    </UFormField>
-                </div>
-            </template>
-            <template #footer>
-                <div class="flex justify-end gap-2">
-                    <UButton color="neutral" variant="ghost" @click="isCreateTeamModalOpen = false">
-                        Cancel
-                    </UButton>
-                    <UButton @click="createTeam">
-                        Create
-                    </UButton>
-                </div>
-            </template>
-        </UModal>
-
-        <!-- Team Edit Modal -->
-        <UModal v-model:open="isTeamModalOpen" title="Edit Team" class="max-w-xl" :dismissible="false">
-            <template #body>
-                <div class="space-y-4 max-h-[70vh] overflow-y-auto">
-                    <!-- Basic Info -->
-                    <div class="space-y-4 grid grid-cols-2 gap-4">
-                        <UFormField label="Role" required class="col-span-2">
-                            <USelect v-model="teamForm.role_id" :items="roles" labelKey="name" valueKey="id"
-                                class="w-full" />
-                        </UFormField>
-
-                        <UFormField label="Name" required>
-                            <UInput v-model="teamForm.name" placeholder="Enter team member name" />
-                        </UFormField>
-
-                        <!-- <UFormField label="Slug" required>
-                            <UInput v-model="teamForm.slug" placeholder="Auto-generated from name"
                                 @input="onSlugInput" />
                         </UFormField> -->
 
-                        <UFormField label="Image">
+                        <UFormField label="Email">
+                            <UInput v-model="teamForm.email" type="email" placeholder="Enter email" />
+                        </UFormField>
+
+                        <UFormField label="LinkedIn">
+                            <UInput v-model="teamForm.linkedin" type="url" placeholder="Enter LinkedIn URL" />
+                        </UFormField>
+
+                        <UFormField label="Image" class="col-span-2">
                             <div class="space-y-2">
                                 <div v-if="imagePreview" class="relative">
                                     <NuxtImg :src="imagePreview" alt="Preview"
@@ -1071,14 +1020,6 @@ onMounted(() => {
                                 </div>
                                 <UInput type="file" accept="image/*" @change="handleImageSelect" />
                             </div>
-                        </UFormField>
-
-                        <UFormField label="Email">
-                            <UInput v-model="teamForm.email" type="email" placeholder="Enter email" />
-                        </UFormField>
-
-                        <UFormField label="LinkedIn">
-                            <UInput v-model="teamForm.linkedin" type="url" placeholder="Enter LinkedIn URL" />
                         </UFormField>
 
                         <UFormField label="Description" class="col-span-2">
@@ -1115,15 +1056,14 @@ onMounted(() => {
                         </div>
                     </UFormField>
                 </div>
-
             </template>
             <template #footer>
                 <div class="flex justify-end gap-2">
-                    <UButton color="neutral" variant="ghost" @click="isTeamModalOpen = false">
+                    <UButton color="neutral" variant="ghost" @click="closeTeamModal">
                         Cancel
                     </UButton>
-                    <UButton @click="saveTeam">
-                        Save
+                    <UButton @click="submitTeamForm">
+                        {{ teamModalSubmitLabel }}
                     </UButton>
                 </div>
             </template>

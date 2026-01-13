@@ -15,9 +15,7 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
         label: "Back to Website",
         icon: 'i-lucide-arrow-left',
         class: 'items-center',
-        onClick: () => {
-            navigateTo('/')
-        }
+        href: '/',
     },
     {
         label: 'Log out',

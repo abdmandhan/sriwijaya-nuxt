@@ -5,6 +5,20 @@ export default defineAppConfig({
         base: 'cursor-pointer'
       }
     },
+    input: {
+      slots: {
+        root: 'w-full'
+      }
+
+    },
+    // formField: {
+    //   slots: {
+    //     root: 'w-full',
+    //     container: 'w-full',
+    //     wrapper: 'w-full'
+    //   }
+
+    // },
     card: {
       slots: {
         // root: 'max-w-xl'
