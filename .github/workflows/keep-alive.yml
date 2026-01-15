@@ -1,0 +1,38 @@
+name: Keep Supabase Active
+
+on:
+  schedule:
+    # Run every 6 hours to keep Supabase active
+    # Cron format: minute hour day month day-of-week
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  ping-api-staging:
+    runs-on: ubuntu-latest
+    steps:
+        # using vars from staging env
+      - name: Call Health Check API
+        env:
+          # Set this in GitHub Secrets: Settings > Secrets and variables > Actions
+          # Or replace with your production URL directly
+        #   API_URL: ${{ vars.API_URL || 'https://your-domain.com/api/health' }}
+          API_URL: 'https://ssco-law.id/api/health'
+        run: |
+          echo "Calling health check endpoint: $API_URL"
+          
+          response=$(curl -s -w "\n%{http_code}" "$API_URL" || echo -e "\n000")
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "Response status: $http_code"
+          echo "Response body: $body"
+          
+          if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
+            echo "✅ Health check passed"
+            exit 0
+          else
+            echo "❌ Health check failed with status $http_code"
+            exit 1
+          fi
+
