@@ -120,8 +120,7 @@ function getImage(url: string, fallback: string) {
                     class="font-bold text-sm md:text-md h-[17px] text-ellipsis truncate max-w-[186px] md:max-w-[500px] xl:max-w-[1022px]">
                     {{ latestNewsletter.title }}
                 </span>
-                <div
-                    class="text-sm md:text-md max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] xl:h-[56px] truncate text-ellipsis h-[34px]"
+                <div class="text-sm md:text-md max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] xl:h-[56px] truncate text-ellipsis h-[34px]"
                     v-html="latestNewsletter.content"></div>
                 <NuxtLink :to="`/newsletter/${latestNewsletter.id}`"
                     class="text-[10px] xl:text-2xl flex items-center text-primary gap-2 xl:gap-4">
@@ -142,10 +141,11 @@ function getImage(url: string, fallback: string) {
                 No newsletters available.
             </div>
             <div v-else class="bg-white rounded-xl w-full" v-for="newsletter in newsletters" :key="newsletter.id">
-                <NuxtImg :src="getImage(newsletter.image, '/img/newsletter-card-1.png')" class="w-full rounded-t-xl" />
+                <NuxtImg :src="getImage(newsletter.image, '/img/newsletter-card-1.png')"
+                    class="w-full rounded-t-xl aspect-480/320" />
                 <div class="p-2 flex flex-col gap-2 xl:gap-4 xl:p-12">
                     <span class="font-bold text-[10px] xl:text-3xl">{{ newsletter.title }}</span>
-                    <div class="text-gray-500 text-[8px] xl:text-2xl" v-html="newsletter.content"></div>
+                    <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2" v-html="newsletter.content"></div>
                     <NuxtLink :to="`/newsletter/${newsletter.id}`"
                         class="text-[8px] flex gap-2 items-center xl:text-2xl text-primary">
                         Learn More
@@ -165,8 +165,7 @@ function getImage(url: string, fallback: string) {
                 :class="{ 'opacity-50 cursor-not-allowed hover:bg-transparent hover:text-inherit': !canPrev }"
                 :disabled="!canPrev" @click="goToPage(page - 1)">Prev</button>
             <ol class="flex items-center">
-                <li v-for="pageNumber in pageNumbers" :key="pageNumber"
-                    class="border border-[#E5E7EB]">
+                <li v-for="pageNumber in pageNumbers" :key="pageNumber" class="border border-[#E5E7EB]">
                     <button class="cursor-pointer px-3 py-2"
                         :class="pageNumber === page ? 'bg-[#91795C] text-white' : 'bg-white hover:bg-[#91795C] hover:text-white'"
                         @click="goToPage(pageNumber)">
