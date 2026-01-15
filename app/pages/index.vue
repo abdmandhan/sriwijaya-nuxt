@@ -321,9 +321,6 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </button>
-
-
-
                         </NuxtLink>
 
                     </div>
@@ -412,9 +409,8 @@ const practiceAreas = [
     'Media and Entertainment'
 ]
 
-const teams = await $fetch('/api/teams')
-
-const newsletters = await $fetch('/api/newsletters/top')
+const { data: teams } = await useFetch('/api/teams', { server: true })
+const { data: newsletters } = await useFetch('/api/newsletters/top', { server: true })
 
 const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
 </script>
