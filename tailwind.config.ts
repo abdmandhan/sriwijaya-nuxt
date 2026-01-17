@@ -12,7 +12,7 @@ export default {
         rajdhani: ['Rajdhani', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
-    },
+    }
   },
 } satisfies Config
 

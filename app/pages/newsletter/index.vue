@@ -44,10 +44,12 @@ const { data: newsletterResponse, pending } = await useFetch<NewsletterListRespo
         pageSize,
     })),
     watch: [page],
+    server: false
 })
 
 const { data: latestResponse } = await useFetch<Newsletter[]>('/api/newsletters/top', {
     query: { limit: 1 },
+    server: false
 })
 
 const newsletters = computed(() => newsletterResponse.value?.items ?? [])
@@ -108,33 +110,43 @@ function getImage(url: string, fallback: string) {
             </div>
         </div>
         <!-- Latest Newsletter -->
-        <div v-if="latestNewsletter" class="flex gap-2 md:gap-4 my-10 mx-4 md:p-10 max-w-[1608px] md:mx-auto">
+        <div v-if="latestNewsletter" class="flex gap-2 md:gap-10 my-10 mx-4 md:p-10 max-w-[1608px] md:mx-auto">
             <div>
-                <NuxtImg class="aspect-160/100 md:aspect-240/160 min-w-[160px] md:min-w-[240px] rounded-xl"
+                <!-- class="aspect-160/100 min-w-[160px] md:min-w-[240px] rounded-xl lg:aspect-480/320 md:aspect-180/120" -->
+                <NuxtImg class="w-[160px] h-[100px] md:w-[180px] md:h-[120px] lg:w-[480px] lg:h-[320px] rounded-xl"
                     :src="getImage(latestNewsletter.image, '/img/newsletter-card-2.png')" />
             </div>
-            <div class="flex flex-col gap-2">
-                <span class="uppercase border-b border-primary font-rajdhani text-xs md:text-sm w-fit">
-                    Latest Newsletter
-                </span>
-                <span
-                    class="font-bold text-sm md:text-md h-[17px] text-ellipsis truncate max-w-[186px] md:max-w-[500px] xl:max-w-[1022px]">
-                    {{ latestNewsletter.title }}
-                </span>
-                <div class="text-sm md:text-md max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] xl:h-[56px] truncate text-ellipsis h-[34px]"
-                    v-html="latestNewsletter.content"></div>
+            <div class="flex flex-col gap-2 justify-between">
+                <div class="flex flex-col gap-2">
+                    <span
+                        class="uppercase border-b border-primary font-rajdhani text-xs md:text-sm w-fit lg:text-3xl text-primary">
+                        Latest Newsletter
+                    </span>
+                    <span
+                        class="font-bold text-sm md:text-md h-[17px] lg:h-auto text-ellipsis max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] lg:text-4xl line-clamp-2">
+                        {{ latestNewsletter.title }}
+                    </span>
+                    <div class="text-sm md:text-md max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] xl:h-[56px] md:text-clip h-[34px] lg:text-xl line-clamp-4"
+                        v-html="latestNewsletter.content"></div>
+                </div>
                 <NuxtLink :to="`/newsletter/${latestNewsletter.slug}`"
-                    class="text-[10px] xl:text-2xl flex items-center text-primary gap-2 xl:gap-4">
+                    class="text-[10px] xl:text-2xl flex items-center text-primary gap-2 xl:gap-4 font-semibold group">
                     Learn More
-                    <UIcon name="i-lucide-arrow-right"
-                        class="size-3 text-primary xl:size-6 border border-primary rounded-full p-px xl:p-1"
-                        mode="svg" />
+
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="size-3 text-primary xl:size-10 border border-primary rounded-full p-px xl:p-1 transition-all duration-300 group-hover:translate-x-2">
+                        <path d="M5 12H19" stroke="#75624C" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M15 8L19 12L15 16" stroke="#75624C" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
                 </NuxtLink>
             </div>
         </div>
 
         <!-- newsletter list -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mx-4 md:p-10 pb-10 xl:max-w-[1608px] xl:mx-auto">
+        <div
+            class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mx-4 md:p-10 pb-10 xl:max-w-[1608px] xl:mx-auto xl:gap-20">
             <div v-if="pending && newsletters.length === 0" class="col-span-2 md:col-span-3 text-center text-gray-500">
                 Loading newsletters...
             </div>
@@ -145,13 +157,19 @@ function getImage(url: string, fallback: string) {
                 <NuxtImg :src="getImage(newsletter.image, '/img/newsletter-card-1.png')"
                     class="w-full rounded-t-xl aspect-480/320" />
                 <div class="p-2 flex flex-col gap-2 xl:gap-4 xl:p-12">
-                    <span class="font-bold text-[10px] xl:text-3xl">{{ newsletter.title }}</span>
+                    <span class="font-bold text-[10px] xl:text-3xl line-clamp-2">{{ newsletter.title }}</span>
                     <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2" v-html="newsletter.content"></div>
                     <NuxtLink :to="`/newsletter/${newsletter.slug}`"
-                        class="text-[8px] flex gap-2 items-center xl:text-2xl text-primary">
+                        class="text-[8px] flex gap-2 items-center xl:text-2xl text-primary group font-semibold">
                         Learn More
-                        <UIcon name="i-lucide-arrow-right"
-                            class="size-3 xl:size-6 border border-secondary-100 rounded-full p-px xl:p-1" mode="svg" />
+
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="size-3 text-primary xl:size-7 border border-primary rounded-full p-px xl:p-1 transition-all duration-300 group-hover:translate-x-2">
+                            <path d="M5 12H19" stroke="#75624C" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M15 8L19 12L15 16" stroke="#75624C" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
 
                     </NuxtLink>
 
@@ -163,8 +181,8 @@ function getImage(url: string, fallback: string) {
         <div class="flex items-center justify-center pb-20 text-sm" v-if="totalPages > 1">
             <button
                 class="bg-transparent border-[#E5E7EB] border px-3 py-2 rounded-l-xl hover:bg-[#91795C] hover:text-white"
-                :class="{ 'opacity-50 cursor-not-allowed hover:bg-transparent hover:text-inherit': !canPrev }"
-                :disabled="!canPrev" @click="goToPage(page - 1)">Prev</button>
+                :class="{ 'opacity-90 cursor-not-allowed': !canPrev }" :disabled="!canPrev"
+                @click="goToPage(page - 1)">Prev</button>
             <ol class="flex items-center">
                 <li v-for="pageNumber in pageNumbers" :key="pageNumber" class="border border-[#E5E7EB]">
                     <button class="cursor-pointer px-3 py-2"
@@ -176,8 +194,8 @@ function getImage(url: string, fallback: string) {
             </ol>
             <button
                 class="bg-transparent border-[#E5E7EB] border px-3 py-2 rounded-r-xl hover:bg-[#91795C] hover:text-white"
-                :class="{ 'opacity-50 cursor-not-allowed hover:bg-transparent hover:text-inherit': !canNext }"
-                :disabled="!canNext" @click="goToPage(page + 1)">Next</button>
+                :class="{ 'opacity-90 cursor-not-allowed': !canNext }" :disabled="!canNext"
+                @click="goToPage(page + 1)">Next</button>
         </div>
     </div>
 </template>
