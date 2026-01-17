@@ -272,9 +272,9 @@
                         :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
                         :transition="{ duration: 0.5 }" :viewport="{ once: true }">
                         <div v-for="member in team.members" :key="member.name"
-                            class="relative h-[222px] xl:h-[522px] w-[164px] md:w-[169px] md:h-[230px] xl:w-[384px]">
+                            class="relative h-[222px] xl:h-[522px] w-[164px] md:w-[169px] md:h-[230px] xl:w-[384px] group">
                             <NuxtImg :src="member.image_card"
-                                class="z-30 w-[153px] md:w-[160px] xl:w-[360px] absolute" />
+                                class="z-30 w-[153px] md:w-[160px] xl:w-[360px] absolute saturate-0 group-hover:saturate-100 transition-all duration-300" />
                             <div
                                 class="absolute right-0 bottom-0 z-20 bg-white w-[152px] h-[166px] md:w-[160px] md:h-[173.5px] xl:w-[360px] xl:h-[392px] rounded-xl p-2 xl:p-4 flex items-end">
                                 <div class="flex flex-col justify-between w-full xl:gap-20 gap-2">
@@ -304,7 +304,9 @@
         </div>
     </section>
 
-    <section id="newsletter" class="bg-primary-50 px-6 pt-20">
+    <motion.section id="newsletter" class="bg-primary-50 px-6 pt-20" :initial="{ opacity: 0, y: 300 }"
+        :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, y: 0 }" :transition="{ duration: 0.5 }"
+        :viewport="{ once: true }">
         <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto flex flex-col gap-6 xl:gap-10">
             <div>
                 <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit uppercase mb-4 xl:text-3xl">
@@ -357,14 +359,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </motion.section>
 
     <section id="contact-us" class="bg-primary-50 px-6 pt-20 h-[600px] md:h-[550px] xl:h-auto xl:mb-32">
         <div class="relative lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
-            <NuxtImg src="/img/contact-us.png" class="relative z-0 w-full md:w-[500px] xl:w-[1007px] xl:h-[740px]" />
+            <motion.img src="/img/contact-us.png" class="relative z-0 w-full md:w-[500px] xl:w-[1007px] xl:h-[740px]"
+                :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
 
             <!-- contact us card form -->
-            <div
+            <motion.div :initial="{ opacity: 0, x: 300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
                 class="p-4 bg-primary-50 w-[90%] md:w-[450px] absolute z-10 -bottom-44 md:top-30 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2 md:h-fit xl:w-[921px] xl:h-[680px] xl:p-14 xl:gap-8">
                 <h2 class="font-bold text-md xl:text-6xl">Contact Us</h2>
                 <p class="text-[10px] text-gray-400 xl:text-2xl">
@@ -389,10 +394,11 @@
                         </div>
                     </button>
                 </form>
-            </div>
+            </motion.div>
 
             <!-- card contact information -->
-            <div
+            <motion.div :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
                 class="bg-[#1D202A99] backdrop-blur-md text-white absolute -bottom-10 hidden md:flex rounded-b-xl rounded-tr-xl justify-center flex-col p-4 gap-4 xl:w-[500px] xl:h-[288px] xl:px-12 xl:py-16 xl:gap-8">
                 <div class="flex gap-2 items-center xl:gap-8">
                     <div class="bg-white rounded-full p-2 xl:p-4">
@@ -421,7 +427,7 @@
                         Contact@sscolaw.com
                     </span>
                 </div>
-            </div>
+            </motion.div>
         </div>
     </section>
 </template>
