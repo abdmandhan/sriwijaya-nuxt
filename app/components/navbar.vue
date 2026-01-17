@@ -9,9 +9,12 @@
                 <NuxtImg src="/logo.png" alt="logo" class="w-[200px] md:w-[160px] lg:w-[200px] xl:w-[300px]" />
             </NuxtLink>
             <ul class="gap-4 hidden md:flex text-sm xl:text-lg">
-                <li v-for="item in menu" :key="item.to">
-                    <NuxtLink :to="item.to">{{ item.label }}</NuxtLink>
-                </li>
+                <motion.li v-for="item in menu" :key="item.to" class="hover:text-primary transition-colors">
+                    <NuxtLink :to="item.to"
+                        class="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-primary after:rounded-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
+                        {{ item.label }}
+                    </NuxtLink>
+                </motion.li>
             </ul>
         </div>
     </nav>
@@ -44,6 +47,7 @@
 </template>
 
 <script lang="ts" setup>
+import { motion } from "motion-v"
 const { user, clear } = useUserSession()
 const menu = [
     { label: 'Home', to: '/', },
