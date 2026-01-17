@@ -4,9 +4,11 @@
         <div
             class="bg-secondary h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base max-w-[1608px] mx-auto">
 
-            <NuxtLink href="/" class="hover:text-blue-400 hover:border-b hover:border-blue-400 transition-all"> Homepage
-            </NuxtLink>/
-            {{ team.name }}
+            <NuxtLink href="/" class="hover:text-primary hover:border-b hover:border-primary transition-all"> Homepage
+            </NuxtLink> /
+            <span class="text-primary font-semibold">
+                {{ team.name }}
+            </span>
         </div>
         <div class="h-[639px] md:h-[280px] xl:h-[400px] bg-cover overflow-hidden relative
             bg-center bg-no-repeat bg-[url(/bg/homepage-mobile.png)] md:bg-[url(/bg/homepage.png)]
@@ -28,7 +30,7 @@
                                 </svg>
 
                                 Email : <a :href="`mailto:${team.email}`" class="border-b border-white">{{ team.email
-                                }}</a>
+                                    }}</a>
                             </span>
                             <span v-if="team.linkedin" class="flex gap-2 items-center">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none"

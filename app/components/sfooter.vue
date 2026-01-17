@@ -15,11 +15,10 @@
                 <div class="w-full flex flex-col gap-2">
                     <span class="font-bold">Sitemap</span>
                     <ul class="flex flex-col gap-2">
-                        <li>Home</li>
-                        <li>About Us</li>
-                        <li>Our Service</li>
-                        <li>Our Team</li>
-                        <li>Insight</li>
+                        <li v-for="item in menu" :key="item.to">
+                            <NuxtLink :to="item.to" class="hover:text-primary transition-colors">{{ item.label }}
+                            </NuxtLink>
+                        </li>
                     </ul>
                 </div>
                 <div class="w-full flex flex-col gap-2">
@@ -59,10 +58,10 @@
 const { user, clear } = useUserSession()
 const menu = [
     { label: 'Home', to: '/', },
-    { label: 'About', to: '#about', },
+    { label: 'About', to: '/#about', },
     { label: 'Why Choose Us', to: '#why-choose-us', },
-    { label: 'Our Services', to: '#our-services', },
-    { label: 'Our Team', to: '#our-team', },
+    { label: 'Our Services', to: '/#our-services', },
+    { label: 'Our Team', to: '/#our-team', },
     { label: 'Newsletter', to: '/newsletter', },
 ]
 

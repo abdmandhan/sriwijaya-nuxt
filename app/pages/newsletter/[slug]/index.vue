@@ -1,16 +1,20 @@
 <template>
-    <div v-if="newsletter" class="bg-[#F8F9FD] min-h-screen">
+    <!-- <div v-if="newsletter" class="bg-[#F8F9FD] min-h-screen"> -->
+    <div v-if="newsletter" class="bg-white min-h-screen">
         <!-- breadcrumb -->
-        <div
-            class="h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base max-w-[1608px] mx-auto">
+        <div class="bg-[#F8F9FD]">
+            <div
+                class="h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base max-w-[1608px] mx-auto">
 
-            <NuxtLink href="/" class="hover:text-blue-400 hover:border-b hover:border-blue-400 transition-all"> Homepage
-            </NuxtLink>/
-            <NuxtLink href="/newsletter"
-                class="hover:text-blue-400 hover:border-b hover:border-blue-400 transition-all">
-                Newsletter List
-            </NuxtLink>
-            / Insight Detail
+                <NuxtLink href="/" class="hover:text-primary hover:border-b hover:border-primary transition-all">
+                    Homepage
+                </NuxtLink>/
+                <NuxtLink href="/newsletter"
+                    class="hover:text-primary hover:border-b hover:border-primary transition-all">
+                    Newsletter List
+                </NuxtLink>
+                / <span class="text-primary font-semibold">{{ newsletter.title }}</span>
+            </div>
         </div>
 
         <div class="max-w-[1608px] mx-auto px-4 py-8 xl:py-12">
@@ -98,4 +102,3 @@ const formattedDate = computed(() => {
     return format(date, 'dd MMM yyyy').toUpperCase()
 })
 </script>
-

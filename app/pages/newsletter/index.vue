@@ -94,9 +94,9 @@ function getImage(url: string, fallback: string) {
         <!-- breadcrumb -->
         <div
             class="bg-secondary h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base max-w-[1608px] mx-auto">
-            <NuxtLink href="/" class="hover:text-blue-400 hover:border-b hover:border-blue-400 transition-all">
+            <NuxtLink href="/" class="hover:text-primary hover:border-b hover:border-primary transition-all">
                 Homepage
-            </NuxtLink> / Newsletter List
+            </NuxtLink> / <span class="text-primary font-semibold">Newsletter List</span>
         </div>
         <div
             class="bg-[url(/bg/newsletter-mobile.png)] md:bg-[url(/bg/newsletter.png)] bg-cover bg-center bg-no-repeat h-[340px] md:h-[160px] xl:h-[240px]">
