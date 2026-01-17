@@ -51,10 +51,10 @@ import { motion } from "motion-v"
 const { user, clear } = useUserSession()
 const menu = [
     { label: 'Home', to: '/', },
-    { label: 'About', to: '#about', },
-    { label: 'Why Choose Us', to: '#why-choose-us', },
-    { label: 'Our Services', to: '#our-services', },
-    { label: 'Our Team', to: '#our-team', },
+    { label: 'About', to: '/#about', },
+    { label: 'Why Choose Us', to: '/#why-choose-us', },
+    { label: 'Our Services', to: '/#our-services', },
+    { label: 'Our Team', to: '/#our-team', },
     { label: 'Newsletter', to: '/newsletter', },
 ]
 

@@ -115,7 +115,7 @@
                         ABOUT US
                     </h1>
 
-                    <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px] xl:text-6xl xl:max-w-[624px]">
+                    <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px] xl:text-6xl xl:max-w-[624px] text-black">
                         Built on Principles. Driven by Results.
                     </h2>
                 </motion.div>
@@ -153,7 +153,7 @@
         </div>
     </section>
 
-    <section id="why-choose-us" class="bg-primary-50 px-6 pt-20  ">
+    <section id="why-choose-us" class="bg-primary-50 px-6 pt-40">
         <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10">
             <div class="flex flex-col gap-2 w-full md:w-1/2 xl:gap-10">
                 <motion.div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8" :initial="{ opacity: 0, x: -300 }"
@@ -163,7 +163,7 @@
                         WHY CHOOSE US
                     </h1>
 
-                    <h2 class="font-bold text-xl md:text-3xl xl:text-6xl">
+                    <h2 class="font-bold text-xl md:text-3xl xl:text-6xl text-black">
                         Strategic legal solutions
                     </h2>
                 </motion.div>
@@ -209,7 +209,7 @@
                     <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                         OUR SERVICE
                     </h1>
-                    <h2 class="font-bold text-xl xl:text-6xl">
+                    <h2 class="font-bold text-xl xl:text-6xl text-black">
                         Practice Areas
                     </h2>
                 </motion.div>
@@ -249,7 +249,7 @@
                 </h1>
                 <br>
 
-                <h2 class="font-bold text-xl xl:text-6xl">
+                <h2 class="font-bold text-xl xl:text-6xl text-black">
                     Our Team of Legal Experts
                 </h2>
                 <br>
@@ -314,7 +314,7 @@
                 </h1>
 
                 <div class="flex justify-between items-center">
-                    <h2 class="font-bold text-xl xl:text-6xl">
+                    <h2 class="font-bold text-xl xl:text-6xl text-black">
                         Our Latest Newsletter
                     </h2>
                     <NuxtLink to="/newsletter"
@@ -361,7 +361,7 @@
         </div>
     </motion.section>
 
-    <section id="contact-us" class="bg-primary-50 px-6 pt-20 h-[600px] md:h-[550px] xl:h-auto xl:mb-32">
+    <section id="contact-us" class="bg-primary-50 px-6 pt-20 h-[600px] md:h-[550px] xl:h-auto xl:pb-32">
         <div class="relative lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
             <motion.img src="/img/contact-us.png" class="relative z-0 w-full md:w-[500px] xl:w-[1007px] xl:h-[740px]"
                 :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
@@ -371,7 +371,7 @@
             <motion.div :initial="{ opacity: 0, x: 300 }" :inViewOptions="{ once: true, amount: 0.5 }"
                 :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
                 class="p-4 bg-primary-50 w-[90%] md:w-[450px] absolute z-10 -bottom-44 md:top-30 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2 md:h-fit xl:w-[921px] xl:h-[680px] xl:p-14 xl:gap-8">
-                <h2 class="font-bold text-md xl:text-6xl">Contact Us</h2>
+                <h2 class="font-bold text-md xl:text-6xl text-black">Contact Us</h2>
                 <p class="text-[10px] text-gray-400 xl:text-2xl">
                     We offer legal help for everyone, providing clear and reliable solutions for businesses and
                     individuals
@@ -384,8 +384,8 @@
                         class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4">
                     <textarea placeholder="Question"
                         class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" rows="4" />
-                    <button
-                        class="bg-primary-90 text-white rounded-full p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 flex gap-2 items-center w-fit font-bold xl:mt-10 xl:gap-4">
+                    <button type="button"
+                        class="bg-primary-90 text-white rounded-full p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 flex gap-2 items-center w-fit font-bold xl:mt-10 xl:gap-4 cursor-pointer">
                         <span>
                             Send Question
                         </span>
