@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-auth-utils',
     'motion-v/nuxt',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
   ],
   css: ['~/assets/css/main.css'],
   fonts: {

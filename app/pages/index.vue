@@ -106,7 +106,11 @@
     <section id="about" class="bg-primary-50 pt-60 px-6 relative z-0 ">
         <div class="md:gap-10 md:flex lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
             <div class="relative w-full md:w-2/3 xl:w-1/2">
-                <div class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2 xl:-right-90">
+                <motion.div
+                    class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2 xl:-right-90"
+                    :initial="{ opacity: 0, x: 300 }" :whileInView="{ opacity: 1, x: 0 }"
+                    :inViewOptions="{ once: true, amount: 0.5 }" :transition="{ duration: 0.5 }"
+                    :viewport="{ once: true, }">
                     <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                         ABOUT US
                     </h1>
@@ -114,11 +118,14 @@
                     <h2 class="font-bold text-xl md:text-2xl md:max-w-[250px] xl:text-6xl xl:max-w-[624px]">
                         Built on Principles. Driven by Results.
                     </h2>
-                </div>
-                <NuxtImg src="/img/about-1.png" class="w-full" />
+                </motion.div>
+                <motion.img src="/img/about-1.png" class="w-full" :initial="{ opacity: 0, x: -300 }"
+                    :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                    :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
             </div>
 
-            <div
+            <motion.div :initial="{ opacity: 0, x: 300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
                 class="mt-10 md:mt-40 w-full md:w-1/3 xl:w-1/2 text-xs xl:text-2xl xl:mt-60 flex flex-col gap-4 text-secondary-100">
                 <p class="text-justify order-1 xl-order-2">
                     We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
@@ -142,14 +149,16 @@
                     each
                     client.
                 </p>
-            </div>
+            </motion.div>
         </div>
     </section>
 
     <section id="why-choose-us" class="bg-primary-50 px-6 pt-20  ">
         <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10">
             <div class="flex flex-col gap-2 w-full md:w-1/2 xl:gap-10">
-                <div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8">
+                <motion.div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8" :initial="{ opacity: 0, x: -300 }"
+                    :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                    :transition="{ duration: 0.5 }" :viewport="{ once: true }">
                     <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                         WHY CHOOSE US
                     </h1>
@@ -157,9 +166,13 @@
                     <h2 class="font-bold text-xl md:text-3xl xl:text-6xl">
                         Strategic legal solutions
                     </h2>
-                </div>
-                <NuxtImg src="/img/why-choose-us.png" class="w-full block md:hidden" />
-                <div class="text-xs xl:text-2xl">
+                </motion.div>
+                <motion.img src="/img/why-choose-us.png" class="w-full block md:hidden"
+                    :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
+                <motion.div class="text-xs xl:text-2xl" :initial="{ opacity: 0, x: -300 }"
+                    :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                    :transition="{ duration: 0.5 }" :viewport="{ once: true }">
                     <p class="text-justify text-secondary-100">
                         We take a value-driven approach by actively communicating and strategizing with our clients
                         to
@@ -176,26 +189,36 @@
                         structure,
                         and processes, we are committed to one goal: ensuring client satisfaction.
                     </p>
-                </div>
+                </motion.div>
             </div>
-            <NuxtImg src="/img/why-choose-us.png" class="w-1/2 hidden md:block" />
+            <motion.img src="/img/why-choose-us.png" class="w-1/2 hidden md:block" :initial="{ opacity: 0, x: 300 }"
+                :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
         </div>
     </section>
 
     <section id="our-services" class="bg-primary-50 px-6 pt-20 ">
         <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-20">
-            <NuxtImg src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]" />
+            <motion.img src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]"
+                :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
             <div class="w-full md:w-1/2 xl:w-[40%]">
-                <div class="flex flex-col gap-2 xl:gap-8 xl:mb-10">
+                <motion.div class="flex flex-col gap-2 xl:gap-8 xl:mb-10" :initial="{ opacity: 0, x: 300 }"
+                    :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                    :transition="{ duration: 0.5 }" :viewport="{ once: true }">
                     <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
                         OUR SERVICE
                     </h1>
                     <h2 class="font-bold text-xl xl:text-6xl">
                         Practice Areas
                     </h2>
-                </div>
-                <NuxtImg src="/img/our-service.png" class="w-full block md:hidden" />
-                <div class="flex flex-col gap-2 text-xs xl:text-2xl xl:gap-10">
+                </motion.div>
+                <motion.img src="/img/our-service.png" class="w-full block md:hidden" :initial="{ opacity: 0, x: -300 }"
+                    :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                    :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
+                <motion.div class="flex flex-col gap-2 text-xs xl:text-2xl xl:gap-10" :initial="{ opacity: 0, x: 300 }"
+                    :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                    :transition="{ duration: 0.5 }" :viewport="{ once: true }">
                     <p class="text-justify text-secondary-100">
                         We stay focused on each client’s objectives, providing clear and strategic legal solutions
                         while
@@ -211,7 +234,7 @@
                             <span>{{ item }}</span>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
 
@@ -398,6 +421,9 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { motion } from "motion-v"
+
 const practiceAreas = [
     'Dispute Resolution and Litigation',
     'Employment',
@@ -409,8 +435,8 @@ const practiceAreas = [
     'Media and Entertainment'
 ]
 
-const { data: teams } = await useFetch('/api/teams', { server: true })
-const { data: newsletters } = await useFetch('/api/newsletters/top', { server: true })
+const { data: teams } = await useFetch('/api/teams', { server: false, lazy: true })
+const { data: newsletters } = await useFetch('/api/newsletters/top', { server: false, lazy: true })
 
 const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
 </script>
