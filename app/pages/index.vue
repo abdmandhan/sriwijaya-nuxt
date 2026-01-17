@@ -242,29 +242,35 @@
 
     <section id="our-team" class="bg-primary-50 px-6 pt-20">
         <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
-            <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
-                OUR TEAM
-            </h1>
-            <br>
+            <motion.div :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+                <h1 class="text-primary font-rajdhani border-b-2 border-primary w-fit xl:text-3xl">
+                    OUR TEAM
+                </h1>
+                <br>
 
-            <h2 class="font-bold text-xl xl:text-6xl">
-                Our Team of Legal Experts
-            </h2>
-            <br>
-            <p class="text-justify text-secondary-100 text-xs xl:text-2xl">
-                Led by Shinta Sriwijaya, our legal team brings a wealth of experience,
-                cross-industry insights, and dedication to every client we serve.
-            </p>
-            <br>
+                <h2 class="font-bold text-xl xl:text-6xl">
+                    Our Team of Legal Experts
+                </h2>
+                <br>
+                <p class="text-justify text-secondary-100 text-xs xl:text-2xl">
+                    Led by Shinta Sriwijaya, our legal team brings a wealth of experience,
+                    cross-industry insights, and dedication to every client we serve.
+                </p>
+                <br>
+            </motion.div>
 
             <div class="flex flex-col">
                 <div v-for="team in teams" :key="team.title"
                     class="flex flex-col xl:gap-10 gap-3 md:gap-6 mb-3 md:mb-6 xl:mb-10">
-                    <h3
+                    <motion.h3 :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
+                        :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
                         class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani xl:text-3xl">
                         {{ team.title }}
-                    </h3>
-                    <div class="flex gap-4">
+                    </motion.h3>
+                    <motion.div class="flex gap-4" :initial="{ opacity: 0, x: 300 }"
+                        :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
+                        :transition="{ duration: 0.5 }" :viewport="{ once: true }">
                         <div v-for="member in team.members" :key="member.name"
                             class="relative h-[222px] xl:h-[522px] w-[164px] md:w-[169px] md:h-[230px] xl:w-[384px]">
                             <NuxtImg :src="member.image_card"
@@ -292,7 +298,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>
