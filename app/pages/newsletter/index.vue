@@ -2,6 +2,7 @@
 interface Newsletter {
     id: number
     title: string
+    slug: string
     content: string
     image: string
     document: string | null
@@ -122,7 +123,7 @@ function getImage(url: string, fallback: string) {
                 </span>
                 <div class="text-sm md:text-md max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] xl:h-[56px] truncate text-ellipsis h-[34px]"
                     v-html="latestNewsletter.content"></div>
-                <NuxtLink :to="`/newsletter/${latestNewsletter.id}`"
+                <NuxtLink :to="`/newsletter/${latestNewsletter.slug}`"
                     class="text-[10px] xl:text-2xl flex items-center text-primary gap-2 xl:gap-4">
                     Learn More
                     <UIcon name="i-lucide-arrow-right"
@@ -146,7 +147,7 @@ function getImage(url: string, fallback: string) {
                 <div class="p-2 flex flex-col gap-2 xl:gap-4 xl:p-12">
                     <span class="font-bold text-[10px] xl:text-3xl">{{ newsletter.title }}</span>
                     <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2" v-html="newsletter.content"></div>
-                    <NuxtLink :to="`/newsletter/${newsletter.id}`"
+                    <NuxtLink :to="`/newsletter/${newsletter.slug}`"
                         class="text-[8px] flex gap-2 items-center xl:text-2xl text-primary">
                         Learn More
                         <UIcon name="i-lucide-arrow-right"

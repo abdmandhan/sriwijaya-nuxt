@@ -28,7 +28,7 @@
                                 </svg>
 
                                 Email : <a :href="`mailto:${team.email}`" class="border-b border-white">{{ team.email
-                                    }}</a>
+                                }}</a>
                             </span>
                             <span v-if="team.linkedin" class="flex gap-2 items-center">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none"

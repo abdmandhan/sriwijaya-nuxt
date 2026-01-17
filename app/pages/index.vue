@@ -338,7 +338,7 @@
                         <span class="font-bold text-[10px] xl:text-3xl">{{ newsletter.title }}</span>
                         <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2" v-html="newsletter.content">
                         </div>
-                        <NuxtLink :to="`/newsletter/${newsletter.id}`"
+                        <NuxtLink :to="`/newsletter/${newsletter.slug}`"
                             class="text-[8px] flex gap-2 items-center xl:text-2xl">
                             Learn More
                             <!-- <UIcon name="i-lucide-arrow-right" class="size-3 md:size-6 border border-secondary-100 rounded-full p-px" mode="svg" /> -->
