@@ -1,18 +1,35 @@
 import { createClient } from '@supabase/supabase-js'
 import { z } from 'zod'
 
-const bodySchema = z.object({
-    file: z.string(), // base64 encoded file
-    filename: z.string(),
-    type: z.enum(['image', 'document']),
-    contentType: z.string().optional(),
+const fieldsSchema = z.object({
+    // Optional for backwards compatibility (older clients might not send it)
+    type: z.enum(['image', 'document']).optional().default('image'),
 })
 
 export default defineEventHandler(async (event) => {
     // Ensure user is authenticated
     await requireUserSession(event)
 
-    const body = await readValidatedBody(event, bodySchema.parse)
+    const formData = await readMultipartFormData(event)
+    if (!formData) {
+        throw createError({
+            status: 400,
+            message: 'Expected multipart/form-data',
+        })
+    }
+
+    const filePart = formData.find((p) => p.name === 'file')
+    if (!filePart || !filePart.data) {
+        throw createError({
+            status: 400,
+            message: 'Missing file field',
+        })
+    }
+
+    const typePart = formData.find((p) => p.name === 'type')
+    const fields = fieldsSchema.parse({
+        type: typePart?.data ? typePart.data.toString('utf-8') : undefined,
+    })
 
     const supabaseUrl = process.env.SUPABASE_URL
     const supabaseKey = process.env.SUPABASE_KEY
@@ -27,20 +44,22 @@ export default defineEventHandler(async (event) => {
 
     const supabase = createClient(supabaseUrl, supabaseKey)
 
-    // Convert base64 to buffer
-    const base64Data = body.file.replace(/^data:image\/\w+;base64,/, '')
-    const buffer = Buffer.from(base64Data, 'base64')
+    const originalFilename = filePart.filename || 'upload'
+    const originalContentType = filePart.type || 'application/octet-stream'
 
     // Generate unique filename
-    const fileExt = body.filename.split('.').pop() || 'jpg'
-    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
-    const filePath = `teams/${fileName}`
+    const extFromName = originalFilename.includes('.') ? originalFilename.split('.').pop() : undefined
+    const extFromType = originalContentType.includes('/') ? originalContentType.split('/').pop() : undefined
+    const fileExtRaw = (extFromName || extFromType || 'bin').toLowerCase()
+    const fileExt = fileExtRaw.replace(/[^a-z0-9]+/g, '').slice(0, 12) || 'bin'
+    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}.${fileExt}`
+    const filePath = `teams/${fields.type}/${fileName}`
 
     // Upload file to Supabase Storage
     const { error } = await supabase.storage
         .from(supabaseBucket)
-        .upload(filePath, buffer, {
-            contentType: body.contentType || `image/${fileExt}`,
+        .upload(filePath, filePart.data, {
+            contentType: originalContentType,
             upsert: false,
         })
 

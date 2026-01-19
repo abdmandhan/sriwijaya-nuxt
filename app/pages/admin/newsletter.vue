@@ -128,23 +128,13 @@ async function uploadImageFile(file: File | null, existingUrl: string): Promise<
     }
 
     try {
-        const base64 = await new Promise<string>((resolve, reject) => {
-            const reader = new FileReader()
-            reader.onload = () => {
-                const result = reader.result as string
-                resolve(result)
-            }
-            reader.onerror = reject
-            reader.readAsDataURL(file)
-        })
+        const formData = new FormData()
+        formData.append('file', file, file.name)
+        formData.append('type', 'image')
 
         const result = await $fetch('/api/admin/upload', {
             method: 'POST',
-            body: {
-                file: base64,
-                filename: file.name,
-                contentType: file.type,
-            },
+            body: formData,
         })
 
         return result.url

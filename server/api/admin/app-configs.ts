@@ -28,64 +28,31 @@ router.post('/', defineEventHandler(async (event) => {
 
     const body = await readValidatedBody(event, schema.parse)
 
-    const appConfigs = await prisma.app_configs.create({
-        data: {
-            key: body.key,
-            type: body.type,
-            value: body.value
+    const existingAppConfig = await prisma.app_configs.findUnique({
+        where: {
+            key: body.key
         }
     })
 
-    return appConfigs
-}))
-
-router.put('/:id', defineEventHandler(async (event) => {
-    // Ensure user is authenticated
-    await requireUserSession(event)
-
-    const id = parseInt(event.context.params?.id || '0')
-
-    if (!id) {
-        throw createError({
-            status: 400,
-            message: 'Invalid app config ID'
+    if (existingAppConfig) {
+        await prisma.app_configs.update({
+            where: { id: existingAppConfig.id },
+            data: {
+                value: body.value
+            }
+        })
+    } else {
+        await prisma.app_configs.create({
+            data: {
+                key: body.key,
+                type: body.type,
+                value: body.value
+            }
         })
     }
 
-    const body = await readValidatedBody(event, schema.parse)
-
-    const appConfigs = await prisma.app_configs.update({
-        where: { id },
-        data: {
-            key: body.key,
-            type: body.type,
-            value: body.value
-        }
-    })
-
-    return appConfigs
+    return { success: true }
 }))
 
-router.delete('/:id', defineEventHandler(async (event) => {
-    // Ensure user is authenticated
-    await requireUserSession(event)
-
-    const id = parseInt(event.context.params?.id || '0')
-
-    if (!id) {
-        throw createError({
-            status: 400,
-            message: 'Invalid app config ID'
-        })
-    }
-
-    await prisma.app_configs.delete({
-        where: { id }
-    })
-
-    return {
-        message: 'App config deleted successfully'
-    }
-}))
 
 export default useBase('/api/admin/app-configs', router.handler)
