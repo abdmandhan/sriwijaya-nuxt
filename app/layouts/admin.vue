@@ -35,8 +35,18 @@ const links = [[
     },
     {
         label: 'Newsletter',
-        icon: 'i-lucide-mail',
+        icon: 'i-lucide-newspaper',
         to: '/admin/newsletter',
+    },
+    {
+        label: 'Mailboxes',
+        icon: 'i-lucide-mail',
+        to: '/admin/mailboxes',
+    },
+    {
+        label: 'App Configs',
+        icon: 'i-lucide-settings',
+        to: '/admin/app-configs',
     },
 ]] satisfies NavigationMenuItem[][]
 
@@ -57,22 +67,6 @@ const panelTitle = computed(() => {
     })
     return link?.label || id.charAt(0).toUpperCase() + id.slice(1)
 })
-
-const groups = computed(() => [{
-    id: 'links',
-    label: 'Go to',
-    items: links.flat()
-}, {
-    id: 'code',
-    label: 'Code',
-    items: [{
-        id: 'source',
-        label: 'View page source',
-        icon: 'i-simple-icons-github',
-        to: `https://github.com/nuxt-ui-templates/dashboard/blob/main/app/pages${route.path === '/' ? '/index' : route.path}.vue`,
-        target: '_blank'
-    }]
-}])
 
 onMounted(async () => {
     const cookie = useCookie('cookie-consent')

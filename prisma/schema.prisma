@@ -67,3 +67,22 @@ model newsletter {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model mailboxes {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  question  String   @db.Text
+  is_read   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model app_configs {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  type      String
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

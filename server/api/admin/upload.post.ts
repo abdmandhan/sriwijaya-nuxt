@@ -4,6 +4,7 @@ import { z } from 'zod'
 const bodySchema = z.object({
     file: z.string(), // base64 encoded file
     filename: z.string(),
+    type: z.enum(['image', 'document']),
     contentType: z.string().optional(),
 })
 

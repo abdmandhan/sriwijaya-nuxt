@@ -277,14 +277,14 @@ async function createTeam() {
         // Upload image if file selected
         if (imageFile.value) {
             try {
-                teamForm.value.image = await uploadImageFile(imageFile.value, teamForm.value.image)
+                teamForm.value.image = await uploadImageFile(imageFile.value, teamForm.value.image, 'image')
             } catch (uploadError) {
                 console.error('Image upload failed:', uploadError)
             }
         }
         if (imageCardFile.value) {
             try {
-                teamForm.value.image_card = await uploadImageFile(imageCardFile.value, teamForm.value.image_card)
+                teamForm.value.image_card = await uploadImageFile(imageCardFile.value, teamForm.value.image_card, 'image')
             } catch (uploadError) {
                 console.error('Image card upload failed:', uploadError)
             }
@@ -384,43 +384,7 @@ function handleImageCardSelect(event: Event) {
     }
 }
 
-// Upload image
-async function uploadImageFile(file: File | null, existingUrl: string): Promise<string> {
-    if (!file) {
-        return existingUrl // Return existing image if no new file
-    }
 
-    try {
-        // Convert file to base64
-        const base64 = await new Promise<string>((resolve, reject) => {
-            const reader = new FileReader()
-            reader.onload = () => {
-                const result = reader.result as string
-                resolve(result)
-            }
-            reader.onerror = reject
-            reader.readAsDataURL(file)
-        })
-
-        const result = await $fetch('/api/admin/upload', {
-            method: 'POST',
-            body: {
-                file: base64,
-                filename: file.name,
-                contentType: file.type,
-            },
-        })
-
-        return result.url
-    } catch (error: any) {
-        toast.add({
-            title: 'Error',
-            description: error.data?.message || 'Failed to upload image',
-            color: 'error',
-        })
-        throw error
-    }
-}
 
 // Save team
 async function saveTeam() {
