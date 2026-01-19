@@ -122,37 +122,11 @@ function handleImageSelect(event: Event) {
     }
 }
 
-async function uploadImageFile(file: File | null, existingUrl: string): Promise<string> {
-    if (!file) {
-        return existingUrl
-    }
-
-    try {
-        const formData = new FormData()
-        formData.append('file', file, file.name)
-        formData.append('type', 'image')
-
-        const result = await $fetch('/api/admin/upload', {
-            method: 'POST',
-            body: formData,
-        })
-
-        return result.url
-    } catch (error: any) {
-        toast.add({
-            title: 'Error',
-            description: error.data?.message || 'Failed to upload image',
-            color: 'error',
-        })
-        throw error
-    }
-}
-
 async function createNewsletter() {
     try {
         if (imageFile.value) {
             try {
-                newsletterForm.value.image = await uploadImageFile(imageFile.value, newsletterForm.value.image)
+                newsletterForm.value.image = await uploadImageFile(imageFile.value, newsletterForm.value.image, 'image')
             } catch (uploadError) {
                 console.error('Image upload failed:', uploadError)
             }
@@ -189,7 +163,7 @@ async function saveNewsletter() {
     try {
         if (imageFile.value) {
             try {
-                newsletterForm.value.image = await uploadImageFile(imageFile.value, newsletterForm.value.image)
+                newsletterForm.value.image = await uploadImageFile(imageFile.value, newsletterForm.value.image, 'image')
             } catch (uploadError) {
                 console.error('Image upload failed, using existing image:', uploadError)
             }
@@ -246,6 +220,18 @@ async function deleteNewsletter() {
             title: 'Error',
             description: error.data?.message || 'Failed to delete newsletter',
             color: 'error',
+        })
+    }
+}
+
+async function handleDocumentSelect(event: Event) {
+    const target = event.target as HTMLInputElement
+    if (target.files && target.files[0]) {
+        newsletterForm.value.document = await uploadImageFile(target.files[0], newsletterForm.value.document, 'document')
+        toast.add({
+            title: 'Success',
+            description: 'Document uploaded successfully',
+            color: 'success',
         })
     }
 }
@@ -332,7 +318,8 @@ onMounted(() => {
                         </UFormField>
 
                         <UFormField label="Document URL">
-                            <UInput v-model="newsletterForm.document" placeholder="Enter document URL (optional)" />
+                            <UInput @change="handleDocumentSelect" placeholder="Enter document URL (optional)"
+                                type="file" />
                         </UFormField>
 
                         <UFormField label="Content" required>
