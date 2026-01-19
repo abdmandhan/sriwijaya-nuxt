@@ -32,7 +32,7 @@
                         law firm offering strategic, client-focused legal services in Indonesia
                     </p>
 
-                    <button
+                    <NuxtLink :to="companyProfile?.value" target="_blank"
                         class="cursor-pointer border-2 border-[#91795C] rounded-full flex items-center gap-1 lg:gap-2 py-1 lg:py-2.5 px-2 lg:px-6 capitalize font-semibold text-[10px] lg:text-base hover:bg-[#91795C] hover:text-white transition-colors">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -49,7 +49,7 @@
                                 fill="white" />
                         </svg>
                         Download Our Company Profile
-                    </button>
+                    </NuxtLink>
                 </div>
                 <NuxtImg src="/img/card-1.png" class="w-full border-2 border-[#A08565] rounded-[16px] mt-2" />
                 <!-- ipad -->
@@ -449,6 +449,7 @@ const practiceAreas = [
 
 const { data: teams } = await useFetch('/api/teams', { server: false, lazy: true })
 const { data: newsletters } = await useFetch('/api/newsletters/top', { server: false, lazy: true })
+const { data: companyProfile } = await useFetch('/api/company-profile', { server: false, lazy: true })
 
 const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
 </script>
