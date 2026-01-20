@@ -108,7 +108,7 @@
                 </div>
             </div>
         </section>
-        <section id="about" class="pt-60 px-6 relative z-0 ">
+        <section id="about" class="pt-80 px-6 relative z-0 ">
             <div class="md:gap-10 md:flex lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <div class="relative w-full md:w-2/3 xl:w-1/2">
                     <motion.div
@@ -160,7 +160,7 @@
             </div>
         </section>
 
-        <section id="why-choose-us" class="px-6 pt-40">
+        <section id="why-choose-us" class="px-6 pt-60">
             <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10">
                 <div class="flex flex-col gap-2 w-full md:w-1/2 xl:gap-10">
                     <motion.div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8" :initial="{ opacity: 0, x: -300 }"
@@ -206,7 +206,7 @@
             </div>
         </section>
 
-        <section id="our-services" class="px-6 pt-20 ">
+        <section id="our-services" class="px-6 pt-40 ">
             <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-20">
                 <motion.img src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]"
                     :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
@@ -291,7 +291,7 @@
                                     class="z-30 w-[153px] md:w-[160px] xl:w-[360px] absolute saturate-0 group-hover:saturate-100 transition-all duration-300" />
                                 <div
                                     class="absolute right-0 bottom-0 z-20 bg-white w-[152px] h-[166px] md:w-[160px] md:h-[173.5px] xl:w-[360px] xl:h-[392px] rounded-xl p-2 xl:p-4 flex items-end">
-                                    <div class="flex flex-col justify-between w-full xl:gap-20 gap-2">
+                                    <div class="flex flex-col justify-between w-full xl:gap-16 gap-2">
                                         <div class="flex flex-col">
                                             <span class="font-bold text-black text-[10px] xl:text-[22px]">
                                                 {{ member.name }}
@@ -302,11 +302,9 @@
                                         </div>
                                         <div class="flex justify-end">
                                             <NuxtLink :to="`/homepage/${member.slug}`"
-                                                class="text-xs text-secondary-100 text-[11px] capitalize flex gap-2 xl:text-md items-center">
+                                                class="text-xs text-primary text-[11px] capitalize flex gap-2 xl:text-lg items-center font-semibold">
                                                 see more
-                                                <UIcon name="i-lucide-arrow-right"
-                                                    class="size-4 border border-secondary-100 rounded-full p-px"
-                                                    mode="svg" />
+                                                <arrow />
                                             </NuxtLink>
                                         </div>
                                     </div>
@@ -335,10 +333,11 @@
                         <NuxtLink to="/newsletter"
                             class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs xl:text-xl xl:py-3 xl:px-6 xl:gap-3">
                             Read More
-                            <div class="bg-white rounded-full p-px xl:p-1">
+                            <!-- <div class="bg-white rounded-full p-px xl:p-1">
                                 <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4"
                                     mode="svg" />
-                            </div>
+                            </div> -->
+                            <arrow />
                         </NuxtLink>
                     </div>
                 </div>
