@@ -135,26 +135,11 @@
                     :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
                     class="mt-10 md:mt-40 w-full md:w-1/3 xl:w-1/2 text-xs xl:text-2xl xl:mt-60 flex flex-col gap-4 text-secondary-100">
                     <p class="text-justify order-1 xl-order-2">
-                        We also offer comprehensive dispute resolution services, handling both in-court and out-of-court
-                        matters
-                        based on the client’s goals. Because every case is unique, we carefully analyze and investigate
-                        each
-                        situation to deliver effective legal solutions that fit the client’s industry, culture, and
-                        business
-                        objectives.
-                    </p>
-
-                    <p class="text-justify order-2 xl:order-1">
-                        SS&Co. is a boutique Indonesian law firm with a young, dynamic, and creative team dedicated to
-                        understanding each client’s needs and protecting their best interests. We help clients start and
-                        operate
-                        their businesses in Indonesia by choosing the right legal entity, managing licensing, and
-                        building a
-                        strong legal foundation. Our deep understanding of Indonesia’s business environment,
-                        socio-political
-                        context, and legal culture enables us to provide practical and strategic guidance tailored to
-                        each
-                        client.
+                        SSCO is a boutique Indonesian law firm with a multi-industry focus, offering agile,
+                        sophisticated, and commercially attuned legal advisory services. Supported by a dynamic and
+                        forward-thinking team, SSCO provides tailored legal solutions grounded in a deep understanding
+                        of Indonesia’s business, regulatory, and socio-political landscape, helping clients manage risk,
+                        ensure compliance, and achieve long-term operational security.
                     </p>
                 </motion.div>
             </div>
@@ -207,7 +192,7 @@
         </section>
 
         <section id="our-services" class="px-6 pt-40 ">
-            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-20">
+            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-0">
                 <motion.img src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]"
                     :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
                     :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
@@ -231,16 +216,15 @@
                         :initial="{ opacity: 0, x: 300 }" :inViewOptions="{ once: true, amount: 0.5 }"
                         :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }">
                         <p class="text-justify text-secondary-100">
-                            We stay focused on each client’s objectives, providing clear and strategic legal solutions
-                            while
-                            anticipating future risks and challenges. By aligning our work with our internal culture,
-                            structure,
-                            and processes, we are committed to one goal: ensuring client satisfaction.
+                            Guided by our unwavering focus on our clients’ objectives and satisfaction, we structure our
+                            legal services to address both immediate needs and long-term strategic considerations. In
+                            doing so, our practice covers a comprehensive range of legal services, including but not
+                            limited to :
                         </p>
-                        <div class="grid grid-rows-4 text-secondary-100 text-sm grid-flow-col gap-x-1">
+                        <div class="grid grid-rows-5 text-secondary-100 text-sm grid-flow-col gap-x-1">
                             <div v-for="(item, index) in practiceAreas" :key="index" @click="selectedIndex = index"
                                 :class="[
-                                    'flex items-start gap-2 cursor-pointer transition-colors text-xs xl:text-2xl',
+                                    'flex items-start gap-2 transition-colors text-xs xl:text-xl',
                                 ]">
                                 <span class="font-medium">{{ String.fromCharCode(97 + index) }}.</span>
                                 <span>{{ item }}</span>
@@ -471,7 +455,8 @@ const practiceAreas = [
     'Intellectual Property',
     'Compliance and Investigation',
     'Family Law',
-    'Media and Entertainment'
+    'Media and Entertainment',
+    'Telecommunications, Technology & Infrastructure'
 ]
 
 const { data: teams } = await useFetch('/api/teams', { server: false, lazy: true })
