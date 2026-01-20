@@ -1,5 +1,5 @@
 <template>
-    <main class="bg-white/50">
+    <main class="bg-white">
         <section class="relative h-[700px] md:h-screen z-10" id="/">
             <!-- Background image -->
             <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
@@ -7,10 +7,11 @@
 
             <!-- Hero text content -->
             <div
-                class="pt-[100px] md:pt-[150px] lg:pt-[200px] pl-6 md:pl-[60px] lg:pl-[156px] text-black w-full relative z-20">
+                class="pt-[100px] md:pt-[150px] lg:pt-[80px] pl-6 md:pl-[60px] lg:pl-[156px] text-black w-full relative z-20">
                 <h2 class="text-lg md:text-2xl xl:text-3xl font-rajdhani font-medium mb-2 text-primary">SHINTA SRIWIJAYA
                     & CO</h2>
-                <h1 class="text-3xl md:text-5xl xl:text-8xl font-bold font-inter leading-tight xl:max-w-[1115px]">
+                <h1
+                    class="text-3xl md:text-6xl 2xl:text-8xl font-bold font-inter leading-tight 2xl:max-w-[1115px] xl:max-w-[800px]">
                     Trusted Legal
                     Solutions
                     for Every
