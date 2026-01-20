@@ -6,7 +6,7 @@
                 <NuxtImg src="logo-small.png" class="size-10" />
 
                 <span class="font-bold text-xl xl:text-2xl">Shinta Sriwijaya & Co</span>
-                <address class="normal-case text-xs xl:text-md">
+                <address class="normal-case text-xs lg:text-lg not-italic">
                     Wisma 46 - Kota BNI, 48th Floor Jl. Jend. Sudirman Kav. 1, Jakarta 10220
                 </address>
             </div>
