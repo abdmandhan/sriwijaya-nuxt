@@ -1,14 +1,14 @@
 <template>
     <nav
         class="flex md:justify-around gap-5 px-5 py-4 items-center fixed top-0 left-0 w-full shadow-lg z-50 h-16 xl:h-24 bg-white">
-        <div class="max-w-[1608px] mx-auto w-full flex items-center md:justify-between lg:justify-center relative">
+        <div class="max-w-[1808px] mx-auto w-full flex items-center md:justify-between lg:justify-center relative">
             <button @click="toggleSidebar" class="md:hidden mr-4" aria-label="Toggle menu">
                 <UIcon name="i-lucide-menu" class="size-6 block" mode="svg" />
             </button>
             <NuxtLink href="/" class="lg:absolute left-10">
                 <NuxtImg src="/logo.png" alt="logo" class="w-[200px] md:w-[160px] lg:w-[200px] xl:w-[300px]" />
             </NuxtLink>
-            <ul class="gap-4 hidden md:flex text-sm xl:text-lg">
+            <ul class="gap-8 hidden md:flex text-sm xl:text-lg">
                 <motion.li v-for="item in menu" :key="item.to" class="hover:text-primary transition-colors">
                     <NuxtLink :to="item.to"
                         class="relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-primary after:rounded-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100">
