@@ -333,11 +333,10 @@
                         <NuxtLink to="/newsletter"
                             class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs xl:text-xl xl:py-3 xl:px-6 xl:gap-3">
                             Read More
-                            <!-- <div class="bg-white rounded-full p-px xl:p-1">
+                            <div class="bg-white rounded-full p-px xl:p-1">
                                 <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4"
                                     mode="svg" />
-                            </div> -->
-                            <arrow />
+                            </div>
                         </NuxtLink>
                     </div>
                 </div>
@@ -401,13 +400,21 @@
                         <textarea placeholder="Question"
                             class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" rows="4"
                             v-model="contactUsForm.question" name="question" />
-                        <button type="submit"
-                            class="bg-primary-90 text-white rounded-full p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 flex gap-2 items-center w-fit font-bold xl:mt-10 xl:gap-4 cursor-pointer">
+                        <!-- <button type="submit"
+                            class="bg-primary-90 text-white rounded-full p-2 text-[10px] xl:text-xl xl:px-4 xl:py-2 flex gap-2 items-center w-fit font-bold xl:mt-10 xl:gap-4 cursor-pointer">
                             <span>
                                 Send Question
                             </span>
                             <div class="bg-white rounded-full p-px xl:p-2">
-                                <UIcon name="i-lucide-arrow-right" class="size-3 xl:size-5 text-primary" mode="svg" />
+                                <UIcon name="i-lucide-arrow-right" class="size-3 xl:size-3 text-primary" mode="svg" />
+                            </div>
+                        </button> -->
+                        <button
+                            class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs xl:text-xl xl:py-3 xl:px-6 xl:gap-3 w-fit font-bold">
+                            Send Question
+                            <div class="bg-white rounded-full p-px xl:p-1">
+                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4"
+                                    mode="svg" />
                             </div>
                         </button>
                     </u-form>
