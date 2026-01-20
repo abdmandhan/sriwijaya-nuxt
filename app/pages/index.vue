@@ -329,24 +329,38 @@
                         v-for="newsletter in newsletters" :key="newsletter.id">
                         <NuxtImg :src="newsletter.image || '/img/newsletter-card-1.png'"
                             class="w-full rounded-t-xl aspect-480/320" />
-                        <div class="p-2 flex flex-col gap-2 xl:gap-4 xl:p-12">
-                            <span class="font-bold text-[10px] xl:text-3xl">{{ newsletter.title }}</span>
-                            <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2" v-html="newsletter.content">
+                        <div class="p-2 flex flex-col xl:gap-4 xl:p-12">
+                            <span class="font-bold text-[10px] xl:text-3xl mb-1">{{ newsletter.title }}</span>
+                            <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2 mb-2"
+                                v-html="newsletter.content">
                             </div>
                             <NuxtLink :to="`/newsletter/${newsletter.slug}`"
-                                class="text-[8px] flex gap-2 items-center xl:text-2xl">
+                                class="text-[8px] flex gap-1 md:gap-2 items-center xl:text-2xl text-primary font-semibold">
                                 Learn More
                                 <!-- <UIcon name="i-lucide-arrow-right" class="size-3 md:size-6 border border-secondary-100 rounded-full p-px" mode="svg" /> -->
 
-                                <button class="border border-primary-110 rounded-full p-1">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                <!-- <button class="border border-primary-110 rounded-full p-1">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-[10px]"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 12H19" stroke="#75624C" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                         <path d="M15 8L19 12L15 16" stroke="#75624C" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                </button>
+                                </button> -->
+
+
+                                <!-- <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.2" y="0.2" width="9.79612" height="9.79612" rx="4.89806" stroke="#75624C"
+                                        stroke-width="0.4" />
+                                    <path d="M3.27539 5.09766H6.84403" stroke="#75624C" stroke-width="0.509806"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M5.82422 4.07812L6.84383 5.09774L5.82422 6.11735" stroke="#75624C"
+                                        stroke-width="0.509806" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg> -->
+                                <arrow />
+
                             </NuxtLink>
 
                         </div>
