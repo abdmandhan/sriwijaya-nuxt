@@ -113,21 +113,23 @@ function getImage(url: string, fallback: string) {
         <div v-if="latestNewsletter" class="flex gap-2 md:gap-10 my-10 mx-4 md:p-10 max-w-[1608px] md:mx-auto">
             <div>
                 <!-- class="aspect-160/100 min-w-[160px] md:min-w-[240px] rounded-xl lg:aspect-480/320 md:aspect-180/120" -->
-                <NuxtImg class="w-[160px] h-[100px] md:w-[180px] md:h-[120px] lg:w-[480px] lg:h-[320px] rounded-xl"
+                <NuxtImg class="w-[160px] h-[100px] md:w-[240px] md:h-[160px] lg:w-[480px] lg:h-[320px] rounded-xl"
                     :src="getImage(latestNewsletter.image, '/img/newsletter-card-2.png')" />
             </div>
-            <div class="flex flex-col gap-2 justify-between">
+            <div class="flex flex-col gap-2 justify-between py-2">
                 <div class="flex flex-col gap-2">
-                    <span
-                        class="uppercase border-b border-primary font-rajdhani text-xs md:text-sm w-fit lg:text-3xl text-primary">
+                    <span class="uppercase font-rajdhani text-xs w-fit lg:text-3xl text-primary">
                         Latest Newsletter
+                        <div class="w-1/4 h-[3px] bg-primary"></div>
                     </span>
-                    <span
-                        class="font-bold text-sm md:text-md h-[17px] lg:h-auto text-ellipsis max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] lg:text-4xl line-clamp-2">
-                        {{ latestNewsletter.title }}
-                    </span>
-                    <div class="text-sm md:text-md max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] xl:h-[56px] md:text-clip h-[34px] lg:text-xl line-clamp-4"
-                        v-html="latestNewsletter.content"></div>
+                    <div class="flex flex-col gap-6">
+                        <span
+                            class="font-bold text-sm md:text-lg h-[17px] md:h-auto text-ellipsis max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] lg:text-5xl line-clamp-2">
+                            {{ latestNewsletter.title }}
+                        </span>
+                        <div class="text-sm md:text-md max-w-[186px] md:max-w-[500px] xl:max-w-[1022px] xl:h-[56px] md:h-auto md:text-clip h-[34px] lg:text-xl line-clamp-4"
+                            v-html="latestNewsletter.content"></div>
+                    </div>
                 </div>
                 <NuxtLink :to="`/newsletter/${latestNewsletter.slug}`"
                     class="text-[10px] xl:text-2xl flex items-center text-primary gap-2 xl:gap-4 font-semibold group">
@@ -156,9 +158,10 @@ function getImage(url: string, fallback: string) {
             <div v-else class="bg-white rounded-xl w-full" v-for="newsletter in newsletters" :key="newsletter.id">
                 <NuxtImg :src="getImage(newsletter.image, '/img/newsletter-card-1.png')"
                     class="w-full rounded-t-xl aspect-480/320" />
-                <div class="p-2 flex flex-col gap-2 xl:gap-4 xl:p-12">
-                    <span class="font-bold text-[10px] xl:text-3xl line-clamp-2">{{ newsletter.title }}</span>
-                    <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2" v-html="newsletter.content"></div>
+                <div class="p-2 flex flex-col xl:gap-4 xl:p-12">
+                    <span class="font-bold text-[10px] xl:text-3xl line-clamp-2 mb-3">{{ newsletter.title }}</span>
+                    <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2 mb-8" v-html="newsletter.content">
+                    </div>
                     <NuxtLink :to="`/newsletter/${newsletter.slug}`"
                         class="text-[8px] flex gap-2 items-center xl:text-2xl text-primary group font-semibold">
                         Learn More

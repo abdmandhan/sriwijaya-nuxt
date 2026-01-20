@@ -113,9 +113,8 @@
                 <div class="relative w-full md:w-2/3 xl:w-1/2">
                     <motion.div
                         class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2 xl:-right-90"
-                        :initial="{ opacity: 0, x: 300 }" :whileInView="{ opacity: 1, x: 0 }"
-                        :inViewOptions="{ once: true, amount: 0.5 }" :transition="{ duration: 0.5 }"
-                        :viewport="{ once: true, }">
+                        :initial="{ opacity: 0, x: slideX }" :whileInView="{ opacity: 1, x: 0 }"
+                        :inViewOptions="inViewOptions" :transition="motionTransition" :viewport="{ once: true, }">
                         <h1 class="text-primary font-rajdhani w-fit xl:text-3xl">
                             ABOUT US
                             <div class="w-1/2 h-[3px] bg-primary"></div>
@@ -126,13 +125,13 @@
                             Built on Principles. Driven by Results.
                         </h2>
                     </motion.div>
-                    <motion.img src="/img/about-1.png" class="w-full" :initial="{ opacity: 0, x: -300 }"
-                        :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
-                        :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
+                    <motion.img src="/img/about-1.png" class="w-full" :initial="{ opacity: 0, x: -slideX }"
+                        :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, x: 0 }"
+                        :transition="motionTransition" :viewport="{ once: true }" />
                 </div>
 
-                <motion.div :initial="{ opacity: 0, x: 300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                    :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
+                <motion.div :initial="{ opacity: 0, x: slideX }" :inViewOptions="inViewOptions"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }"
                     class="mt-10 md:mt-40 w-full md:w-1/3 xl:w-1/2 text-xs xl:text-2xl xl:mt-60 flex flex-col gap-4 text-secondary-100">
                     <p class="text-justify order-1 xl-order-2">
                         SSCO is a boutique Indonesian law firm with a multi-industry focus, offering agile,
@@ -148,9 +147,9 @@
         <section id="why-choose-us" class="px-6 pt-60">
             <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10">
                 <div class="flex flex-col gap-2 w-full md:w-1/2 xl:gap-10">
-                    <motion.div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8" :initial="{ opacity: 0, x: -300 }"
-                        :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
-                        :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+                    <motion.div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8" :initial="{ opacity: 0, x: -slideX }"
+                        :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, x: 0 }"
+                        :transition="motionTransition" :viewport="{ once: true }">
                         <h1 class="text-primary font-rajdhani w-fit xl:text-3xl">
                             WHY CHOOSE US
                             <div class="w-1/2 h-[3px] bg-primary"></div>
@@ -161,12 +160,11 @@
                         </h2>
                     </motion.div>
                     <motion.img src="/img/why-choose-us.png" class="w-full block md:hidden"
-                        :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                        :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }"
-                        :viewport="{ once: true }" />
-                    <motion.div class="text-xs xl:text-2xl" :initial="{ opacity: 0, x: -300 }"
-                        :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
-                        :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+                        :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
+                        :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }" />
+                    <motion.div class="text-xs xl:text-2xl" :initial="{ opacity: 0, x: -slideX }"
+                        :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, x: 0 }"
+                        :transition="motionTransition" :viewport="{ once: true }">
                         <p class="text-justify text-secondary-100">
                             We take a value-driven approach by actively communicating and strategizing with our clients
                             to
@@ -185,21 +183,21 @@
                         </p>
                     </motion.div>
                 </div>
-                <motion.img src="/img/why-choose-us.png" class="w-1/2 hidden md:block" :initial="{ opacity: 0, x: 300 }"
-                    :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
-                    :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
+                <motion.img src="/img/why-choose-us.png" class="w-1/2 hidden md:block"
+                    :initial="{ opacity: 0, x: slideX }" :inViewOptions="inViewOptions"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }" />
             </div>
         </section>
 
         <section id="our-services" class="px-6 pt-40 ">
             <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-0">
                 <motion.img src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]"
-                    :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                    :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
+                    :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }" />
                 <div class="w-full md:w-1/2 xl:w-[40%]">
-                    <motion.div class="flex flex-col gap-2 xl:gap-8 xl:mb-10" :initial="{ opacity: 0, x: 300 }"
-                        :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
-                        :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+                    <motion.div class="flex flex-col gap-2 xl:gap-8 xl:mb-10" :initial="{ opacity: 0, x: slideX }"
+                        :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, x: 0 }"
+                        :transition="motionTransition" :viewport="{ once: true }">
                         <h1 class="text-primary font-rajdhani w-fit xl:text-3xl">
                             OUR SERVICE
                             <div class="w-1/2 h-[3px] bg-primary"></div>
@@ -209,12 +207,11 @@
                         </h2>
                     </motion.div>
                     <motion.img src="/img/our-service.png" class="w-full block md:hidden"
-                        :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                        :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }"
-                        :viewport="{ once: true }" />
+                        :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
+                        :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }" />
                     <motion.div class="flex flex-col gap-2 text-xs xl:text-2xl xl:gap-10"
-                        :initial="{ opacity: 0, x: 300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                        :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+                        :initial="{ opacity: 0, x: slideX }" :inViewOptions="inViewOptions"
+                        :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }">
                         <p class="text-justify text-secondary-100">
                             Guided by our unwavering focus on our clients’ objectives and satisfaction, we structure our
                             legal services to address both immediate needs and long-term strategic considerations. In
@@ -238,8 +235,8 @@
 
         <section id="our-team" class="px-6 pt-20">
             <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
-                <motion.div :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                    :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+                <motion.div :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }">
                     <h1 class="text-primary font-rajdhani w-fit xl:text-3xl">
                         OUR TEAM
                         <div class="w-1/2 h-[3px] bg-primary"></div>
@@ -260,15 +257,15 @@
                 <div class="flex flex-col">
                     <div v-for="team in teams" :key="team.title"
                         class="flex flex-col xl:gap-10 gap-3 md:gap-6 mb-3 md:mb-6 xl:mb-10">
-                        <motion.h3 :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                            :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }"
+                        <motion.h3 :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
+                            :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition"
                             :viewport="{ once: true }"
                             class="text-lg  bg-[#A08565] text-white px-4 py-2 rounded-t-xl rounded-br-xl font-rajdhani xl:text-3xl">
                             {{ team.title }}
                         </motion.h3>
-                        <motion.div class="flex gap-4" :initial="{ opacity: 0, x: 300 }"
-                            :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, x: 0 }"
-                            :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+                        <motion.div class="flex gap-4" :initial="{ opacity: 0, x: slideX }"
+                            :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, x: 0 }"
+                            :transition="motionTransition" :viewport="{ once: true }">
                             <div v-for="member in team.members" :key="member.name"
                                 class="relative h-[222px] xl:h-[522px] w-[164px] md:w-[169px] md:h-[230px] xl:w-[384px] group">
                                 <NuxtImg :src="member.image_card"
@@ -300,9 +297,9 @@
             </div>
         </section>
 
-        <motion.section id="newsletter" class="px-6 pt-20" :initial="{ opacity: 0, y: 300 }"
-            :inViewOptions="{ once: true, amount: 0.5 }" :whileInView="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.5 }" :viewport="{ once: true }">
+        <motion.section id="newsletter" class="px-6 pt-20" :initial="{ opacity: 0, y: slideY }"
+            :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, y: 0 }" :transition="motionTransition"
+            :viewport="{ once: true }">
             <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto flex flex-col gap-6 xl:gap-10">
                 <div>
                     <h1 class="text-primary font-rajdhani w-fit uppercase mb-4 xl:text-3xl">
@@ -363,12 +360,12 @@
             <div class="relative lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <motion.img src="/img/contact-us.png"
                     class="relative z-0 w-full md:w-[500px] xl:w-[1007px] xl:h-[740px]"
-                    :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                    :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }" />
+                    :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }" />
 
                 <!-- contact us card form -->
-                <motion.div :initial="{ opacity: 0, x: 300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                    :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
+                <motion.div :initial="{ opacity: 0, x: slideX }" :inViewOptions="inViewOptions"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }"
                     class="p-4 w-[90%] md:w-[450px] absolute z-10 -bottom-44 md:top-30 right-0 border-2 border-white rounded-xl shadow-2xl backdrop-blur-sm flex flex-col gap-2 md:h-fit xl:w-[921px] xl:h-[680px] xl:p-14 xl:gap-8 bg-white/80">
                     <h2 class="font-bold text-md xl:text-6xl text-black">Contact Us</h2>
                     <p class="text-[10px] text-gray-400 xl:text-2xl">
@@ -405,8 +402,8 @@
                 </motion.div>
 
                 <!-- card contact information -->
-                <motion.div :initial="{ opacity: 0, x: -300 }" :inViewOptions="{ once: true, amount: 0.5 }"
-                    :whileInView="{ opacity: 1, x: 0 }" :transition="{ duration: 0.5 }" :viewport="{ once: true }"
+                <motion.div :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
+                    :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }"
                     class="bg-[#1D202A99] backdrop-blur-md text-white absolute -bottom-10 hidden md:flex rounded-b-xl rounded-tr-xl justify-center flex-col p-4 gap-4 xl:w-[500px] xl:h-[288px] xl:px-12 xl:py-16 xl:gap-8">
                     <div class="flex gap-2 items-center xl:gap-8">
                         <div class="bg-white rounded-full p-2 xl:p-4">
@@ -443,9 +440,43 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { motion } from "motion-v"
 import { z } from 'zod'
+
+// On small screens, many sections never reach 50% visibility,
+// so `whileInView` won't trigger and the page stays blank (opacity: 0).
+const isMobile = ref(false)
+let mq = null
+const handleMqChange = () => {
+    isMobile.value = mq?.matches ?? false
+}
+
+onMounted(() => {
+    mq = window.matchMedia('(max-width: 768px)')
+    handleMqChange()
+    if (mq.addEventListener) mq.addEventListener('change', handleMqChange)
+    else mq.addListener(handleMqChange)
+})
+
+onBeforeUnmount(() => {
+    if (!mq) return
+    if (mq.removeEventListener) mq.removeEventListener('change', handleMqChange)
+    else mq.removeListener(handleMqChange)
+})
+
+const inViewOptions = computed(() => ({
+    once: true,
+    // much lower threshold on mobile so animations actually trigger
+    amount: isMobile.value ? 0.05 : 0.5,
+}))
+
+const motionTransition = computed(() => ({
+    duration: isMobile.value ? 0.35 : 0.5,
+}))
+
+const slideX = computed(() => (isMobile.value ? 64 : 300))
+const slideY = computed(() => (isMobile.value ? 80 : 300))
 
 const practiceAreas = [
     'Dispute Resolution and Litigation',
@@ -471,9 +502,9 @@ const schema = z.object({
 })
 
 const contactUsForm = ref({
-    name: 'abdurrahman ramadhan',
-    email: 'abdmandhan@gmail.com',
-    question: 'test',
+    name: '',
+    email: '',
+    question: '',
 })
 
 async function onSubmit(event) {
