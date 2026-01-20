@@ -1,5 +1,5 @@
 <template>
-    <main class="bg-white">
+    <main class="bg-secondary-20">
         <section class="relative h-[700px] md:h-screen z-10" id="/">
             <!-- Background image -->
             <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
