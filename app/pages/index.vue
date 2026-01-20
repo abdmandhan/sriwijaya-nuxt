@@ -377,14 +377,15 @@
                     individuals
                 </p>
 
-                <form action="" class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Your Company"
-                        class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4">
-                    <input type="email" placeholder="Your Email Address"
-                        class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4">
+                <u-form @submit="onSubmit" class="grid grid-cols-2 gap-4" :schema="schema" :state="contactUsForm">
+                    <input type="text" placeholder="Your Company" v-model="contactUsForm.name"
+                        class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" name="name">
+                    <input type="email" placeholder="Your Email Address" v-model="contactUsForm.email"
+                        class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" name="email">
                     <textarea placeholder="Question"
-                        class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" rows="4" />
-                    <button type="button"
+                        class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" rows="4"
+                        v-model="contactUsForm.question" name="question" />
+                    <button type="submit"
                         class="bg-primary-90 text-white rounded-full p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 flex gap-2 items-center w-fit font-bold xl:mt-10 xl:gap-4 cursor-pointer">
                         <span>
                             Send Question
@@ -393,7 +394,7 @@
                             <UIcon name="i-lucide-arrow-right" class="size-3 xl:size-5 text-primary" mode="svg" />
                         </div>
                     </button>
-                </form>
+                </u-form>
             </motion.div>
 
             <!-- card contact information -->
@@ -435,6 +436,7 @@
 <script setup>
 import { ref } from 'vue'
 import { motion } from "motion-v"
+import { z } from 'zod'
 
 const practiceAreas = [
     'Dispute Resolution and Litigation',
@@ -450,6 +452,39 @@ const practiceAreas = [
 const { data: teams } = await useFetch('/api/teams', { server: false, lazy: true })
 const { data: newsletters } = await useFetch('/api/newsletters/top', { server: false, lazy: true })
 const { data: companyProfile } = await useFetch('/api/company-profile', { server: false, lazy: true })
+const toast = useToast()
+
+const schema = z.object({
+    name: z.string().min(1),
+    email: z.string().email(),
+    question: z.string().min(1),
+})
+
+const contactUsForm = ref({
+    name: 'abdurrahman ramadhan',
+    email: 'abdmandhan@gmail.com',
+    question: 'test',
+})
+
+async function onSubmit(event) {
+    const result = await $fetch('/api/contact-us', {
+        method: 'POST',
+        body: contactUsForm.value,
+    })
+
+    if (result.success) {
+        toast.add({
+            title: 'Success',
+            description: 'Thank you for your message. We will get back to you soon.',
+            color: 'success',
+        })
+        contactUsForm.value = {
+            name: '',
+            email: '',
+            question: '',
+        }
+    }
+}
 
 const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
 </script>
