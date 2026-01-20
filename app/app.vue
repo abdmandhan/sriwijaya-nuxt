@@ -23,8 +23,8 @@ useHead({
   }
 })
 
-const title = 'Shinta Sriwijaya & Co'
-const description = 'Shinta Sriwijaya & Co is a law firm that provides legal services to clients.'
+const title = 'SSCO | Strategic | Legal | Advisory'
+const description = 'SSCO is a boutique Indonesian law firm with a multi-industry focus, offering agile, sophisticated, and commercially attuned legal advisory services.'
 
 useSeoMeta({
   title,
