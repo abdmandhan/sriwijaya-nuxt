@@ -396,21 +396,15 @@
                         <textarea placeholder="Question"
                             class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" rows="4"
                             v-model="contactUsForm.question" name="question" />
-                        <!-- <button type="submit"
-                            class="bg-primary-90 text-white rounded-full p-2 text-[10px] xl:text-xl xl:px-4 xl:py-2 flex gap-2 items-center w-fit font-bold xl:mt-10 xl:gap-4 cursor-pointer">
-                            <span>
-                                Send Question
-                            </span>
-                            <div class="bg-white rounded-full p-px xl:p-2">
-                                <UIcon name="i-lucide-arrow-right" class="size-3 xl:size-3 text-primary" mode="svg" />
-                            </div>
-                        </button> -->
                         <button
-                            class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs xl:text-xl xl:py-3 xl:px-6 xl:gap-3 w-fit font-bold">
+                            :disabled="contactUsForm.name === '' || contactUsForm.email === '' || contactUsForm.question === ''"
+                            class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs xl:text-xl xl:py-3 xl:px-6 xl:gap-3 w-fit font-bold disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer">
                             Send Question
                             <div class="bg-white rounded-full p-px xl:p-1">
-                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4"
-                                    mode="svg" />
+                                <UIcon name="i-lucide-loader-circle" class="size-4 animate-spin" mode="svg"
+                                    v-if="loadingSubmit" />
+                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4" mode="svg"
+                                    vElse />
                             </div>
                         </button>
                     </u-form>
@@ -492,6 +486,7 @@ const motionTransition = computed(() => ({
 
 const slideX = computed(() => (isMobile.value ? 64 : 300))
 const slideY = computed(() => (isMobile.value ? 80 : 300))
+const loadingSubmit = useState('loadingSubmit', () => true)
 
 const practiceAreas = [
     'Dispute Resolution and Litigation',
@@ -523,10 +518,13 @@ const contactUsForm = ref({
 })
 
 async function onSubmit(event) {
+    console.log('onSubmit', event);
+    loadingSubmit.value = true;
     const result = await $fetch('/api/contact-us', {
         method: 'POST',
         body: contactUsForm.value,
     })
+    console.log('reuslt');
 
     if (result.success) {
         toast.add({
@@ -540,6 +538,7 @@ async function onSubmit(event) {
             question: '',
         }
     }
+    loadingSubmit.value = false
 }
 
 const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
