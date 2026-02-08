@@ -43,14 +43,14 @@
                 <div class="mt-6 xl:mt-10 text-secondary-100 text-sm md:text-base xl:text-xl leading-relaxed editor text-justify"
                     v-html="newsletter.content" />
 
-                <div class="mt-10 xl:mt-14 text-secondary-100 text-sm md:text-base xl:text-xl">
+                <!-- <div class="mt-10 xl:mt-14 text-secondary-100 text-sm md:text-base xl:text-xl">
                     <p class="mb-4">For further information, please contact :</p>
                     <p class="font-semibold">Shinta Sriwijaya</p>
                     <p>Founding Partner</p>
                     <a href="mailto:shinta.sriwijaya@sscolaw.com" class="inline-block mt-2 text-primary underline">
                         shinta.sriwijaya@sscolaw.com
                     </a>
-                </div>
+                </div> -->
 
                 <div class="mt-6" v-if="newsletter.document">
                     <a :href="newsletter.document" target="_blank" rel="noopener"
