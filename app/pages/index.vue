@@ -333,8 +333,8 @@
                         <div class="p-2 flex flex-col xl:gap-4 xl:p-12">
                             <!-- max 2 line otherwise truncate -->
                             <span class="font-bold text-[10px] xl:text-3xl mb-1 line-clamp-2">{{ newsletter.title
-                            }}</span>
-                            <div class="newsletter-content text-gray-500 text-[8px]! xl:text-2xl line-clamp-2 mb-2"
+                                }}</span>
+                            <div class="newsletter-content text-gray-500 text-[8px] xl:text-2xl line-clamp-2 mb-2"
                                 v-html="newsletter.content">
                             </div>
                             <NuxtLink :to="`/newsletter/${newsletter.slug}`"
