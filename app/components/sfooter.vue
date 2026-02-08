@@ -1,5 +1,5 @@
 <template>
-    <footer class="flex p-4 w-full z-10 bg-[#1D202A] text-white pt-10">
+    <footer class="flex p-4 w-full z-10 bg-[#1D202A] text-white pt-10 xl:px-10">
         <div
             class="lg:max-w-[834px] xl:max-w-[1608px] xl:w-[1608px] mx-auto flex-col items-start gap-10 md:grid md:grid-cols-2 xl:grid-cols-3 flex">
             <div class="flex flex-col gap-2 xl:col-span-2">

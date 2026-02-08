@@ -1,5 +1,5 @@
 <template>
-    <main class="bg-secondary-20">
+    <main class="bg-secondary-20 overflow-x-hidden" style="overflow-x: clip;">
         <section class="relative h-[700px] md:h-screen z-10" id="/">
             <!-- Background image -->
             <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
@@ -109,11 +109,11 @@
                 </div>
             </div>
         </section>
-        <section id="about" class="pt-80 px-6 relative z-0 ">
+        <section id="about" class="xl:pt-80 pt-60 px-6 xl:px-10 relative z-0 ">
             <div class="md:gap-10 md:flex lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <div class="relative w-full md:w-2/3 xl:w-1/2">
                     <motion.div
-                        class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2 xl:-right-90"
+                        class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2 xl:-right-100 2xl:-right-90"
                         :initial="{ opacity: 0, x: slideX }" :whileInView="{ opacity: 1, x: 0 }"
                         :inViewOptions="inViewOptions" :transition="motionTransition" :viewport="{ once: true, }">
                         <h1 class="text-primary font-rajdhani w-fit xl:text-3xl">
@@ -145,7 +145,7 @@
             </div>
         </section>
 
-        <section id="why-choose-us" class="px-6 pt-60">
+        <section id="why-choose-us" class="px-6 xl:pt-60 pt-12 xl:pl-10 xl:pr-0">
             <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10">
                 <div class="flex flex-col gap-2 w-full md:w-1/2 xl:gap-10">
                     <motion.div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8" :initial="{ opacity: 0, x: -slideX }"
@@ -190,7 +190,7 @@
             </div>
         </section>
 
-        <section id="our-services" class="px-6 pt-40 ">
+        <section id="our-services" class="px-6 pt-12 xl:pt-40 xl:px-10">
             <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-0">
                 <motion.img src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]"
                     :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
@@ -234,7 +234,7 @@
 
         </section>
 
-        <section id="our-team" class="px-6 pt-20">
+        <section id="our-team" class="px-6 pt-20 xl:px-10">
             <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <motion.div :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
                     :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }">
@@ -298,7 +298,7 @@
             </div>
         </section>
 
-        <motion.section id="newsletter" class="px-6 pt-20" :initial="{ opacity: 0, y: slideY }"
+        <motion.section id="newsletter" class="px-6 pt-20 xl:px-10" :initial="{ opacity: 0, y: slideY }"
             :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, y: 0 }" :transition="motionTransition"
             :viewport="{ once: true }">
             <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto flex flex-col gap-6 xl:gap-10">
@@ -324,9 +324,9 @@
                 </div>
 
                 <!-- card container -->
-                <div class="grid grid-cols-2 gap-2 md:grid-cols-3 justify-around">
+                <div class="grid grid-cols-2 gap-2 xl:gap-10 md:grid-cols-3 justify-around">
                     <!-- newsletter card -->
-                    <div class="bg-primary-50 rounded-xl xl:w-[480px] md:w-[225px] w-full"
+                    <div class="rounded-xl xl:w-full 2xl:w-[480px] md:w-[225px] w-full shadow-xl"
                         v-for="newsletter in newsletters" :key="newsletter.id">
                         <NuxtImg :src="newsletter.image || '/img/newsletter-card-1.png'"
                             class="w-full rounded-t-xl aspect-480/320" />
@@ -338,28 +338,6 @@
                             <NuxtLink :to="`/newsletter/${newsletter.slug}`"
                                 class="text-[8px] flex gap-1 md:gap-2 items-center xl:text-2xl text-primary font-semibold">
                                 Learn More
-                                <!-- <UIcon name="i-lucide-arrow-right" class="size-3 md:size-6 border border-secondary-100 rounded-full p-px" mode="svg" /> -->
-
-                                <!-- <button class="border border-primary-110 rounded-full p-1">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-[10px]"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5 12H19" stroke="#75624C" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M15 8L19 12L15 16" stroke="#75624C" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button> -->
-
-
-                                <!-- <svg width="11" height="11" viewBox="0 0 11 11" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.2" y="0.2" width="9.79612" height="9.79612" rx="4.89806" stroke="#75624C"
-                                        stroke-width="0.4" />
-                                    <path d="M3.27539 5.09766H6.84403" stroke="#75624C" stroke-width="0.509806"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M5.82422 4.07812L6.84383 5.09774L5.82422 6.11735" stroke="#75624C"
-                                        stroke-width="0.509806" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg> -->
                                 <arrow />
 
                             </NuxtLink>
@@ -371,7 +349,7 @@
             </div>
         </motion.section>
 
-        <section id="contact-us" class="px-6 pt-20 h-[600px] md:h-[550px] xl:h-auto xl:pb-32">
+        <section id="contact-us" class="px-6 pt-20 h-[600px] md:h-[550px] xl:h-auto xl:pb-32 xl:px-10">
             <div class="relative lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
                 <motion.img src="/img/contact-us.png"
                     class="relative z-0 w-full md:w-[500px] xl:w-[1007px] xl:h-[740px]"
@@ -390,21 +368,23 @@
 
                     <u-form @submit="onSubmit" class="grid grid-cols-2 gap-4" :schema="schema" :state="contactUsForm">
                         <input type="text" placeholder="Your Company" v-model="contactUsForm.name"
-                            class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" name="name">
+                            class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 focus:outline-primary"
+                            name="name">
                         <input type="email" placeholder="Your Email Address" v-model="contactUsForm.email"
-                            class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" name="email">
+                            class="bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 focus:outline-primary"
+                            name="email">
                         <textarea placeholder="Question"
-                            class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4" rows="4"
-                            v-model="contactUsForm.question" name="question" />
+                            class="col-span-2 bg-white rounded-md p-2 text-[10px] xl:text-2xl xl:px-6 xl:py-4 focus:outline-primary"
+                            rows="4" v-model="contactUsForm.question" name="question" />
                         <button
                             :disabled="contactUsForm.name === '' || contactUsForm.email === '' || contactUsForm.question === ''"
                             class="bg-primary-90 text-white flex items-center p-2 gap-1 rounded-full text-xs xl:text-xl xl:py-3 xl:px-6 xl:gap-3 w-fit font-bold disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer">
                             Send Question
                             <div class="bg-white rounded-full p-px xl:p-1">
-                                <UIcon name="i-lucide-loader-circle" class="size-4 animate-spin" mode="svg"
+                                <UIcon name="i-lucide-loader-circle" class="size-4 animate-spin text-black" mode="svg"
                                     v-if="loadingSubmit" />
-                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4" mode="svg"
-                                    vElse />
+                                <UIcon name="i-lucide-arrow-right" class="size-3 text-primary-90 xl:size-4" v-else
+                                    mode="svg" />
                             </div>
                         </button>
                     </u-form>
@@ -484,9 +464,9 @@ const motionTransition = computed(() => ({
     duration: isMobile.value ? 0.35 : 0.5,
 }))
 
-const slideX = computed(() => (isMobile.value ? 64 : 300))
-const slideY = computed(() => (isMobile.value ? 80 : 300))
-const loadingSubmit = useState('loadingSubmit', () => true)
+const slideX = computed(() => (isMobile.value ? 64 : 200))
+const slideY = computed(() => (isMobile.value ? 80 : 200))
+const loadingSubmit = useState('loadingSubmit', () => false)
 
 const practiceAreas = [
     'Dispute Resolution and Litigation',

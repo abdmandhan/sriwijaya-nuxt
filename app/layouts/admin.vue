@@ -100,8 +100,10 @@ onMounted(async () => {
             :ui="{ footer: 'lg:border-t lg:border-default' }">
             <template #header="{ collapsed }">
                 <!-- <TeamsMenu :collapsed="collapsed" /> -->
-                <nuxt-img src="/logo.png" alt="logo" class="w-52 md:w-[90%]" v-if="!collapsed" />
-                <nuxt-img src="logo-small.png" class="size-10" v-else />
+                <nuxt-link to="/">
+                    <nuxt-img src="/logo.png" alt="logo" class="w-52 md:w-[90%]" v-if="!collapsed" />
+                    <nuxt-img src="logo-small.png" class="size-10" v-else />
+                </nuxt-link>
             </template>
 
             <template #default="{ collapsed }">
