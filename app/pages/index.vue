@@ -333,8 +333,8 @@
                         <div class="p-2 flex flex-col xl:gap-4 xl:p-12">
                             <!-- max 2 line otherwise truncate -->
                             <span class="font-bold text-[10px] xl:text-3xl mb-1 line-clamp-2">{{ newsletter.title
-                                }}</span>
-                            <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2 mb-2"
+                            }}</span>
+                            <div class="newsletter-content text-gray-500 text-[8px]! xl:text-2xl line-clamp-2 mb-2"
                                 v-html="newsletter.content">
                             </div>
                             <NuxtLink :to="`/newsletter/${newsletter.slug}`"
@@ -525,3 +525,16 @@ async function onSubmit(event) {
 
 const selectedIndex = ref(1) // Default to "Employment" (index 1) to match the image
 </script>
+
+<style scoped>
+/* Override CKEditor HTML font sizes inside v-html by forcing children to inherit the wrapper size */
+.newsletter-content :deep(*) {
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+/* Optional: prevent CKEditor block tags from adding extra vertical space in a clamped preview */
+.newsletter-content :deep(p) {
+    margin: 0;
+}
+</style>
