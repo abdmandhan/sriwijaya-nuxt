@@ -331,7 +331,9 @@
                         <NuxtImg :src="newsletter.image || '/img/newsletter-card-1.png'"
                             class="w-full rounded-t-xl aspect-480/320" />
                         <div class="p-2 flex flex-col xl:gap-4 xl:p-12">
-                            <span class="font-bold text-[10px] xl:text-3xl mb-1">{{ newsletter.title }}</span>
+                            <!-- max 2 line otherwise truncate -->
+                            <span class="font-bold text-[10px] xl:text-3xl mb-1 line-clamp-2">{{ newsletter.title
+                                }}</span>
                             <div class="text-gray-500 text-[8px] xl:text-2xl line-clamp-2 mb-2"
                                 v-html="newsletter.content">
                             </div>
