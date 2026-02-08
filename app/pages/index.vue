@@ -82,8 +82,8 @@
                     </div>
                     <!-- desktop -->
                     <div class="absolute w-[806px] h-[160px] bottom-33 -right-202 hidden xl:block z-10">
-                        <svg width="910" height="167" viewBox="0 0 910 167" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 910 167" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-[910px] h-[167px] aspect-910/167">
                             <foreignObject x="-44" y="-44" width="997.55" height="255">
                                 <div xmlns="http://www.w3.org/1999/xhtml"
                                     style="backdrop-filter:blur(22px);clip-path:url(#bgblur_0_15628_14179_clip_path);height:100%;width:100%">
