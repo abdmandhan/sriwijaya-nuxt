@@ -3,7 +3,7 @@
         <section class="relative h-[700px] md:h-screen z-10" id="/">
             <!-- Background image -->
             <NuxtImg src="/bg/main.png" alt="main" width="100%" height="100%"
-                class="w-full h-full object-cover absolute left-0 top-0 z-0" />
+                class="w-full h-full object-cover absolute left-0 top-0 z-0 shadow-2xl/60 shadow-primary" />
 
             <!-- Hero text content -->
             <div
@@ -81,7 +81,7 @@
                         </p>
                     </div>
                     <!-- desktop -->
-                    <div class="absolute w-[806px] h-[160px] bottom-33 -right-202 hidden xl:block z-10">
+                    <div class="absolute w-[806px] h-[160px] bottom-33 -right-201.5 hidden xl:block z-0">
                         <svg viewBox="0 0 910 167" fill="none" xmlns="http://www.w3.org/2000/svg"
                             class="w-[910px] h-[167px] aspect-910/167">
                             <foreignObject x="-44" y="-44" width="997.55" height="255">
@@ -109,8 +109,11 @@
                 </div>
             </div>
         </section>
-        <section id="about" class="xl:pt-80 pt-60 px-6 xl:px-10 relative z-0 ">
-            <div class="md:gap-10 md:flex lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
+        <section id="about" class="xl:pt-80 pt-60 px-6 xl:px-10 relative z-0">
+            <gray-blur class="top-0 -right-30" />
+            <brown-blur class="top-100 -left-30 z-0" />
+
+            <div class="md:gap-10 md:flex lg:max-w-[834px] xl:max-w-[1608px] mx-auto relative z-10">
                 <div class="relative w-full md:w-2/3 xl:w-1/2">
                     <motion.div
                         class="static md:absolute md:-right-20  md:top-10 mb-10 md:mb-0 flex flex-col gap-2 xl:-right-100 2xl:-right-90"
@@ -145,8 +148,11 @@
             </div>
         </section>
 
-        <section id="why-choose-us" class="px-6 xl:pt-60 pt-12 xl:pl-10 xl:pr-0">
-            <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10">
+        <section id="why-choose-us" class="px-6 xl:pt-60 pt-12 xl:pl-10 xl:pr-0 relative z-0">
+            <brown-blur class="top-100 -left-30 z-0" />
+
+            <div
+                class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-10 relative z-10">
                 <div class="flex flex-col gap-2 w-full md:w-1/2 xl:gap-10">
                     <motion.div class="flex flex-col gap-2 mb-6 md:mb-0 xl:gap-8" :initial="{ opacity: 0, x: -slideX }"
                         :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, x: 0 }"
@@ -190,7 +196,8 @@
             </div>
         </section>
 
-        <section id="our-services" class="px-6 pt-12 xl:pt-40 xl:px-10">
+        <section id="our-services" class="px-6 pt-12 xl:pt-40 xl:px-10 relative z-0">
+            <brown-blur class="top-100 -right-40 z-0" />
             <div class="flex flex-col gap-6 md:flex-row lg:max-w-[834px] xl:max-w-[1608px] mx-auto xl:gap-0">
                 <motion.img src="/img/our-service.png" class="w-1/2 hidden md:block xl:w-[60%]"
                     :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
@@ -301,7 +308,9 @@
         <motion.section id="newsletter" class="px-6 pt-20 xl:px-10" :initial="{ opacity: 0, y: slideY }"
             :inViewOptions="inViewOptions" :whileInView="{ opacity: 1, y: 0 }" :transition="motionTransition"
             :viewport="{ once: true }">
-            <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto flex flex-col gap-6 xl:gap-10">
+            <div class="lg:max-w-[834px] xl:max-w-[1608px] mx-auto flex flex-col gap-6 xl:gap-10 relative">
+                <brown-blur class="top-100 -right-40" />
+                <gray-blur class="top-100 -left-40" />
                 <div>
                     <h1 class="text-primary font-rajdhani w-fit uppercase mb-4 xl:text-3xl">
                         news letter
@@ -324,16 +333,16 @@
                 </div>
 
                 <!-- card container -->
-                <div class="grid grid-cols-2 gap-2 xl:gap-10 md:grid-cols-3 justify-around">
+                <div class="grid grid-cols-2 gap-2 xl:gap-10 md:grid-cols-3 justify-around relative z-30">
                     <!-- newsletter card -->
-                    <div class="rounded-xl xl:w-full 2xl:w-[480px] md:w-[225px] w-full shadow-xl"
+                    <div class="rounded-xl xl:w-full 2xl:w-[480px] md:w-[225px] w-full shadow-xl relative z-10 bg-white"
                         v-for="newsletter in newsletters" :key="newsletter.id">
                         <NuxtImg :src="newsletter.image || '/img/newsletter-card-1.png'"
                             class="w-full rounded-t-xl aspect-480/320" />
                         <div class="p-2 flex flex-col xl:gap-4 xl:p-12">
                             <!-- max 2 line otherwise truncate -->
                             <span class="font-bold text-[10px] xl:text-3xl mb-1 line-clamp-2">{{ newsletter.title
-                                }}</span>
+                            }}</span>
                             <div class="newsletter-content text-gray-500 text-[8px] xl:text-2xl line-clamp-2 mb-2"
                                 v-html="newsletter.content">
                             </div>
@@ -353,6 +362,8 @@
 
         <section id="contact-us" class="px-6 pt-20 h-[600px] md:h-[550px] xl:h-auto xl:pb-32 xl:px-10">
             <div class="relative lg:max-w-[834px] xl:max-w-[1608px] mx-auto">
+                <gray-blur class="top-40 -right-40" />
+                <brown-blur class="top-100 -left-40" />
                 <motion.img src="/img/contact-us.png"
                     class="relative z-0 w-full md:w-[500px] xl:w-[1007px] xl:h-[740px]"
                     :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
