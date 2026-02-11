@@ -1,7 +1,13 @@
 <template>
-    <footer class="flex p-4 w-full z-10 bg-[#1D202A] text-white pt-10 xl:px-10">
+    <footer class="flex p-4 w-full z-10 bg-[#1D202A] text-white pt-10 xl:px-10 relative overflow-hidden">
+        <!-- radial gradient overlay -->
+        <div class="absolute top-0 right-0 w-[120vw] h-[120vh] pointer-events-none origin-top-right opacity-60" :style="{
+            background: 'radial-gradient(circle at top right, rgba(95, 100, 114, 0.6) 0%, rgba(95, 100, 114, 0.4) 20%, rgba(95, 100, 114, 0.2) 35%, rgba(95, 100, 114, 0) 65%)',
+            // background: 'radial-gradient(circle at top right, rgba(95, 100, 114,0.4) 0%,  rgba(95, 100, 114, 0) 100%)',
+        }">
+        </div>
         <div
-            class="lg:max-w-[834px] xl:max-w-[1608px] xl:w-[1608px] mx-auto flex-col items-start gap-10 md:grid md:grid-cols-2 xl:grid-cols-3 flex">
+            class="lg:max-w-[834px] xl:max-w-[1608px] xl:w-[1608px] mx-auto flex-col items-start gap-10 md:grid md:grid-cols-2 xl:grid-cols-3 flex relative z-10">
             <div class="flex flex-col gap-2 xl:col-span-2">
                 <NuxtImg src="logo-small.png" class="size-10" />
 
