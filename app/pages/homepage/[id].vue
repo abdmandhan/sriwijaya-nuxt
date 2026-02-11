@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full mb-10" v-if="team">
+    <div class="h-full" v-if="team">
         <!-- breadcrumb -->
         <div
             class="bg-secondary h-[38px] xl:h-[48px] text-xs px-4 py-3 text-gray-500 md:text-sm xl:text-base max-w-[1608px] mx-auto">
@@ -30,7 +30,7 @@
                                 </svg>
 
                                 Email : <a :href="`mailto:${team.email}`" class="border-b border-white">{{ team.email
-                                    }}</a>
+                                }}</a>
                             </span>
                             <span v-if="team.linkedin" class="flex gap-2 items-center">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
@@ -48,14 +48,16 @@
             </div>
         </div>
         <div class="grid grid-cols-12 max-w-[1608px] mx-auto">
-            <div class="flex flex-col gap-6 px-4 py-6 col-span-12 md:col-span-2 xl:col-span-3 md:py-10">
-                <div v-if="team.educations && team.educations.length > 0" class="flex flex-col gap-2">
+            <div class="flex flex-col gap-6 px-4 py-6 col-span-12 md:col-span-2 xl:col-span-3 md:py-10 relative">
+                <div class="bg-white z-0 w-screen h-full absolute top-0 right-0"></div>
+                <div v-if="team.educations && team.educations.length > 0" class="flex flex-col gap-2 relative z-10">
                     <span class="text-md font-bold xl:text-2xl">Education:</span>
                     <div class="text-sm flex flex-col gap-2 xl:text-xl">
                         <span v-for="(education, index) in team.educations" :key="index">{{ education }}</span>
                     </div>
                 </div>
-                <div v-if="team.bar_admissions && team.bar_admissions.length > 0" class="flex flex-col gap-2">
+                <div v-if="team.bar_admissions && team.bar_admissions.length > 0"
+                    class="flex flex-col gap-2 relative z-10">
                     <span class="text-md font-bold xl:text-2xl">Bar Admission:</span>
                     <div class="text-sm flex flex-col gap-2 xl:text-xl">
                         <span v-for="(admission, index) in team.bar_admissions" :key="index">{{ admission }}</span>
