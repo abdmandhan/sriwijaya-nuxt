@@ -365,6 +365,7 @@
                 <gray-blur class="top-40 -right-40" />
                 <brown-blur class="top-100 -left-40" />
                 <motion.img src="/img/contact-us.png"
+                style="border-radius: 24px;"
                     class="relative z-0 w-full md:w-[500px] xl:w-[1007px] xl:h-[740px]"
                     :initial="{ opacity: 0, x: -slideX }" :inViewOptions="inViewOptions"
                     :whileInView="{ opacity: 1, x: 0 }" :transition="motionTransition" :viewport="{ once: true }" />
